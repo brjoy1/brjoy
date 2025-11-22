@@ -15,26 +15,26 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://brjoy.com.br">
 
+    <!-- Performance Optimizations -->
+    <meta name="theme-color" content="#1A73E8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Critical CSS Inlined -->
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#202124;-webkit-font-smoothing:antialiased;line-height:1.5}
+    </style>
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://brjoy.com.br">
     <meta property="og:title" content="BRJOY - IA para Imobiliárias | Venda 24h no WhatsApp">
     <meta property="og:description"
         content="Corretor digital com IA que atende, qualifica leads e agenda visitas automaticamente. Mais de 200 Imobiliárias aumentaram suas vendas em 35%.">
-    <meta property="og:image" content="https://brjoy.com.br/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:site_name" content="BRJOY Imobiliária AI">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://brjoy.com.br">
-    <meta name="twitter:title" content="BRJOY - IA para Imobiliárias | Venda 24h no WhatsApp">
-    <meta name="twitter:description"
-        content="Corretor digital com IA que atende, qualifica leads e agenda visitas automaticamente. +35% de visitas agendadas.">
-    <meta name="twitter:image" content="https://brjoy.com.br/og-image.jpg">
-
     <!-- Performance Optimizations -->
     <meta name="theme-color" content="#1A73E8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -803,6 +803,60 @@
 
     </main>
 
+    <!-- Demo Modal -->
+    <div id="demo-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modal-title">🤖 Receba Demonstração Grátis</h2>
+                <button class="modal-close" aria-label="Fechar modal" onclick="closeDemoModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-subtitle">Preencha os dados abaixo para uma demonstração personalizada do BRJOY Imobiliária AI</p>
+
+                <form id="demo-form" class="demo-form" novalidate>
+                    <div class="form-group">
+                        <label for="nome" class="form-label">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" class="form-input" required placeholder="Digite seu nome completo">
+                        <div class="form-error" id="nome-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whats" class="form-label">WhatsApp *</label>
+                        <input type="tel" id="whats" name="whats" class="form-input" required placeholder="(11) 99999-9999">
+                        <div class="form-error" id="whats-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com">
+                        <div class="form-error" id="email-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empresa" class="form-label">Empresa/Imobiliária</label>
+                        <input type="text" id="empresa" name="empresa" class="form-input" placeholder="Nome da imobiliária">
+                        <div class="form-error" id="empresa-error"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeDemoModal()">Cancelar</button>
+                        <button type="submit" class="btn-whatsapp btn-demo-submit">
+                            <span class="material-symbols-outlined">send</span>
+                            Solicitar Demonstração
+                        </button>
+                    </div>
+                </form>
+
+                <p class="modal-note" style="margin-top: 20px; font-size: 0.85rem; color: #666; text-align: center;">
+                    ⚡ Começamos imediatamente após o envio • Sem compromisso
+                </p>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
@@ -870,7 +924,7 @@
         <span class="material-symbols-outlined">chat</span>
     </a>
 
-    <!-- Scripts -->
+    <!-- Scripts with Defer/Async for performance -->
     <script src="particles.js"></script>
     <script src="script.js"></script>
 </body>
