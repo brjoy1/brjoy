@@ -1,278 +1,816 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRJOY Imobiliária AI - Corretor Digital WhatsApp</title>
+    <title>BRJOY Imobiliária AI - Corretor Digital WhatsApp 24h | Automatize Vendas</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Automatize o atendimento da sua imobiliária no WhatsApp com IA. Qualifique leads, agende visitas e venda 24h por dia. +35% de visitas agendadas. Teste grátis!">
+    <meta name="keywords"
+        content="chatbot imobiliária, IA para corretores, automação WhatsApp, CRM imobiliário, qualificação de leads, agendamento de visitas, corretor virtual, inteligência artificial imobiliária">
+    <meta name="author" content="BRJOY AI">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://brjoy.com.br">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://brjoy.com.br">
+    <meta property="og:title" content="BRJOY - IA para Imobiliárias | Venda 24h no WhatsApp">
+    <meta property="og:description"
+        content="Corretor digital com IA que atende, qualifica leads e agenda visitas automaticamente. Mais de 200 imobiliárias aumentaram suas vendas em 35%.">
+    <meta property="og:image" content="https://brjoy.com.br/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="BRJOY Imobiliária AI">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://brjoy.com.br">
+    <meta name="twitter:title" content="BRJOY - IA para Imobiliárias | Venda 24h no WhatsApp">
+    <meta name="twitter:description"
+        content="Corretor digital com IA que atende, qualifica leads e agenda visitas automaticamente. +35% de visitas agendadas.">
+    <meta name="twitter:image" content="https://brjoy.com.br/og-image.jpg">
+
+    <!-- Performance Optimizations -->
+    <meta name="theme-color" content="#1A73E8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Optimized Font Loading with display=swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "BRJOY",
+          "url": "https://brjoy.com.br",
+          "logo": "https://brjoy.com.br/logo.png",
+          "description": "Solução de IA para automação de atendimento em imobiliárias via WhatsApp",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+55-11-92145-7067",
+            "contactType": "Sales",
+            "areaServed": "BR",
+            "availableLanguage": "Portuguese"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/brjoy",
+            "https://www.instagram.com/brjoy"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "BRJOY Imobiliária AI",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web, WhatsApp",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL",
+            "description": "Teste grátis disponível"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "200",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "description": "Corretor digital com IA que automatiza atendimento no WhatsApp, qualifica leads e agenda visitas 24h por dia para imobiliárias",
+          "featureList": [
+            "Atendimento 24h automático",
+            "Qualificação de leads com IA",
+            "Agendamento de visitas",
+            "Integração com CRM Kommo",
+            "Follow-up automático",
+            "Sugestão inteligente de imóveis"
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
+
 <body>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo_header.webp" alt="BRJOY - Imobiliária AI" class="logo-image">
+            </div>
+            <nav class="site-nav">
+                <a href="#produto">Produto</a>
+                <a href="#casos">Casos de Uso</a>
+                <a href="#precos">Preços</a>
+                <a href="#blog">Blog</a>
+                <a href="#recursos">Recursos</a>
+            </nav>
+            <button class="hamburger-menu" aria-label="Menu de navegação" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="header-actions">
+                <!-- CTA removed -->
+            </div>
+        </div>
+    </header>
+
     <main>
         <!-- Hero -->
         <section class="hero">
-            <div class="hero-content">
-                <h1>Transforme seu WhatsApp em um corretor digital que agenda visitas automaticamente</h1>
-                <p>Atenda, qualifique e agende visitas 24h — tudo integrado ao CRM Kommo, ideal para imobiliárias de São Paulo.</p>
-                <a href="#" class="cta-btn">🔵 Quero ver o corretor digital funcionando</a>
+            <canvas id="hero-canvas"></canvas>
+            <div class="container hero-container">
+                <h1 class="hero-title fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="text-gradient text-blue">Sua Imobiliária</span> vendendo<br>
+                    24h no <span id="rotating-text" class="text-gradient text-whatsapp">WhatsApp</span>
+                </h1>
+                <p class="hero-subtitle fade-in-up"
+                    style="animation-delay: 0.2s; font-size: 1.25rem; color: var(--color-text-secondary); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Automatize o atendimento, qualifique leads e agende visitas em segundos. Seu melhor corretor agora é
+                    digital.
+                </p>
+                <div class="hero-actions fade-in-up" style="animation-delay: 0.3s;">
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Teste grátis agora">
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                        Testar Agora Grátis
+                    </a>
+                    <a href="#como-funciona" class="btn-secondary" aria-label="Veja como funciona">
+                        <span class="material-symbols-outlined">play_circle</span>
+                        Ver Como Funciona
+                    </a>
+                </div>
+                <div class="hero-trust-badges fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="trust-badge">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        <span>200+ imobiliárias usando</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <span>+1.500 visitas/mês</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <span>Responde em 30 segundos</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="https://via.placeholder.com/400x700/007bff/white?text=Mockup+Celular+WhatsApp+CRM" alt="Mockup WhatsApp e CRM Kommo">
             </div>
         </section>
 
-        <!-- Seção de Dor -->
-        <section class="dor">
-            <div class="container">
-                <h2>O que trava o crescimento da sua imobiliária hoje?</h2>
-                <div class="dor-grid">
-                    <div class="dor-item">
-                        <i class="fas fa-comment-slash"></i>
-                        <p>WhatsApp cheio e sem resposta</p>
-                    </div>
-                    <div class="dor-item">
-                        <i class="fas fa-snowflake"></i>
-                        <p>Leads que esfriam em minutos</p>
-                    </div>
-                    <div class="dor-item">
-                        <i class="fas fa-chart-line"></i>
-                        <p>CRM bagunçado</p>
-                    </div>
-                    <div class="dor-item">
-                        <i class="fas fa-user-tie"></i>
-                        <p>Corretores sobrecarregados</p>
-                    </div>
-                    <div class="dor-item">
-                        <i class="fas fa-calendar-times"></i>
-                        <p>Visitas perdidas</p>
-                    </div>
-                    <div class="dor-item">
-                        <i class="fas fa-money-bill-wave"></i>
-                        <p>Verba de tráfego desperdiçada</p>
-                    </div>
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="container video-container">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LXb3EKWsInQ?si=JqE8yHhJ7y8jJ8jJ"
+                        title="YouTube video player" frameborder="0" loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
 
-        <!-- Solução -->
-        <section class="solucao">
+        <!-- CTA Inline - After Video -->
+        <div class="cta-inline reveal-on-scroll">
             <div class="container">
-                <h2>Seu novo corretor digital 24h — rápido, humano e pronto para vender</h2>
-                <p>Uma solução completa para otimizar o atendimento e maximizar vendas em imobiliárias.</p>
-                <div class="solucao-grid">
-                    <div class="card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Atendimento 24h</h3>
-                        <p>Disponível sempre, sem pausas.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-comments"></i>
-                        <h3>Conversa natural</h3>
-                        <p>Respostas inteligentes e humanas.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-search"></i>
-                        <h3>Qualificação automática</h3>
-                        <p>Identifica leads potenciais.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-home"></i>
-                        <h3>Sugestão de imóveis</h3>
-                        <p>Recomendações personalizadas.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-arrow-right"></i>
-                        <h3>Condução para visita</h3>
-                        <p>Guia até agendamento.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-cogs"></i>
-                        <h3>Integração Kommo</h3>
-                        <p>Totalmente sincronizado.</p>
-                    </div>
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Veja essa tecnologia em ação no seu WhatsApp</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Teste agora">
+                        <span class="material-symbols-outlined">play_circle</span>
+                        Testar agora
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Como Funciona -->
-        <section class="como-funciona">
+        <!-- Content Sections (Keeping existing content but wrapped for new style) -->
+        <section class="dor section-spacing reveal-on-scroll" id="casos">
             <div class="container">
-                <h2>Como funciona</h2>
-                <div class="funciona-grid">
-                    <div class="funciona-item">
-                        <div class="numero">1</div>
-                        <i class="far fa-handshake"></i>
-                        <h3>Se apresenta como corretor</h3>
-                        <p>Introduz-se profissionalmente.</p>
-                    </div>
-                    <div class="funciona-item">
-                        <div class="numero">2</div>
-                        <i class="far fa-question-circle"></i>
-                        <h3>Faz perguntas naturais</h3>
-                        <p>Diálogo fluído para entender necessidades.</p>
-                    </div>
-                    <div class="funciona-item">
-                        <div class="numero">3</div>
-                        <i class="far fa-id-badge"></i>
-                        <h3>Identifica o perfil</h3>
-                        <p>Qualifica o tipo de imóvel desejado.</p>
-                    </div>
-                    <div class="funciona-item">
-                        <div class="numero">4</div>
-                        <i class="far fa-building"></i>
-                        <h3>Consulta imóveis</h3>
-                        <p>Acessa base de dados Kommo.</p>
-                    </div>
-                    <div class="funciona-item">
-                        <div class="numero">5</div>
-                        <i class="far fa-list-alt"></i>
-                        <h3>Apresenta opções</h3>
-                        <p>Envia sugestões via WhatsApp.</p>
-                    </div>
-                    <div class="funciona-item">
-                        <div class="numero">6</div>
-                        <i class="far fa-check-circle"></i>
-                        <h3>Incentiva a visita</h3>
-                        <p>Motiva a agendamento.</p>
-                    </div>
-                    <div class="funciona-item">
-                        <div class="numero">7</div>
-                        <i class="far fa-calendar-alt"></i>
-                        <h3>Agenda no Kommo</h3>
-                        <p>Insere automaticamente no CRM.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Diferencial Kommo -->
-        <section class="diferencial-kommo">
-            <div class="container">
-                <div class="kommo-content">
-                    <h2>Integração total com o CRM Kommo — nenhum concorrente tem isso</h2>
-                    <div class="kommo-grid">
-                        <div class="kommo-item">
-                            <i class="fas fa-sync"></i>
-                            <h3>Atualiza campos automaticamente</h3>
+                <h2 class="section-title text-center">Por que você está deixando dinheiro na mesa?</h2>
+                <p class="section-subtitle text-center">Enquanto você lê isso, leads estão esfriando e oportunidades
+                    estão sendo perdidas</p>
+                <div class="features-slider-wrapper">
+                    <div class="grid-3 features-slider" data-slider="dor">
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">mark_chat_unread</span>
+                            <h3>WhatsApp cheio</h3>
+                            <p>Clientes sem resposta e leads esfriando.</p>
                         </div>
-                        <div class="kommo-item">
-                            <i class="fas fa-sitemap"></i>
-                            <h3>Move o lead no funil</h3>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">timer_off</span>
+                            <h3>Leads esfriando</h3>
+                            <p>Você demora 2h para responder e o lead já fechou com o concorrente.</p>
                         </div>
-                        <div class="kommo-item">
-                            <i class="fas fa-home"></i>
-                            <h3>Consulta a base de imóveis</h3>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">folder_off</span>
+                            <h3>CRM bagunçado</h3>
+                            <p>Ninguém sabe quem atender.</p>
                         </div>
-                        <div class="kommo-item">
-                            <i class="fas fa-calendar-check"></i>
-                            <h3>Agenda visitas</h3>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">sentiment_stressed</span>
+                            <h3>Corretores sobrecarregados</h3>
+                            <p>Perdendo 4h/dia respondendo curiosos no WhatsApp.</p>
                         </div>
-                        <div class="kommo-item">
-                            <i class="fas fa-clipboard-check"></i>
-                            <h3>CRM sempre organizado</h3>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">event_busy</span>
+                            <h3>Visitas perdidas</h3>
+                            <p>Agendamentos que nunca acontecem.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">money_off</span>
+                            <h3>Dinheiro perdido</h3>
+                            <p>Verba de tráfego desperdiçada.</p>
                         </div>
                     </div>
-                </div>
-                <div class="kommo-image">
-                    <img src="https://via.placeholder.com/400x400/6211d1/white?text=Mockup+CRM+Kommo" alt="CRM Kommo">
-                </div>
-            </div>
-        </section>
-
-        <!-- Resultados -->
-        <section class="resultados">
-            <div class="container">
-                <h2>Resultados que você sente no primeiro mês</h2>
-                <div class="resultados-grid">
-                    <div class="resultado">
-                        <div class="numero-grande">+30%</div>
-                        <p>visitas</p>
-                    </div>
-                    <div class="resultado">
-                        <div class="numero-grande">24/7</div>
-                        <p>atendimento</p>
-                    </div>
-                    <div class="resultado">
-                        <div class="numero-grande">-40%</div>
-                        <p>desperdício de verba</p>
-                    </div>
-                    <div class="resultado">
-                        <div class="numero-grande">100%</div>
-                        <p>organização total</p>
+                    <!-- Mobile Slider Navigation -->
+                    <div class="slider-nav mobile-only">
+                        <div class="slider-dots" data-slider-dots="dor"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- São Paulo -->
-        <section class="sao-paulo">
+        <!-- CTA Inline - After Dor -->
+        <div class="cta-inline reveal-on-scroll">
             <div class="container">
-                <h2>Treinado especialmente para o mercado imobiliário de São Paulo</h2>
-                <p>Adaptado às necessidades locais para máxima eficiência.</p>
-                <img src="https://via.placeholder.com/500x300/b22222/white?text=Mapa+SP" alt="Mapa São Paulo">
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Pare de perder dinheiro hoje mesmo</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Resolver agora">
+                        <span class="material-symbols-outlined">monetization_on</span>
+                        Resolver isso agora
+                    </a>
+                </div>
+            </div>
+        </div>
+        </section>
+
+
+
+
+        <!-- 3. SOLUÇÃO -->
+        <section class="solucao section-spacing reveal-on-scroll" id="solucao">
+            <div class="container">
+                <h2 class="section-title text-center">O Corretor que Trabalha Enquanto Você Dorme</h2>
+                <p class="section-subtitle text-center">Velocidade de robô, inteligência humana. Foco total em
+                    conversão.
+                </p>
+                <div class="features-slider-wrapper">
+                    <div class="grid-3 features-slider" data-slider="solucao">
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <h3>Atendimento 24h</h3>
+                            <p>Responde instantaneamente, dia e noite.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">chat</span>
+                            <h3>Conversa natural</h3>
+                            <p>Interage como um humano, não um robô.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">filter_alt</span>
+                            <h3>Qualificação</h3>
+                            <p>Filtra leads antes de passar ao corretor.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">home_work</span>
+                            <h3>Sugestão de imóveis</h3>
+                            <p>Busca opções ideais no seu banco de dados.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">directions_car</span>
+                            <h3>Condução para visita</h3>
+                            <p>Guia o cliente até o agendamento.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">sync</span>
+                            <h3>Integração Kommo</h3>
+                            <p>Tudo sincronizado em tempo real.</p>
+                        </div>
+                    </div>
+                    <!-- Mobile Slider Navigation -->
+                    <div class="slider-nav mobile-only">
+                        <div class="slider-dots" data-slider-dots="solucao"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Depoimento -->
-        <section class="depoimento">
+        <!-- CTA Inline - After Solução -->
+        <div class="cta-inline reveal-on-scroll">
             <div class="container">
-                <blockquote>
-                    "As visitas aumentaram 42% e o CRM ficou impecável. Parece um corretor sênior trabalhando 24h."
-                </blockquote>
-                <cite>— André, Imobiliária SP</cite>
-                <img src="https://via.placeholder.com/100x100/cccccc/white?text=Foto" alt="Foto André" class="foto-depoimento">
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Tenha um corretor 24h na sua imobiliária</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Contratar IA">
+                        <span class="material-symbols-outlined">support_agent</span>
+                        Contratar IA
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: PAIN POINTS REMOVED (Redundant) -->
+
+        <!-- 7. COMO FUNCIONA -->
+        <section class="como-funciona section-spacing reveal-on-scroll" id="como-funciona">
+            <div class="container">
+                <h2 class="section-title text-center">Do Lead à Visita em 4 Passos</h2>
+                <p class="section-subtitle text-center">
+                    Do primeiro contato até a visita agendada, tudo automatizado
+                </p>
+                <div class="steps-grid">
+                    <div class="step-card" data-step="1">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <span class="material-symbols-outlined">smart_toy</span>
+                            </div>
+                            <h3 class="step-title">Atendimento e Qualificação</h3>
+                            <p class="step-description">Responde na hora, qualifica o perfil e cadastra os dados no CRM.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-card" data-step="2">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <span class="material-symbols-outlined">home_work</span>
+                            </div>
+                            <h3 class="step-title">Match de Imóveis</h3>
+                            <p class="step-description">Analisa o perfil e sugere os imóveis ideais do seu portfólio.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-card" data-step="3">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <span class="material-symbols-outlined">event_available</span>
+                            </div>
+                            <h3 class="step-title">Agendamento de Visitas</h3>
+                            <p class="step-description">Coordena horários e agenda a visita direto no seu calendário.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-card" data-step="4">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <span class="material-symbols-outlined">autorenew</span>
+                            </div>
+                            <h3 class="step-title">Follow-up Inteligente</h3>
+                            <p class="step-description">Realiza follow-up automático para manter o lead sempre aquecido.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Antes vs Depois -->
-        <section class="antes-depois">
+        <!-- CTA Inline - After Como Funciona -->
+        <div class="cta-inline reveal-on-scroll">
             <div class="container">
-                <div class="grid-duplo">
-                    <div class="antes">
-                        <h3>Antes</h3>
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Simples assim. Configure em 5 minutos.</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Começar agora">
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                        Começar agora
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. CRM BENEFITS -->
+        <section class="crm-benefits section-spacing section-bg-subtle reveal-on-scroll">
+            <div class="container">
+                <h2 class="section-title text-center">Seu CRM no Piloto Automático</h2>
+                <p class="section-subtitle text-center" style="max-width: 700px; margin: 0 auto 4rem;">
+                    Adeus, planilhas manuais. A IA atualiza tudo para você.
+                </p>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <span class="material-symbols-outlined">database</span>
+                        </div>
+                        <h3 class="benefit-title">Dados sempre atualizados</h3>
+                        <p class="benefit-description">
+                            Orçamento, preferências e histórico registrados automaticamente. Zero trabalho manual de
+                            digitação.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <span class="material-symbols-outlined">target</span>
+                        </div>
+                        <h3 class="benefit-title">Leads qualificados e priorizados</h3>
+                        <p class="benefit-description">
+                            IA identifica os mais quentes e organiza por prioridade. Você foca apenas nos que estão
+                            prontos para fechar.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <span class="material-symbols-outlined">notifications_active</span>
+                        </div>
+                        <h3 class="benefit-title">Nunca perca um follow-up</h3>
+                        <p class="benefit-description">
+                            Lembretes automáticos de visitas e retornos. Agenda sincronizada com suas conversas.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <span class="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <h3 class="benefit-title">Relatórios que você realmente usa</h3>
+                        <p class="benefit-description">
+                            Veja quantos leads viraram visitas. Identifique gargalos no funil de vendas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Inline - After CRM -->
+        <div class="cta-inline reveal-on-scroll">
+            <div class="container">
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Chega de bagunça no seu CRM</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Organizar leads">
+                        <span class="material-symbols-outlined">folder_managed</span>
+                        Organizar meus leads
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. RESULTADOS -->
+        <section class="resultados section-spacing reveal-on-scroll" id="resultados">
+            <div class="container">
+                <h2 class="section-title text-center">Resultados Reais de Quem Usa</h2>
+                <p class="section-subtitle text-center" style="max-width: 600px; margin: 0 auto 4rem;">
+                    Dados consolidados de imobiliárias que utilizam o BRJOY
+                </p>
+
+                <div class="results-grid-new">
+                    <!-- Card 1: Visitas -->
+                    <div class="result-card glass-effect">
+                        <div class="result-header">
+                            <div class="result-before">
+                                <span class="material-symbols-outlined">calendar_month</span>
+                                <span class="strikethrough">Agenda instável</span>
+                            </div>
+                            <div class="result-arrow">
+                                <span class="material-symbols-outlined">arrow_downward</span>
+                            </div>
+                        </div>
+                        <div class="result-main">
+                            <div class="result-number-wrapper">
+                                <span class="result-prefix">+</span>
+                                <span class="result-number" data-target="35">0</span>
+                                <span class="result-suffix">%</span>
+                            </div>
+                            <p class="result-label">Visitas Agendadas</p>
+                        </div>
+                        <div class="result-footer">
+                            <div class="mini-testimonial">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                                    alt="Corretor - Ricardo Almeida, São Paulo" loading="lazy" class="mini-avatar">
+                                <p>"Minha agenda nunca esteve tão cheia."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Velocidade -->
+                    <div class="result-card glass-effect">
+                        <div class="result-header">
+                            <div class="result-before">
+                                <span class="material-symbols-outlined">schedule</span>
+                                <span class="strikethrough">Demora no retorno</span>
+                            </div>
+                            <div class="result-arrow">
+                                <span class="material-symbols-outlined">arrow_downward</span>
+                            </div>
+                        </div>
+                        <div class="result-main">
+                            <div class="result-number-wrapper">
+                                <span class="result-number" data-target="5">0</span>
+                                <span class="result-suffix">s</span>
+                            </div>
+                            <p class="result-label">Tempo de Resposta</p>
+                        </div>
+                        <div class="result-footer">
+                            <div class="mini-testimonial">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                    alt="Corretora - Mariana Santos, São Paulo" loading="lazy" class="mini-avatar">
+                                <p>"O cliente fica impressionado com a rapidez."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: ROI (Comissões) -->
+                    <div class="result-card glass-effect highlight-card">
+                        <div class="result-header">
+                            <div class="result-before">
+                                <span class="material-symbols-outlined">money_off</span>
+                                <span class="strikethrough">Leads perdidos</span>
+                            </div>
+                            <div class="result-arrow">
+                                <span class="material-symbols-outlined">arrow_downward</span>
+                            </div>
+                        </div>
+                        <div class="result-main">
+                            <div class="result-number-wrapper">
+                                <span class="result-prefix">R$</span>
+                                <span class="result-number" data-target="12">0</span>
+                                <span class="result-suffix">k+</span>
+                            </div>
+                            <p class="result-label">Comissões Extras/mês</p>
+                        </div>
+                        <div class="result-footer">
+                            <div class="mini-testimonial">
+                                <img src="https://randomuser.me/api/portraits/men/85.jpg"
+                                    alt="Dono de Imobiliária - Carlos Mendes, Rio de Janeiro" loading="lazy"
+                                    class="mini-avatar">
+                                <p>"Paga o investimento 10x no primeiro mês."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Cobertura -->
+                    <div class="result-card glass-effect">
+                        <div class="result-header">
+                            <div class="result-before">
+                                <span class="material-symbols-outlined">person_off</span>
+                                <span class="strikethrough">Deixando vácuo</span>
+                            </div>
+                            <div class="result-arrow">
+                                <span class="material-symbols-outlined">arrow_downward</span>
+                            </div>
+                        </div>
+                        <div class="result-main">
+                            <div class="result-number-wrapper">
+                                <span class="result-number" data-target="100">0</span>
+                                <span class="result-suffix">%</span>
+                            </div>
+                            <p class="result-label">Leads Atendidos</p>
+                        </div>
+                        <div class="result-footer">
+                            <div class="mini-testimonial">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg"
+                                    alt="Gerente - Ana Silva, São Paulo" loading="lazy" class="mini-avatar">
+                                <p>"Zero reclamação de falta de atendimento."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Inline 1 - Após Resultados -->
+        <div class="cta-inline reveal-on-scroll">
+            <div class="container">
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Quer aumentar suas visitas em 45% ainda este mês?</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Simular resultados">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        Simular meus resultados no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. DEPOIMENTOS -->
+        <section class="depoimento section-spacing section-bg-subtle reveal-on-scroll">
+            <div class="container">
+                <h2 class="section-title text-center" style="margin-bottom: 3rem;">O que dizem nossos clientes</h2>
+
+                <div class="testimonials-carousel">
+                    <div class="testimonial-track">
+                        <!-- Testimonial 1 -->
+                        <div class="quote-container active">
+                            <span class="material-symbols-outlined quote-icon">format_quote</span>
+                            <blockquote class="quote-text">
+                                "Antes eu gastava 4 horas por dia respondendo WhatsApp. Hoje o BRJOY faz isso e eu foco
+                                em fechar vendas. Resultado: 3x mais comissão no mês."
+                            </blockquote>
+                            <div class="quote-author">
+                                <div class="author-avatar">
+                                    <span class="material-symbols-outlined">person</span>
+                                </div>
+                                <div class="author-info">
+                                    <strong>Ricardo Almeida</strong>
+                                    <span>Corretor Autônomo, 12 anos de mercado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="quote-container">
+                            <span class="material-symbols-outlined quote-icon">format_quote</span>
+                            <blockquote class="quote-text">
+                                "Minha equipe de 5 corretores agora atende como se fossem 15. O BRJOY qualifica tão bem
+                                que só falamos com quem realmente quer comprar."
+                            </blockquote>
+                            <div class="quote-author">
+                                <div class="author-avatar">
+                                    <span class="material-symbols-outlined">person</span>
+                                </div>
+                                <div class="author-info">
+                                    <strong>Mariana Santos</strong>
+                                    <span>Diretora Comercial, Imobiliária Premium SP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="quote-container">
+                            <span class="material-symbols-outlined quote-icon">format_quote</span>
+                            <blockquote class="quote-text">
+                                "Recuperei R$ 45 mil em vendas de leads que eu achava que estavam perdidos. O follow-up
+                                automático é ouro puro."
+                            </blockquote>
+                            <div class="quote-author">
+                                <div class="author-avatar">
+                                    <span class="material-symbols-outlined">person</span>
+                                </div>
+                                <div class="author-info">
+                                    <strong>Carlos Mendes</strong>
+                                    <span>Corretor Top Performer, Zona Sul RJ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="carousel-nav">
+                        <button class="carousel-btn prev" aria-label="Anterior">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <div class="carousel-dots">
+                            <span class="dot active" data-index="0"></span>
+                            <span class="dot" data-index="1"></span>
+                            <span class="dot" data-index="2"></span>
+                        </div>
+                        <button class="carousel-btn next" aria-label="Próximo">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Inline 2 - Após Depoimentos -->
+        <div class="cta-inline reveal-on-scroll">
+            <div class="container">
+                <div class="cta-inline-content">
+                    <h3 class="cta-inline-title">Junte-se aos corretores que já triplicaram suas comissões</h3>
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Quero vender como eles">
+                        <span class="material-symbols-outlined">groups</span>
+                        Quero vender como eles
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. ANTES VS DEPOIS -->
+        <section class="antes-depois section-spacing reveal-on-scroll">
+            <div class="container">
+                <h2 class="section-title text-center">A diferença é clara</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-col bad">
+                        <h3><span class="material-symbols-outlined">close</span> Sem BRJOY</h3>
                         <ul>
-                            <li><i class="fas fa-times-circle" style="color: red;"></i> WhatsApp travado</li>
-                            <li><i class="fas fa-times-circle" style="color: red;"></i> Leads frios</li>
-                            <li><i class="fas fa-times-circle" style="color: red;"></i> CRM bagunçado</li>
+                            <li>Leads frios porque você demorou 2h pra responder</li>
+                            <li>Perdendo tempo com curiosos</li>
+                            <li>Esquecendo de dar follow-up</li>
+                            <li>Digitando a mesma coisa 50x por dia</li>
                         </ul>
                     </div>
-                    <div class="depois">
-                        <h3>Depois</h3>
+                    <div class="comparison-col good">
+                        <h3><span class="material-symbols-outlined">check</span> Com BRJOY</h3>
                         <ul>
-                            <li><i class="fas fa-check-circle" style="color: green;"></i> Atendimento instantâneo</li>
-                            <li><i class="fas fa-check-circle" style="color: green;"></i> Leads quentes</li>
-                            <li><i class="fas fa-check-circle" style="color: green;"></i> CRM organizado automaticamente</li>
+                            <li>Resposta em 30 segundos, lead quente</li>
+                            <li>IA filtra os sérios dos curiosos</li>
+                            <li>Follow-up automático, zero esquecimento</li>
+                            <li>Você só fala com quem quer visitar</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Garantia -->
-        <section class="garantia">
+
+
+
+
+        <!-- 10. CTA FINAL -->
+        <section class="cta-final section-spacing text-center reveal-on-scroll">
             <div class="container">
-                <div class="selo-garantia">
-                    <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <h2>Mais visitas nos primeiros 30 dias ou devolvemos seu dinheiro.</h2>
-                    </div>
+                <h2 class="hero-title">Pare de perder leads enquanto você dorme</h2>
+                <div class="hero-actions">
+                    <a href="https://wa.me/5511921457067" target="_blank" class="btn-whatsapp"
+                        aria-label="WhatsApp - Ativar IA agora">
+                        <span class="material-symbols-outlined">bolt</span>
+                        Ativar minha IA Agora
+                    </a>
                 </div>
+                <p class="cta-note">Instalação em 5 minutos • Primeiros 50 clientes ganham 1 mês grátis</p>
             </div>
         </section>
 
-        <!-- CTA Final -->
-        <section class="cta-final">
-            <div class="container">
-                <h2>Pronto para transformar sua imobiliária com um corretor digital 24h?</h2>
-                <a href="#" class="cta-btn final">🔵 Quero minha demonstração gratuita</a>
-                <p>Implementação em 24–72 horas.</p>
-            </div>
-        </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Produto</h4>
+                    <a href="#como-funciona">Como funciona</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#">Integrações</a>
+                    <a href="#">Preços</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <a href="#">Sobre nós</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Casos de sucesso</a>
+                    <a href="#">Carreiras</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <a href="https://wa.me/5511921457067" target="_blank" aria-label="WhatsApp - Contato">
+                        <span class="material-symbols-outlined"
+                            style="font-size: 1rem; vertical-align: middle;">call</span>
+                        (11) 92145-7067
+                    </a>
+                    <a href="mailto:contato@brjoy.com.br">
+                        <span class="material-symbols-outlined"
+                            style="font-size: 1rem; vertical-align: middle;">mail</span>
+                        contato@brjoy.com.br
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-outlined"
+                            style="font-size: 1rem; vertical-align: middle;">location_on</span>
+                        São Paulo, SP
+                    </a>
+                </div>
+            </div>
+            <div class="footer-logo-container">
+                <img src="images/logo_header.webp" alt="BRJOY - Imobiliária AI" class="footer-logo-image">
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">BRJOY AI © 2024</div>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn" target="_blank">
+                        <span class="material-symbols-outlined">link</span>
+                    </a>
+                    <a href="#" aria-label="Instagram" target="_blank">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                    </a>
+                    <a href="#" aria-label="YouTube" target="_blank">
+                        <span class="material-symbols-outlined">play_circle</span>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
+
 </html>
