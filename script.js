@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // FORM SUBMISSION
     const demoForm = document.getElementById('demo-form');
     if (demoForm) {
-        demoForm.addEventListener('submit', async function(event) {
+        demoForm.addEventListener('submit', async function (event) {
             event.preventDefault();
             clearFormErrors();
 
@@ -316,6 +316,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
             }
+        });
+    }
+    // COOKIE BANNER LOGIC
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+    if (cookieBanner && acceptCookiesBtn) {
+        // Check if already accepted
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 2000); // Show after 2 seconds
+        }
+
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            cookieBanner.classList.remove('show');
         });
     }
 });
