@@ -119,14 +119,15 @@
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <img src="images/logo_header.webp" alt="BRJOY - Imobiliária AI" class="logo-image">
+                <a href="#" aria-label="BRJOY - Voltar ao início">
+                    <img src="images/logo_header.webp" alt="BRJOY - Imobiliária AI" class="logo-image">
+                </a>
             </div>
             <nav class="site-nav">
-                <a href="#produto">Produto</a>
-                <a href="#casos">Casos de Uso</a>
-                <a href="#precos">Preços</a>
-                <a href="#blog">Blog</a>
-                <a href="#recursos">Recursos</a>
+                <a href="#solucao">Solução</a>
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="#resultados">Resultados</a>
+                <a href="#faq">FAQ</a>
             </nav>
             <button class="hamburger-menu" aria-label="Menu de navegação" aria-expanded="false">
                 <span class="hamburger-line"></span>
@@ -134,7 +135,9 @@
                 <span class="hamburger-line"></span>
             </button>
             <div class="header-actions">
-                <!-- CTA removed -->
+                <button class="btn-header-cta" onclick="openDemoModal()">
+                    Agendar Demo
+                </button>
             </div>
         </div>
     </header>
@@ -309,7 +312,6 @@
 
 
 
-        <!-- Section 6: PAIN POINTS REMOVED (Redundant) -->
 
         <!-- 7. COMO FUNCIONA -->
         <section class="como-funciona section-spacing reveal-on-scroll" id="como-funciona">

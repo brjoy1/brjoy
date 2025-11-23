@@ -240,6 +240,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // FUNÇÃO PARA CAPTURAR UTM E TRACKING PARAMS
+    function getTrackingParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return {
+            utm_source: urlParams.get('utm_source') || '',
+            utm_medium: urlParams.get('utm_medium') || '',
+            utm_campaign: urlParams.get('utm_campaign') || '',
+            utm_term: urlParams.get('utm_term') || '',
+            utm_content: urlParams.get('utm_content') || '',
+            fbclid: urlParams.get('fbclid') || '',
+            gclid: urlParams.get('gclid') || '',
+            referrer: document.referrer || '',
+            page_url: window.location.href
+        };
+    }
+
     // FORM SUBMISSION
     const demoForm = document.getElementById('demo-form');
     if (demoForm) {
@@ -247,13 +263,29 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             clearFormErrors();
 
+            const trackingParams = getTrackingParams();
+
             const formData = {
+                // Dados do formulário
                 nome: document.getElementById('nome').value.trim(),
                 whats: document.getElementById('whats').value.trim(),
                 email: document.getElementById('email').value.trim(),
                 empresa: document.getElementById('empresa').value.trim(),
+                // Metadata
                 dataEnvio: new Date().toISOString(),
-                origem: 'landing-page'
+                origem: 'landing-page',
+                // UTM Parameters
+                utm_source: trackingParams.utm_source,
+                utm_medium: trackingParams.utm_medium,
+                utm_campaign: trackingParams.utm_campaign,
+                utm_term: trackingParams.utm_term,
+                utm_content: trackingParams.utm_content,
+                // Tracking IDs
+                fbclid: trackingParams.fbclid,
+                gclid: trackingParams.gclid,
+                // Referência
+                referrer: trackingParams.referrer,
+                page_url: trackingParams.page_url
             };
 
             if (!validateForm(formData)) return;
@@ -263,14 +295,22 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.disabled = true;
 
             try {
-                // SIMULAÇÃO - DEPOIS: fetch(n8nWebhook, ...)
-                await new Promise(resolve => setTimeout(resolve, 3000));
+                const WEBHOOK_URL = 'https://primary-production-40b2.up.railway.app/webhook-test/b0ea403b-404b-42c4-85f4-4a6db8f88f7f';
+
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) throw new Error('Erro no envio');
 
                 alert('✅ Demonstração solicitada com sucesso!\n\nEntraremos em contato em até 5 minutos.');
                 demoForm.reset();
                 closeDemoModal();
 
             } catch (error) {
+                console.error('Webhook error:', error);
                 alert('❌ Erro ao enviar. Tente novamente.');
             } finally {
                 submitBtn.classList.remove('loading');
