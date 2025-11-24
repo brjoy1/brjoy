@@ -130,8 +130,8 @@
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="#" aria-label="BRJOY - Voltar ao início">
-                    <img src="/images/logo_header.webp" alt="BRJOY - Imobiliária AI" class="logo-image">
+                <a href="/">
+                    <img src="/images/logo_header.webp" alt="BRJOY AI" class="logo-image">
                 </a>
             </div>
             <nav class="site-nav">
@@ -140,16 +140,7 @@
                 <a href="#resultados">Resultados</a>
                 <a href="#faq">FAQ</a>
             </nav>
-            <button class="hamburger-menu" aria-label="Menu de navegação" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            <div class="header-actions">
-                <button class="btn-header-cta" onclick="openDemoModal()">
-                    Agendar Demo
-                </button>
-            </div>
+            <button class="btn-primary" onclick="openDemoModal()">Agendar Demo</button>
         </div>
     </header>
 
@@ -480,7 +471,8 @@
                         <div class="result-footer">
                             <div class="mini-testimonial">
                                 <img src="https://randomuser.me/api/portraits/men/32.jpg"
-                                    alt="Corretor - Ricardo Almeida, São Paulo" loading="lazy" class="mini-avatar">
+                                    alt="Corretor - Ricardo Almeida, São Paulo" loading="lazy" class="mini-avatar"
+                                    width="32" height="32">
                                 <p>"Minha agenda nunca esteve tão cheia."</p>
                             </div>
                         </div>
@@ -507,7 +499,8 @@
                         <div class="result-footer">
                             <div class="mini-testimonial">
                                 <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                                    alt="Corretora - Mariana Santos, São Paulo" loading="lazy" class="mini-avatar">
+                                    alt="Corretora - Mariana Santos, São Paulo" loading="lazy" class="mini-avatar"
+                                    width="32" height="32">
                                 <p>"O cliente fica impressionado com a rapidez."</p>
                             </div>
                         </div>
@@ -536,7 +529,7 @@
                             <div class="mini-testimonial">
                                 <img src="https://randomuser.me/api/portraits/men/85.jpg"
                                     alt="Dono de Imobiliária - Carlos Mendes, Rio de Janeiro" loading="lazy"
-                                    class="mini-avatar">
+                                    class="mini-avatar" width="32" height="32">
                                 <p>"Paga o investimento 10x no primeiro mês."</p>
                             </div>
                         </div>
@@ -563,7 +556,8 @@
                         <div class="result-footer">
                             <div class="mini-testimonial">
                                 <img src="https://randomuser.me/api/portraits/women/65.jpg"
-                                    alt="Gerente - Ana Silva, São Paulo" loading="lazy" class="mini-avatar">
+                                    alt="Gerente - Ana Silva, São Paulo" loading="lazy" class="mini-avatar" width="32"
+                                    height="32">
                                 <p>"Zero reclamação de falta de atendimento."</p>
                             </div>
                         </div>
@@ -893,60 +887,41 @@
 
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Produto</h4>
-                    <a href="#como-funciona">Como funciona</a>
-                    <a href="#resultados">Resultados</a>
-                    <a href="#">Integrações</a>
-                    <a href="#">Preços</a>
+            <div class="footer-top">
+                <div class="footer-slogan">
+                    Transformando conversas<br>em negócios reais.
                 </div>
-                <div class="footer-col">
-                    <h4>Empresa</h4>
-                    <a href="#">Sobre nós</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Casos de sucesso</a>
-                    <a href="#">Carreiras</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contato</h4>
-                    <a href="https://wa.me/5511921457067" target="_blank" rel="noopener noreferrer"
-                        aria-label="WhatsApp - Contato">
-                        <span class="material-symbols-outlined"
-                            style="font-size: 1rem; vertical-align: middle;">call</span>
-                        (11) 92145-7067
-                    </a>
-                    <a href="mailto:contato@brjoy.com.br">
-                        <span class="material-symbols-outlined"
-                            style="font-size: 1rem; vertical-align: middle;">mail</span>
-                        contato@brjoy.com.br
-                    </a>
-                    <a href="#">
-                        <span class="material-symbols-outlined"
-                            style="font-size: 1rem; vertical-align: middle;">location_on</span>
-                        São Paulo, SP
-                    </a>
+                <div class="footer-nav-grid">
+                    <div class="footer-col">
+                        <h4>Produto</h4>
+                        <a href="#solucao">Solução</a>
+                        <a href="#como-funciona">Como Funciona</a>
+                        <a href="#resultados">Resultados</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Empresa</h4>
+                        <a href="#">Sobre</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Carreiras</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contato</h4>
+                        <a href="https://wa.me/5511921457067">WhatsApp</a>
+                        <a href="mailto:contato@brjoy.com.br">Email</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-logo-container">
-                <img src="/images/logo_header.webp" alt="BRJOY - Imobiliária AI" class="footer-logo-image">
+
+            <div class="footer-big-text-container">
+                <span class="footer-big-text">BrJoy AI</span>
             </div>
+
             <div class="footer-bottom">
-                <div class="footer-copyright">BRJOY AI © 2024</div>
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn" target="_blank">
-                        <span class="material-symbols-outlined">link</span>
-                    </a>
-                    <a href="#" aria-label="Instagram" target="_blank">
-                        <span class="material-symbols-outlined">photo_camera</span>
-                    </a>
-                    <a href="#" aria-label="YouTube" target="_blank">
-                        <span class="material-symbols-outlined">play_circle</span>
-                    </a>
-                </div>
-                <div class="footer-links">
+                <a href="#" class="footer-logo-text">brjoy</a>
+                <div class="footer-legal">
                     <a href="#">Privacidade</a>
                     <a href="#">Termos</a>
+                    <a href="#">Cookies</a>
                 </div>
             </div>
         </div>
@@ -959,8 +934,8 @@
     </a>
 
     <!-- Scripts with Defer/Async for performance -->
-    <script src="particles.js"></script>
-    <script src="script.js"></script>
+    <script src="particles.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
