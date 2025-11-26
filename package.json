@@ -3,21 +3,31 @@
   "version": "1.0.0",
   "type": "module",
   "description": "BrJoy AI - Landing Page em Astro",
+  "author": "BRJOY AI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brjoy1/brjoy.git"
+  },
+  "homepage": "https://brjoy.com.br",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "npm run build && npx gh-pages -d dist"
   },
   "keywords": [
     "astro",
     "landing-page",
-    "brjoy"
+    "brjoy",
+    "imobiliaria",
+    "ia",
+    "crm"
   ],
-  "author": "BRJOY AI",
-  "license": "MIT",
   "devDependencies": {
-    "astro": "^5.16.0"
+    "astro": "^5.16.0",
+    "gh-pages": "^6.0.0"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0"
