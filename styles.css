@@ -558,8 +558,8 @@ ul {
 
 @media (max-width: 768px) {
     .process-steps {
-        grid-template-columns: 1fr;
-        gap: 60px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
     }
 
     .process-steps::before {
@@ -811,6 +811,15 @@ ul {
     padding-top: 32px;
     font-size: 0.9rem;
     color: #5F6368;
+}
+
+.footer-logo {
+    display: block;
+}
+
+.footer-logo-image {
+    height: 32px;
+    width: auto;
 }
 
 .footer-logo-text {
