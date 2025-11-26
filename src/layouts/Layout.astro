@@ -48,9 +48,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://brjoy.co
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="/favicon.webp">
 
-    <!-- Google Fonts -->
+    <!-- Preload Critical Resources (FOUC Prevention) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" as="style">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Material Symbols -->
