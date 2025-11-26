@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brjoy.com.br/sitemap-index.xml

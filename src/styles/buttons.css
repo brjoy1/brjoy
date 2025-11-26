@@ -1,0 +1,174 @@
+/* Primary Button */
+.btn-primary {
+    background-color: var(--color-btn-bg);
+    color: var(--color-btn-text);
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: rgba(26, 115, 232, 0.08);
+    color: var(--color-primary);
+    border: 1px solid rgba(26, 115, 232, 0.2);
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    font-family: var(--font-primary);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(26, 115, 232, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border: none;
+    color: #FFFFFF;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    font-family: var(--font-primary);
+}
+
+.btn-whatsapp::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 20px 50px -12px rgba(37, 211, 102, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
+.btn-whatsapp:hover::before {
+    opacity: 1;
+}
+
+/* Header CTA Button */
+.btn-header-cta {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    display: inline-block;
+    font-family: var(--font-primary);
+}
+
+.btn-header-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+/* Responsive Buttons */
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-whatsapp {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+
+    .btn-header-cta {
+        padding: 9px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-whatsapp {
+        padding: 13px 24px;
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+
+    .btn-primary .material-symbols-outlined,
+    .btn-secondary .material-symbols-outlined,
+    .btn-whatsapp .material-symbols-outlined {
+        font-size: 1.25rem;
+    }
+
+    .btn-header-cta {
+        padding: 8px 18px;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-whatsapp {
+        padding: 12px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-whatsapp:hover,
+    .btn-header-cta:hover {
+        transform: none;
+    }
+
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-whatsapp:active {
+        transform: scale(0.98);
+    }
+}

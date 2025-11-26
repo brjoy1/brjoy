@@ -1,0 +1,50 @@
+/* Section Backgrounds */
+
+/* Dor / Problema - Red/Warm Tone */
+.dor {
+    background-color: #FFF5F5;
+    /* Very light red */
+    position: relative;
+    overflow: hidden;
+}
+
+.dor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(234, 67, 53, 0.1), transparent);
+}
+
+/* Solução - Blue/Green/Cool Tone */
+.solucao {
+    background-color: #F0F7FF;
+    /* Very light blue */
+    position: relative;
+    overflow: hidden;
+}
+
+.solucao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(26, 115, 232, 0.1), transparent);
+}
+
+/* Gradient Soft */
+.bg-gradient-soft {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+}
+
+/* Section Separators */
+.section-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+    margin: 0;
+    border: none;
+}

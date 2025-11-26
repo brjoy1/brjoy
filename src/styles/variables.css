@@ -1,0 +1,64 @@
+:root {
+    /* Colors */
+    --color-bg: #FFFFFF;
+    --color-text: #202124;
+    --color-text-secondary: #5F6368;
+    --color-primary: #1A73E8;
+    --color-google-blue: #1A73E8;
+    --color-google-red: #EA4335;
+    --color-google-yellow: #FBBC04;
+    --color-google-green: #34A853;
+
+    /* Extended Palette */
+    --color-bg-alt: #F8F9FA;
+    --color-bg-light-blue: #F0F4FF;
+    --color-border: #E8EAED;
+    --color-blue-dark: #0052CC;
+    --color-blue-light: #4285F4;
+    --color-blue-lighter: #669DF6;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-google-green) 100%);
+    --gradient-primary-reverse: linear-gradient(135deg, var(--color-google-green) 0%, var(--color-primary) 100%);
+    --gradient-dark: linear-gradient(135deg, #202124 0%, #3C4043 100%);
+    --gradient-blue: linear-gradient(135deg, var(--color-primary) 0%, var(--color-blue-dark) 100%);
+
+    /* Button Colors */
+    --color-btn-bg: #202124;
+    --color-btn-text: #FFFFFF;
+    --color-btn-secondary-bg: #F1F3F4;
+    --color-btn-secondary-text: #202124;
+
+    /* Spacing - Desktop */
+    --section-padding-large: 120px;
+    --section-padding-medium: 80px;
+    --section-padding-small: 40px;
+
+    /* Font */
+    --font-primary: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 768px) {
+    :root {
+        --section-padding-large: 60px;
+        --section-padding-medium: 50px;
+        --section-padding-small: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-padding-large: 48px;
+        --section-padding-medium: 40px;
+        --section-padding-small: 24px;
+    }
+}
+
+@media (max-width: 360px) {
+    :root {
+        --section-padding-large: 40px;
+        --section-padding-medium: 32px;
+        --section-padding-small: 20px;
+    }
+}

@@ -1,0 +1,285 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  steps: Step[];
+  primaryButton: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  orientation?: 'horizontal' | 'vertical';
+  sectionId?: string;
+  className?: string;
+}
+
+const {
+  title,
+  description,
+  steps,
+  primaryButton,
+  secondaryButton,
+  orientation = 'horizontal',
+  sectionId = 'cta-timeline',
+  className = ''
+} = Astro.props;
+---
+
+<section class={`cta-timeline ${className}`} id={sectionId}>
+    <div class="container">
+        <div class="cta-timeline-header">
+            <h2 class="cta-timeline-title">{title}</h2>
+            <p class="cta-timeline-description">{description}</p>
+        </div>
+
+        <div class={`timeline timeline-${orientation}`}>
+            {steps.map((step, index) => (
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="material-symbols-outlined">{step.icon}</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-number">{step.number}</div>
+                        <h3 class="timeline-title">{step.title}</h3>
+                        <p class="timeline-text">{step.description}</p>
+                    </div>
+                    {index < steps.length - 1 && <div class="timeline-connector"></div>}
+                </div>
+            ))}
+        </div>
+
+        <div class="cta-timeline-actions">
+            <a href={primaryButton.href} class="btn-timeline btn-timeline-primary">
+                {primaryButton.icon && (
+                    <span class="material-symbols-outlined">{primaryButton.icon}</span>
+                )}
+                {primaryButton.text}
+            </a>
+
+            {secondaryButton && (
+                <a href={secondaryButton.href} class="btn-timeline btn-timeline-secondary">
+                    {secondaryButton.icon && (
+                        <span class="material-symbols-outlined">{secondaryButton.icon}</span>
+                    )}
+                    {secondaryButton.text}
+                </a>
+            )}
+        </div>
+    </div>
+</section>
+
+<style>
+.cta-timeline {
+    padding: 80px 0;
+    background: #F8F9FA;
+}
+
+.cta-timeline-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 64px;
+}
+
+.cta-timeline-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #202124;
+    line-height: 1.2;
+}
+
+.cta-timeline-description {
+    font-size: 1.125rem;
+    color: #5F6368;
+    line-height: 1.6;
+}
+
+.timeline {
+    margin-bottom: 48px;
+}
+
+.timeline-horizontal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 48px;
+}
+
+.timeline-vertical {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-marker {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #1A73E8 0%, #34A853 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.3);
+}
+
+.timeline-vertical .timeline-marker {
+    margin: 0 0 24px 0;
+}
+
+.timeline-marker .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+}
+
+.timeline-content {
+    text-align: center;
+}
+
+.timeline-vertical .timeline-content {
+    text-align: left;
+    padding-left: 120px;
+    margin-top: -80px;
+}
+
+.timeline-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1A73E8;
+    margin-bottom: 8px;
+}
+
+.timeline-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #202124;
+    margin-bottom: 8px;
+}
+
+.timeline-text {
+    font-size: 1rem;
+    color: #5F6368;
+    line-height: 1.6;
+}
+
+.timeline-connector {
+    display: none;
+}
+
+.timeline-vertical .timeline-connector {
+    display: block;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg, #1A73E8 0%, #34A853 100%);
+    margin: 24px 0 24px 40px;
+}
+
+.timeline-vertical .timeline-item:last-child .timeline-connector {
+    display: none;
+}
+
+.cta-timeline-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-timeline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-timeline-primary {
+    background: #1A73E8;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
+
+.btn-timeline-primary:hover {
+    background: #1557B0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26, 115, 232, 0.4);
+}
+
+.btn-timeline-secondary {
+    background: transparent;
+    color: #1A73E8;
+    border: 2px solid #1A73E8;
+}
+
+.btn-timeline-secondary:hover {
+    background: rgba(26, 115, 232, 0.08);
+}
+
+.btn-timeline .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .cta-timeline {
+        padding: 60px 0;
+    }
+
+    .cta-timeline-header {
+        margin-bottom: 48px;
+    }
+
+    .cta-timeline-title {
+        font-size: 2rem;
+    }
+
+    .timeline-horizontal {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .timeline-vertical .timeline-content {
+        padding-left: 100px;
+    }
+
+    .timeline-vertical .timeline-connector {
+        margin-left: 32px;
+    }
+
+    .timeline-marker {
+        width: 64px;
+        height: 64px;
+    }
+
+    .timeline-marker .material-symbols-outlined {
+        font-size: 2rem;
+    }
+
+    .cta-timeline-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-timeline {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>

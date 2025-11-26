@@ -1,0 +1,105 @@
+/* Imobiliaria Page Specific Styles */
+/* Most styles are now in components or shared files */
+
+/* Hero Badge Specific to this page */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(26, 115, 232, 0.1);
+    color: var(--color-primary);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.hero-badge .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #20BA5A;
+}
+
+.floating-whatsapp svg {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hero-badge {
+        font-size: 0.875rem;
+        padding: 7px 14px;
+        margin-bottom: 20px;
+    }
+
+    .hero-badge .material-symbols-outlined {
+        font-size: 1rem;
+    }
+
+    .floating-whatsapp {
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .floating-whatsapp svg {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-badge {
+        font-size: 0.8125rem;
+        padding: 6px 12px;
+        margin-bottom: 18px;
+    }
+
+    .floating-whatsapp {
+        bottom: 16px;
+        right: 16px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .floating-whatsapp svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 360px) {
+    .floating-whatsapp {
+        width: 48px;
+        height: 48px;
+    }
+
+    .floating-whatsapp svg {
+        width: 22px;
+        height: 22px;
+    }
+}

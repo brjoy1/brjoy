@@ -1,0 +1,118 @@
+---
+interface Props {
+    dynamicWords: string[];
+    title: string;
+    highlightedText: string;
+    subtitle: string;
+    boldText?: string;
+    primaryButton: {
+        text: string;
+        href: string;
+        icon?: string;
+    };
+    secondaryButton?: {
+        text: string;
+        href: string;
+        icon?: string;
+    };
+    trustBadges?: Array<{
+        icon: string;
+        text: string;
+    }>;
+}
+
+const {
+    dynamicWords,
+    title,
+    highlightedText,
+    subtitle,
+    boldText,
+    primaryButton,
+    secondaryButton,
+    trustBadges
+} = Astro.props;
+---
+
+<section class="hero" data-dynamic-words={JSON.stringify(dynamicWords)}>
+    <canvas id="hero-particles"></canvas>
+    <div class="container hero-container">
+        <h1 class="hero-title">
+            <span id="dynamic-word">{dynamicWords[0]}</span> {title} <span class="gradient-text">{highlightedText}</span>
+        </h1>
+        <p class="hero-subtitle">
+            {boldText && boldText.trim() ? (
+                subtitle.split(boldText).map((part, index, array) => (
+                    index < array.length - 1 ? (
+                        <>
+                            {part}
+                            <span class="audience-bold">{boldText}</span>
+                        </>
+                    ) : part
+                ))
+            ) : (
+                subtitle
+            )}
+        </p>
+        <div class="hero-actions">
+            <a href={primaryButton.href} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                {primaryButton.icon && (
+                    <span class="material-symbols-outlined">{primaryButton.icon}</span>
+                )}
+                {primaryButton.text}
+            </a>
+            {secondaryButton && (
+                <a href={secondaryButton.href} class="btn-secondary">
+                    {secondaryButton.icon && (
+                        <span class="material-symbols-outlined">{secondaryButton.icon}</span>
+                    )}
+                    {secondaryButton.text}
+                </a>
+            )}
+        </div>
+        {trustBadges && trustBadges.length > 0 && (
+            <div class="hero-trust-badges">
+                {trustBadges.map(badge => (
+                    <div class="trust-badge">
+                        <span class="material-symbols-outlined">{badge.icon}</span>
+                        <span>{badge.text}</span>
+                    </div>
+                ))}
+            </div>
+        )}
+    </div>
+</section>
+
+<script>
+    import { initHeroAnimation } from '../scripts/hero-animation.js';
+
+    // Get dynamic words from data attribute to pass to script
+    const heroSection = document.querySelector('.hero');
+    const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initHeroAnimation(dynamicWords);
+    });
+</script>
+
+<style>
+#dynamic-word {
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    min-width: 120px;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    #dynamic-word {
+        min-width: 90px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    #dynamic-word {
+        min-width: 80px;
+        font-size: 1em;
+    }
+}
+</style>

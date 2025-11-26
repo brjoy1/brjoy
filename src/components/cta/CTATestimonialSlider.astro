@@ -1,0 +1,249 @@
+---
+import '../../styles/components/testimonial-slider.css';
+
+interface Testimonial {
+  quote: string;
+  author: {
+    name: string;
+    role: string;
+    company?: string;
+    avatar?: string;
+  };
+  rating?: number;
+}
+
+interface Props {
+  title: string;
+  testimonials: Testimonial[];
+  primaryButton: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  variant?: 'light' | 'primary';
+  sectionId?: string;
+  className?: string;
+  autoplay?: boolean;
+  autoplayDelay?: number;
+}
+
+const {
+  title,
+  testimonials,
+  primaryButton,
+  secondaryButton,
+  variant = 'light',
+  sectionId = 'cta-testimonial-slider',
+  className = '',
+  autoplay = true,
+  autoplayDelay = 5000
+} = Astro.props;
+---
+
+<section class={`cta-testimonial-slider cta-testimonial-${variant} ${className}`} id={sectionId}>
+    <div class="container">
+        <h2 class="cta-testimonial-title">{title}</h2>
+
+        <div class="testimonial-slider-wrapper">
+            <!-- Slider Container -->
+            <div class="testimonial-slider" data-autoplay={autoplay} data-delay={autoplayDelay}>
+                {testimonials.map((testimonial, index) => (
+                    <div class={`testimonial-slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <span class="material-symbols-outlined">format_quote</span>
+                            </div>
+
+                            {testimonial.rating && (
+                                <div class="testimonial-rating">
+                                    {Array.from({ length: 5 }).map((_, i) => (
+                                        <span class="material-symbols-outlined star" data-filled={i < testimonial.rating}>
+                                            star
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+
+                            <blockquote class="testimonial-quote">
+                                "{testimonial.quote}"
+                            </blockquote>
+
+                            <div class="testimonial-author">
+                                {testimonial.author.avatar ? (
+                                    <img 
+                                        src={testimonial.author.avatar} 
+                                        alt={testimonial.author.name} 
+                                        class="author-avatar" 
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                ) : (
+                                    <div class="author-avatar-placeholder">
+                                        <span class="material-symbols-outlined">person</span>
+                                    </div>
+                                )}
+                                <div class="author-info">
+                                    <div class="author-name">{testimonial.author.name}</div>
+                                    <div class="author-role">
+                                        {testimonial.author.role}{testimonial.author.company ? ` • ${testimonial.author.company}` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="slider-nav slider-nav-prev" aria-label="Depoimento anterior">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="slider-nav slider-nav-next" aria-label="Próximo depoimento">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+
+            <!-- Dots Navigation -->
+            <div class="slider-dots">
+                {testimonials.map((_, index) => (
+                    <button
+                        class={`slider-dot ${index === 0 ? 'active' : ''}`}
+                        data-index={index}
+                        aria-label={`Ir para depoimento ${index + 1}`}
+                    ></button>
+                ))}
+            </div>
+        </div>
+
+        <div class="cta-testimonial-actions">
+            <a href={primaryButton.href} class="btn-testimonial btn-testimonial-primary" target="_blank" rel="noopener noreferrer">
+                {primaryButton.icon && (
+                    <span class="material-symbols-outlined">{primaryButton.icon}</span>
+                )}
+                {primaryButton.text}
+            </a>
+
+            {secondaryButton && (
+                <a href={secondaryButton.href} class="btn-testimonial btn-testimonial-secondary">
+                    {secondaryButton.icon && (
+                        <span class="material-symbols-outlined">{secondaryButton.icon}</span>
+                    )}
+                    {secondaryButton.text}
+                </a>
+            )}
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sliders = document.querySelectorAll('.testimonial-slider');
+
+    sliders.forEach(slider => {
+        const slides = slider.querySelectorAll('.testimonial-slide');
+        const dots = slider.parentElement?.querySelectorAll('.slider-dot');
+        const prevBtn = slider.parentElement?.querySelector('.slider-nav-prev');
+        const nextBtn = slider.parentElement?.querySelector('.slider-nav-next');
+        const autoplay = slider.dataset.autoplay === 'true';
+        const delay = parseInt(slider.dataset.delay || '5000');
+
+        let currentIndex = 0;
+        let autoplayInterval: number | null = null;
+
+        function goToSlide(index: number) {
+            // Remove active from all
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots?.forEach(dot => dot.classList.remove('active'));
+
+            // Add active to current
+            slides[index]?.classList.add('active');
+            dots?.[index]?.classList.add('active');
+
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            const next = (currentIndex + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentIndex - 1 + slides.length) % slides.length;
+            goToSlide(prev);
+        }
+
+        function startAutoplay() {
+            if (autoplay && slides.length > 1 && !autoplayInterval) {
+                autoplayInterval = window.setInterval(nextSlide, delay);
+            }
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        function resetAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        // Navigation buttons
+        nextBtn?.addEventListener('click', () => {
+            nextSlide();
+            resetAutoplay();
+        });
+
+        prevBtn?.addEventListener('click', () => {
+            prevSlide();
+            resetAutoplay();
+        });
+
+        // Dots navigation
+        dots?.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoplay();
+            });
+        });
+
+        // Pause on hover
+        slider.parentElement?.addEventListener('mouseenter', stopAutoplay);
+        slider.parentElement?.addEventListener('mouseleave', startAutoplay);
+
+        // Touch Swipe Support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = (e as TouchEvent).changedTouches[0].screenX;
+            stopAutoplay();
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = (e as TouchEvent).changedTouches[0].screenX;
+            handleSwipe();
+            startAutoplay();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide(); // Swipe Left -> Next
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide(); // Swipe Right -> Prev
+            }
+        }
+
+        // Start autoplay
+        startAutoplay();
+    });
+});
+</script>

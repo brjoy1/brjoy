@@ -1,0 +1,521 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PopHero from '../../components/PopHero.astro';
+import FeatureGrid from '../../components/features-grid/FeatureGrid.astro';
+import StepsGrid from '../../components/features-grid/StepsGrid.astro';
+import CTATestimonialSlider from '../../components/cta/CTATestimonialSlider.astro';
+import IntegrationsSection from '../../components/IntegrationsSection.astro';
+import VideoSection from '../../components/VideoSection.astro';
+
+// Features data
+const problemasFeatures = [
+    {
+        icon: 'schedule',
+        title: 'Atendimento Lento',
+        description: 'Leads esfriam esperando resposta fora do horário comercial.'
+    },
+    {
+        icon: 'filter_alt_off',
+        title: 'Leads Desqualificados',
+        description: 'Corretores perdem tempo falando com curiosos.'
+    },
+    {
+        icon: 'event_busy',
+        title: 'Agendamento Manual',
+        description: 'Troca interminável de mensagens para marcar visita.'
+    },
+    {
+        icon: 'person_search',
+        title: 'Pesquisa Manual de Imóveis',
+        description: 'Horas gastas encontrando imóveis que atendem aos critérios dos clientes.'
+    },
+    {
+        icon: 'contact_mail',
+        title: 'Acompanhamento Deficiente',
+        description: 'Clientes se esquecem da conversa e levam semanas para voltar.'
+    },
+    {
+        icon: 'crisis_alert',
+        title: 'Concorrência Forte',
+        description: 'Outros corretores estão sempre um passo à frente no atendimento.'
+    }
+];
+
+const solucaoFeatures = [
+    {
+        icon: 'smart_toy',
+        title: 'Atendimento 24/7',
+        description: 'IA responde instantaneamente em qualquer horário.'
+    },
+    {
+        icon: 'verified',
+        title: 'Qualificação Automática',
+        description: 'Filtra leads por orçamento, localização e interesse.'
+    },
+    {
+        icon: 'calendar_month',
+        title: 'Agendamento Inteligente',
+        description: 'Agenda visitas direto no calendário dos corretores.'
+    },
+    {
+        icon: 'sync_alt',
+        title: 'Sincronização Bidirecional',
+        description: 'Dados fluem automaticamente entre o WhatsApp e seu CRM em tempo real, mantendo tudo atualizado.'
+    },
+    {
+        icon: 'hub',
+        title: 'Multi-Plataforma',
+        description: 'Compatível com os principais CRMs do mercado imobiliário e ferramentas de gestão.'
+    },
+    {
+        icon: 'history_edu',
+        title: 'Histórico Unificado',
+        description: 'Acesse conversas, agendamentos e notas de qualificação diretamente na ficha do cliente.'
+    }
+];
+
+// Unused variable removed
+
+---
+
+<Layout
+    title="BrJoy AI - Soluções para Imobiliárias"
+    description="Automatize o atendimento da sua imobiliária com Agentes de IA. Qualificação de leads, agendamento de visitas e integração com CRM 24/7."
+>
+    <main>
+        <PopHero
+            dynamicWords={['Venda', 'Alugue']}
+            title="mais imóveis com"
+            highlightedText="Atendimento Inteligente"
+            subtitle="Automatize o atendimento no WhatsApp, qualifique leads e agende visitas 24/7. Deixe sua equipe focar no que importa: fechar negócios."
+            boldText="fechar negócios"
+            primaryButton={{
+                text: 'Testar Agora Grátis',
+                href: 'https://wa.me/5511997889281',
+                icon: 'rocket_launch'
+            }}
+            secondaryButton={{
+                text: 'Ver Demo',
+                href: '#video-section',
+                icon: 'play_circle'
+            }}
+            trustBadges={[
+                { icon: 'verified_user', text: 'Sem fidelidade' },
+                { icon: 'bolt', text: 'Setup em 5min' },
+                { icon: 'support_agent', text: 'Suporte Humanizado' }
+            ]}
+        />
+
+        <VideoSection
+            title="Demonstração BrJoy AI em Ação"
+            subtitle="Assista como nossa IA transforma leads em clientes automaticamente"
+        />
+
+        <!-- Features: O Problema -->
+        <FeatureGrid
+            title="O Problema Atual"
+            subtitle="Sua equipe perde tempo com leads desqualificados e atendimento manual repetitivo."
+            features={problemasFeatures}
+            sectionId="problema"
+            className="dor"
+        />
+
+        <!-- Features: A Solução -->
+        <FeatureGrid
+            title="A Solução BrJoy"
+            subtitle="Automatize o atendimento e foque no que importa: fechar negócios."
+            features={solucaoFeatures}
+            sectionId="solucao"
+            className="solucao"
+        />
+
+        <!-- Como Funciona -->
+        <StepsGrid
+            title="Como Implementar BrJoy AI"
+            subtitle="Integre nossa tecnologia de IA nas imobiliárias em apenas 3 passos simples."
+            steps={[
+                {
+                    icon: 'connect_without_contact',
+                    title: 'Conecte seu WhatsApp',
+                    description: 'Escaneie o QR Code e integre seu número comercial em segundos. Sem complexidades técnicas.'
+                },
+                {
+                    icon: 'settings_suggest',
+                    title: 'Configure a IA',
+                    description: 'Personalize as regras de negócio, tom de voz e informações específicas da sua imobiliária.'
+                },
+                {
+                    icon: 'rocket_launch',
+                    title: 'Comece a Vender',
+                    description: 'Receba leads qualificados automaticamente e aumente suas vendas enquanto você dorme.'
+                }
+            ]}
+        />
+
+        <IntegrationsSection />
+
+        <CTATestimonialSlider
+            title="Veja o que nossos clientes dizem"
+            testimonials={[
+                {
+                    quote: "Com a BrJoy AI, nossa equipe conseguiu focar em fechar negócios enquanto a IA cuida de todo atendimento inicial. Aumentamos 40% nas visitas agendadas em apenas 2 meses!",
+                    author: {
+                        name: 'Maria Silva',
+                        role: 'Diretora Comercial',
+                        company: 'Imobiliária Silva & Santos'
+                    },
+                    rating: 5
+                },
+                {
+                    quote: "A qualificação automática de leads mudou completamente meu dia a dia. Agora só falo com clientes realmente interessados e qualificados. A economia de tempo é impressionante e minhas vendas triplicaram!",
+                    author: {
+                        name: 'João Oliveira',
+                        role: 'Corretor de Imóveis',
+                        company: 'Oliveira Negócios Imobiliários'
+                    },
+                    rating: 5
+                },
+                {
+                    quote: "Nossos clientes adoram o atendimento instantâneo 24/7. Nunca mais perdemos leads por demora no retorno. A BrJoy AI se tornou parte essencial da nossa operação!",
+                    author: {
+                        name: 'Ana Costa',
+                        role: 'Gerente',
+                        company: 'Costa Imóveis'
+                    },
+                    rating: 5
+                },
+                {
+                    quote: "Implementamos a BrJoy AI e em 3 meses dobramos nosso número de visitas agendadas. A integração com nosso CRM foi perfeita e a equipe adorou trabalhar com leads pré-qualificados.",
+                    author: {
+                        name: 'Carlos Mendes',
+                        role: 'CEO',
+                        company: 'Mendes Imóveis Premium'
+                    },
+                    rating: 5
+                },
+                {
+                    quote: "O ROI foi absurdo! Recuperamos o investimento em menos de 1 mês. A IA atende melhor que muitos atendentes humanos e está disponível 24 horas por dia, 7 dias por semana.",
+                    author: {
+                        name: 'Patricia Alves',
+                        role: 'Diretora de Vendas',
+                        company: 'Grupo Alves Imobiliário'
+                    },
+                    rating: 5
+                }
+            ]}
+            primaryButton={{
+                text: 'Agendar Demonstração',
+                href: 'https://wa.me/5511997889281',
+                icon: 'rocket_launch'
+            }}
+            secondaryButton={{
+                text: 'Ver Mais Casos de Sucesso',
+                href: '#faq'
+            }}
+            variant="light"
+            autoplay={true}
+            autoplayDelay={5000}
+        />
+
+        <!-- FAQ -->
+        <section class="faq section-spacing" id="faq">
+            <div class="container">
+                <h2 class="section-title text-center">Perguntas Frequentes</h2>
+                <p class="section-subtitle text-center">
+                    Tire suas dúvidas sobre a plataforma.
+                </p>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Como funciona a integração?
+                            <span class="material-symbols-outlined">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>A integração é feita via QR Code do WhatsApp Web, similar a conectar no computador. É simples e rápido.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Posso personalizar as respostas?
+                            <span class="material-symbols-outlined">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim! Você pode treinar a IA com suas próprias informações, regras de negócio e estilo de comunicação.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Tem fidelidade?
+                            <span class="material-symbols-outlined">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Não, nossos planos são mensais e você pode cancelar a qualquer momento sem multa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5511997889281" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+</Layout>
+
+<script>
+// FAQ Accordion
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        if (question && answer) {
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+
+                // Close all items
+                faqItems.forEach(i => {
+                    i.classList.remove('active');
+                    const a = i.querySelector('.faq-answer') as HTMLElement;
+                    if (a) a.style.maxHeight = '0';
+                });
+
+                // Open clicked item if it wasn't open
+                if (!isOpen) {
+                    item.classList.add('active');
+                    (answer as HTMLElement).style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        }
+    });
+
+    // Feature Grid Slider for Mobile with IntersectionObserver
+    const sliders = document.querySelectorAll('[data-slider]');
+
+    sliders.forEach(slider => {
+        const sliderName = slider.getAttribute('data-slider');
+        const indicatorsContainer = document.getElementById(`slider-indicators-${sliderName}`);
+        const cards = slider.querySelectorAll('.feature-card');
+
+        if (!indicatorsContainer || cards.length === 0) return;
+
+        // Create indicators
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => {
+                const cardWidth = (cards[0] as HTMLElement).offsetWidth;
+                const gap = 16; // gap between cards
+                slider.scrollTo({
+                    left: (cardWidth + gap) * index,
+                    behavior: 'smooth'
+                });
+            });
+            indicatorsContainer.appendChild(dot);
+        });
+
+        // Intersection Observer for accurate active state
+        const observerOptions = {
+            root: slider,
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Find index of intersecting card
+                    const index = Array.from(cards).indexOf(entry.target as Element);
+                    
+                    // Update dots
+                    const dots = indicatorsContainer.querySelectorAll('.slider-dot');
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => observer.observe(card));
+    });
+});
+</script>
+
+<style is:global>
+/* Import page-specific styles */
+@import '../../styles/imobiliaria.css';
+
+/* Import all component styles */
+@import '../../styles/components/results.css';
+@import '../../styles/components/faq.css';
+@import '../../styles/components/cta-inline.css';
+@import '../../styles/components/video.css';
+@import '../../styles/sections.css';
+
+/* Results grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.result-card {
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border-radius: 16px;
+}
+
+.result-metric {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.result-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.result-description {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* FAQ */
+.faq-container {
+    max-width: 800px;
+    margin: 48px auto 0;
+}
+
+.faq-item {
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #F8F9FA;
+}
+
+.faq-question .material-symbols-outlined {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question .material-symbols-outlined {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #F8F9FA;
+}
+
+.faq-answer p {
+    padding: 20px 24px;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}
+
+/* Floating WhatsApp Button Fixes */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+}
+
+@media (max-width: 768px) {
+    .floating-whatsapp {
+        width: 48px;
+        height: 48px;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .floating-whatsapp:hover {
+        transform: scale(1);
+    }
+
+    .floating-whatsapp svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Slider Indicators (Dots) Fixes */
+.slider-indicators {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .slider-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .slider-indicators .slider-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(26, 115, 232, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .slider-indicators .slider-dot.active {
+        background: #1A73E8;
+        width: 24px;
+        border-radius: 4px;
+    }
+}
+
+</style>

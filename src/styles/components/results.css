@@ -1,0 +1,118 @@
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.result-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-primary);
+}
+
+.result-metric {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #34A853 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.result-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.result-description {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .result-card {
+        padding: 32px 28px;
+    }
+
+    .result-metric {
+        font-size: 3rem;
+        margin-bottom: 12px;
+    }
+
+    .result-label {
+        font-size: 1.125rem;
+    }
+
+    .result-description {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .results-grid {
+        gap: 20px;
+    }
+
+    .result-card {
+        padding: 28px 24px;
+    }
+
+    .result-metric {
+        font-size: 2.75rem;
+        margin-bottom: 10px;
+    }
+
+    .result-label {
+        font-size: 1.0625rem;
+        margin-bottom: 6px;
+    }
+
+    .result-description {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .result-card {
+        padding: 24px 20px;
+    }
+
+    .result-metric {
+        font-size: 2.5rem;
+    }
+
+    .result-label {
+        font-size: 1rem;
+    }
+
+    .result-description {
+        font-size: 0.8125rem;
+    }
+}

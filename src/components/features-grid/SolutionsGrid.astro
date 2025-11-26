@@ -1,0 +1,187 @@
+---
+interface Solution {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+  comingSoon?: boolean;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  solutions: Solution[];
+  sectionId?: string;
+}
+
+const {
+  title,
+  subtitle,
+  solutions,
+  sectionId = 'solucoes'
+} = Astro.props;
+---
+
+<section class="solutions section-spacing" id={sectionId}>
+    <div class="container">
+        <h2 class="section-title text-center">{title}</h2>
+        <p class="section-subtitle text-center">{subtitle}</p>
+
+        <div class="solutions-grid">
+            {solutions.map(solution => (
+                solution.href ? (
+                    <a href={solution.href} class="solution-card" aria-label={`Saiba mais sobre ${solution.title}`}>
+                        <div class="solution-icon">
+                            <span class="material-symbols-outlined">{solution.icon}</span>
+                        </div>
+                        <h3 class="solution-title">{solution.title}</h3>
+                        <p class="solution-description">{solution.description}</p>
+                        <div class="solution-cta">
+                            <span>Conhecer solução</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </a>
+                ) : (
+                    <div class="solution-card coming-soon">
+                        <div class="solution-icon">
+                            <span class="material-symbols-outlined">{solution.icon}</span>
+                        </div>
+                        <h3 class="solution-title">{solution.title}</h3>
+                        <p class="solution-description">{solution.description}</p>
+                        <div class="solution-badge">Em breve</div>
+                    </div>
+                )
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+@import '../../styles/home.css';
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.solution-card {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    padding: 32px 24px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.solution-card.coming-soon {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.solution-card.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.solution-icon {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.solution-icon .material-symbols-outlined {
+    font-size: 3rem;
+    color: var(--color-primary);
+}
+
+.solution-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.solution-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.solution-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.solution-card:hover .solution-cta {
+    color: var(--color-primary-dark, var(--color-primary));
+}
+
+.solution-cta .material-symbols-outlined {
+    transition: transform 0.3s ease;
+}
+
+.solution-card:hover .solution-cta .material-symbols-outlined {
+    transform: translateX(4px);
+}
+
+.solution-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #FFC107;
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .solutions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-top: 32px;
+    }
+
+    .solution-card {
+        padding: 24px;
+    }
+
+    .solution-icon .material-symbols-outlined {
+        font-size: 2.5rem;
+    }
+
+    .solution-title {
+        font-size: 1.1rem;
+    }
+
+    .solution-description {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

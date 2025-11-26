@@ -1,0 +1,60 @@
+---
+import '../../styles/components/cta-compact.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  primaryButton: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  variant?: 'primary' | 'gradient' | 'dark' | 'light';
+  sectionId?: string;
+  className?: string;
+}
+
+const {
+  title,
+  description,
+  primaryButton,
+  secondaryButton,
+  variant = 'primary',
+  sectionId = 'cta-compact',
+  className = ''
+} = Astro.props;
+---
+
+<section class={`cta-compact cta-compact-${variant} ${className}`} id={sectionId}>
+    <div class="section-container">
+        <div class="cta-compact-wrapper">
+            <div class="cta-compact-content">
+                <h3 class="cta-compact-title">{title}</h3>
+                {description && <p class="cta-compact-description">{description}</p>}
+            </div>
+
+            <div class="cta-compact-actions">
+                <a href={primaryButton.href} class="btn-cta-compact btn-cta-compact-primary">
+                    {primaryButton.icon && (
+                        <span class="material-symbols-outlined">{primaryButton.icon}</span>
+                    )}
+                    {primaryButton.text}
+                </a>
+
+                {secondaryButton && (
+                    <a href={secondaryButton.href} class="btn-cta-compact btn-cta-compact-secondary">
+                        {secondaryButton.icon && (
+                            <span class="material-symbols-outlined">{secondaryButton.icon}</span>
+                        )}
+                        {secondaryButton.text}
+                    </a>
+                )}
+            </div>
+        </div>
+    </div>
+</section>

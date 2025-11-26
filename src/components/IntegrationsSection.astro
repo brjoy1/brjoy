@@ -1,0 +1,44 @@
+---
+import '../styles/components/integrations.css';
+
+interface Integration {
+  name: string;
+  type: string;
+  icon: string;
+}
+
+const integrations: Integration[] = [
+  { name: 'WhatsApp', type: 'Comunicação', icon: 'chat' },
+  { name: 'RD Station', type: 'Marketing', icon: 'campaign' },
+  { name: 'Vista', type: 'CRM', icon: 'domain' },
+  { name: 'Universal', type: 'CRM', icon: 'storage' },
+  { name: 'Salesforce', type: 'CRM', icon: 'cloud' },
+  { name: 'PipeDrive', type: 'CRM', icon: 'view_kanban' },
+  { name: 'Google Calendar', type: 'Agenda', icon: 'calendar_today' },
+  { name: 'Zapier', type: 'Automação', icon: 'bolt' }
+];
+---
+
+<section class="section-spacing integrations-section bg-gradient-soft">
+    <div class="container section-container">
+        <div class="text-center">
+            <h2 class="section-title">Integrado ao seu Ecossistema</h2>
+            <p class="section-subtitle">
+                Conecte a BrJoy AI às ferramentas que sua imobiliária já utiliza.
+                Sem burocracia, sem código.
+            </p>
+        </div>
+
+        <div class="integrations-grid">
+            {integrations.map(tool => (
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <span class="material-symbols-outlined">{tool.icon}</span>
+                    </div>
+                    <h3 class="integration-name">{tool.name}</h3>
+                    <span class="integration-type">{tool.type}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

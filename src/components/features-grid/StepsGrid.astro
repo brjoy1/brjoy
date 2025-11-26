@@ -1,0 +1,83 @@
+---
+import '../../styles/components/steps-grid.css';
+
+interface Step {
+  icon?: string;
+  number?: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  steps: Step[];
+  sectionId?: string;
+  orientation?: 'horizontal' | 'vertical';
+  backgroundColor?: 'white' | 'gray' | 'gradient';
+  className?: string;
+  animated?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  steps,
+  sectionId = 'steps',
+  orientation = 'horizontal',
+  backgroundColor = 'gradient',
+  className = '',
+  animated = true
+} = Astro.props;
+---
+
+<section class={`steps-section section-spacing bg-${backgroundColor} ${className}`} id={sectionId}>
+    <!-- Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="section-container">
+        <div class="text-center section-header">
+            <h2 class="section-title">{title}</h2>
+            {subtitle && <p class="section-subtitle">{subtitle}</p>}
+        </div>
+
+        <div class={`steps-container orientation-${orientation} ${animated ? 'with-animation' : ''}`}>
+            {steps.map((step, index) => (
+                <div class="step-wrapper" style={`--step-index: ${index};`}>
+                    <!-- Number Badge -->
+                    <div class="step-badge">
+                        <span>{index + 1}</span>
+                    </div>
+
+                    <!-- Glass Card -->
+                    <div class="steps-glass-card">
+                        <!-- Icon -->
+                        <div class="steps-icon-container">
+                            <div class="steps-icon-circle">
+                                {step.icon && (
+                                    <span class="material-symbols-outlined">{step.icon}</span>
+                                )}
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <h3 class="step-title">{step.title}</h3>
+                        <p class="step-description">{step.description}</p>
+
+                        <!-- Shine overlay -->
+                        <div class="shine-overlay"></div>
+                    </div>
+
+                    <!-- Arrow connector (desktop only) -->
+                    {orientation === 'horizontal' && index < steps.length - 1 && (
+                        <div class="connector-arrow">→</div>
+                    )}
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

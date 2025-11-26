@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  button: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  sectionId?: string;
+  className?: string;
+}
+
+const {
+  title,
+  description,
+  button,
+  sectionId = 'cta-minimal',
+  className = ''
+} = Astro.props;
+---
+
+<section class={`cta-minimal ${className}`} id={sectionId}>
+    <div class="container">
+        <div class="cta-minimal-content">
+            <h2 class="cta-minimal-title">{title}</h2>
+            {description && <p class="cta-minimal-description">{description}</p>}
+
+            <a href={button.href} class="cta-minimal-button">
+                {button.icon && (
+                    <span class="material-symbols-outlined">{button.icon}</span>
+                )}
+                {button.text}
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.cta-minimal {
+    padding: 60px 0;
+    background: transparent;
+}
+
+.cta-minimal-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-minimal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #202124;
+    line-height: 1.3;
+}
+
+.cta-minimal-description {
+    font-size: 1rem;
+    color: #5F6368;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.cta-minimal-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1A73E8;
+    text-decoration: none;
+    border: 2px solid #1A73E8;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+.cta-minimal-button:hover {
+    background: #1A73E8;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.cta-minimal-button .material-symbols-outlined {
+    font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+    .cta-minimal {
+        padding: 40px 0;
+    }
+
+    .cta-minimal-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-minimal-description {
+        font-size: 0.9375rem;
+    }
+
+    .cta-minimal-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>

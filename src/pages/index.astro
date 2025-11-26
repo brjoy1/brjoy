@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PopHero from '../components/PopHero.astro';
+import SolutionsGrid from '../components/features-grid/SolutionsGrid.astro';
+
+// Solutions array with href for active ones
+const solutionsArray = [
+    {
+        icon: 'home',
+        title: 'Imobiliárias',
+        description: 'Agente IA que atende leads, qualifica interesse e preenche seu CRM automaticamente. Aumente conversão sem aumentar equipe.',
+        href: '/imobiliaria/'
+    },
+    {
+        icon: 'construction',
+        title: 'Prestadores de Serviços',
+        description: 'Agente IA para captar orçamentos, agendar visitas e qualificar clientes. Ideal para reformas, manutenção e serviços gerais.'
+    },
+    {
+        icon: 'shopping_cart',
+        title: 'E-commerce',
+        description: 'Agente IA para tirar dúvidas de produtos, processar pedidos e recuperar carrinhos abandonados. Vendas automáticas 24/7.'
+    },
+    {
+        icon: 'medical_services',
+        title: 'Clínicas e Saúde',
+        description: 'Agente IA para agendar consultas, confirmar presença e enviar lembretes. Reduza faltas e otimize sua agenda.'
+    },
+    {
+        icon: 'school',
+        title: 'Educação',
+        description: 'Agente IA para tirar dúvidas sobre cursos, processar matrículas e nutrir leads. Aumente conversão de alunos.'
+    },
+    {
+        icon: 'auto_awesome',
+        title: 'Solução Personalizada',
+        description: 'Criamos um Agente IA sob medida para as necessidades específicas do seu negócio. Fale conosco.'
+    }
+];
+---
+
+<Layout title="BrJoy AI - Agentes de IA para Negócios">
+    <main>
+        <PopHero
+            dynamicWords={['Automatize', 'Potencialize', 'Transforme']}
+            title="seu negócio com"
+            highlightedText="Agentes de IA"
+            subtitle="Automatize atendimento, qualificação e vendas com Inteligência Artificial. Resposta imediata no WhatsApp. Sem necessidade de equipe."
+            primaryButton={{
+                text: 'Ver Solução para Imobiliárias',
+                href: '/imobiliaria/',
+                icon: 'rocket_launch'
+            }}
+            secondaryButton={{
+                text: 'Ver Todas as Soluções',
+                href: '#solucoes',
+                icon: 'expand_more'
+            }}
+            trustBadges={[
+                { icon: 'schedule', text: 'Atendimento 24/7' },
+                { icon: 'smart_toy', text: 'IA Avançada' },
+                { icon: 'verified', text: 'Garantia' }
+            ]}
+        />
+        <SolutionsGrid
+            title="Soluções por Segmento"
+            subtitle="Agentes de IA especializados para cada tipo de negócio"
+            solutions={solutionsArray}
+        />
+    </main>
+</Layout>

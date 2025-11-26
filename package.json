@@ -1,0 +1,25 @@
+{
+  "name": "brjoy-astro",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "BrJoy AI - Landing Page em Astro",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [
+    "astro",
+    "landing-page",
+    "brjoy"
+  ],
+  "author": "BRJOY AI",
+  "license": "MIT",
+  "devDependencies": {
+    "astro": "^5.16.0"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0"
+  }
+}
