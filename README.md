@@ -117,7 +117,7 @@ brjoy-imobiliaria-ai/
 
 ## 📬 Contato
 
-- **WhatsApp**: (11) 92145-7067
+- **WhatsApp**: (11) 99788-9281
 - **Email**: contato@brjoy.com.br
 - **Site**: https://brjoy.com.br
 

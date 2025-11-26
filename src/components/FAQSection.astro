@@ -1,0 +1,65 @@
+---
+import '../styles/components/faq.css';
+
+interface FAQ {
+  icon: string;
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQ[];
+  backgroundColor?: 'white' | 'gray';
+}
+
+const {
+  title = 'Perguntas Frequentes',
+  subtitle = 'Tire suas dúvidas sobre a plataforma.',
+  faqs,
+  backgroundColor = 'white'
+} = Astro.props;
+---
+
+<section class={`faq section-spacing ${backgroundColor === 'gray' ? 'bg-gray' : ''}`} id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 id="faq-title" class="section-title text-center">{title}</h2>
+    {subtitle && (
+      <p class="section-subtitle text-center">
+        {subtitle}
+      </p>
+    )}
+    <div class="faq-container" role="list">
+      {faqs.map((faq, index) => (
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${index + 1}`}>
+            <div class="faq-question-content">
+              <span class="faq-icon material-symbols-outlined">{faq.icon}</span>
+              <span class="faq-text">{faq.question}</span>
+            </div>
+            <span class="faq-toggle material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </button>
+          <div class="faq-answer" id={`faq-answer-${index + 1}`} role="region">
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initAccordion } from '../scripts/accordion';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initAccordion({
+      containerSelector: '.faq-container',
+      itemSelector: '.faq-item',
+      triggerSelector: '.faq-question',
+      contentSelector: '.faq-answer',
+      allowMultiple: false,
+      activeClass: 'active'
+    });
+  });
+</script>

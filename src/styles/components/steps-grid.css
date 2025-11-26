@@ -343,15 +343,13 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 32px;
     }
-}
 
-@media (max-width: 768px) {
     .section-header {
         margin-bottom: 48px;
     }
 
     .steps-container {
-        gap: 48px;
+        gap: 32px;
     }
 
     .steps-glass-card {
@@ -384,9 +382,38 @@
 }
 
 @media (max-width: 576px) {
+    .steps-container.orientation-horizontal {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding: 30px 24px 24px;
+        margin: 0 -24px;
+        scrollbar-width: none;
+        grid-template-columns: unset;
+    }
+
+    .steps-container.orientation-horizontal::-webkit-scrollbar {
+        display: none;
+    }
+
+    .step-wrapper {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    .step-badge {
+        top: -10px;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
     .steps-glass-card {
         padding: 44px 20px 24px;
         border-radius: 20px;
+        height: 100%;
     }
 
     .steps-icon-circle {
