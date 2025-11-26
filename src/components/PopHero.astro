@@ -54,26 +54,26 @@ const {
             )}
         </p>
         <div class="hero-actions">
-            <a href={primaryButton.href} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <a href={primaryButton.href} target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label={primaryButton.text}>
                 {primaryButton.icon && (
-                    <span class="material-symbols-outlined">{primaryButton.icon}</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">{primaryButton.icon}</span>
                 )}
                 {primaryButton.text}
             </a>
             {secondaryButton && (
-                <a href={secondaryButton.href} class="btn-secondary">
+                <a href={secondaryButton.href} class="btn-secondary" aria-label={secondaryButton.text}>
                     {secondaryButton.icon && (
-                        <span class="material-symbols-outlined">{secondaryButton.icon}</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">{secondaryButton.icon}</span>
                     )}
                     {secondaryButton.text}
                 </a>
             )}
         </div>
         {trustBadges && trustBadges.length > 0 && (
-            <div class="hero-trust-badges">
+            <div class="hero-trust-badges" role="list" aria-label="Benefícios principais">
                 {trustBadges.map(badge => (
-                    <div class="trust-badge">
-                        <span class="material-symbols-outlined">{badge.icon}</span>
+                    <div class="trust-badge" role="listitem">
+                        <span class="material-symbols-outlined" aria-hidden="true">{badge.icon}</span>
                         <span>{badge.text}</span>
                     </div>
                 ))}
