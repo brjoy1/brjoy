@@ -1,0 +1,167 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  primaryButton: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  variant?: 'default' | 'urgent' | 'success';
+  backgroundColor?: 'white' | 'gray' | 'gradient';
+}
+
+const {
+  title,
+  subtitle,
+  primaryButton,
+  secondaryButton,
+  variant = 'default',
+  backgroundColor = 'white'
+} = Astro.props;
+
+const bgClass = {
+  white: '',
+  gray: 'bg-gray',
+  gradient: 'bg-gradient'
+}[backgroundColor];
+
+const variantClass = `cta-inline--${variant}`;
+---
+
+<section class={`cta-inline ${bgClass} ${variantClass}`}>
+  <div class="container">
+    <div class="cta-inline__content">
+      <div class="cta-inline__text">
+        <h2 class="cta-inline__title">{title}</h2>
+        {subtitle && <p class="cta-inline__subtitle">{subtitle}</p>}
+      </div>
+      <div class="cta-inline__actions">
+        <a href={primaryButton.href} class="btn-primary btn-whatsapp">
+          {primaryButton.icon && <span class="material-symbols-outlined">{primaryButton.icon}</span>}
+          {primaryButton.text}
+        </a>
+        {secondaryButton && (
+          <a href={secondaryButton.href} class="btn-secondary">
+            {secondaryButton.icon && <span class="material-symbols-outlined">{secondaryButton.icon}</span>}
+            {secondaryButton.text}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cta-inline {
+  padding: 60px 0;
+}
+
+.cta-inline.bg-gray {
+  background: var(--color-bg-alt);
+}
+
+.cta-inline.bg-gradient {
+  background: linear-gradient(135deg, #E3F2FD 0%, #F0F4FF 100%);
+}
+
+.cta-inline__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 48px 56px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.cta-inline__content:hover {
+  border-color: rgba(26, 115, 232, 0.2);
+  box-shadow: 0 8px 32px rgba(26, 115, 232, 0.12);
+  transform: translateY(-2px);
+}
+
+.cta-inline--urgent .cta-inline__content {
+  border-color: #EA4335;
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
+}
+
+.cta-inline--success .cta-inline__content {
+  border-color: #34A853;
+  background: linear-gradient(135deg, #F0FFF4 0%, #FFFFFF 100%);
+}
+
+.cta-inline__text {
+  flex: 1;
+}
+
+.cta-inline__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.cta-inline__subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cta-inline__actions {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cta-inline__actions .btn-primary,
+.cta-inline__actions .btn-secondary {
+  white-space: nowrap;
+}
+
+@media (max-width: 968px) {
+  .cta-inline__content {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 32px;
+  }
+
+  .cta-inline__actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .cta-inline__actions .btn-primary,
+  .cta-inline__actions .btn-secondary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-inline {
+    padding: 40px 0;
+  }
+
+  .cta-inline__content {
+    padding: 32px 24px;
+  }
+
+  .cta-inline__title {
+    font-size: 1.5rem;
+  }
+
+  .cta-inline__subtitle {
+    font-size: 1rem;
+  }
+}
+</style>

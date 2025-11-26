@@ -4,6 +4,7 @@ import PopHero from '../../components/PopHero.astro';
 import FeatureGrid from '../../components/features-grid/FeatureGrid.astro';
 import StepsGrid from '../../components/features-grid/StepsGrid.astro';
 import CTATestimonialSlider from '../../components/cta/CTATestimonialSlider.astro';
+import CTAInline from '../../components/cta/CTAInline.astro';
 import IntegrationsSection from '../../components/IntegrationsSection.astro';
 // import VideoSection from '../../components/VideoSection.astro'; // Temporariamente desabilitado
 import FAQSection from '../../components/FAQSection.astro';
@@ -172,6 +173,18 @@ const faqs = [
             className="dor"
         />
 
+        <!-- CTA 1: Após Problemas -->
+        <CTAInline
+            title="Cansado de Perder Leads?"
+            subtitle="Veja como a IA pode resolver todos esses problemas em uma demonstração gratuita."
+            primaryButton={{
+                text: 'Agendar Demonstração Grátis',
+                href: 'https://wa.me/5511997889281',
+                icon: 'calendar_today'
+            }}
+            variant="urgent"
+        />
+
         <!-- Features: A Solução -->
         <FeatureGrid
             title="O Corretor que Trabalha Enquanto Você Dorme"
@@ -209,6 +222,23 @@ const faqs = [
             ]}
         />
 
+        <!-- CTA 2: Após Como Funciona -->
+        <CTAInline
+            title="Quer Ver Isso Funcionando na Prática?"
+            subtitle="Agende uma demonstração personalizada e veja como é fácil automatizar seu atendimento."
+            primaryButton={{
+                text: 'Ver Demonstração ao Vivo',
+                href: 'https://wa.me/5511997889281',
+                icon: 'play_circle'
+            }}
+            secondaryButton={{
+                text: 'Falar com Consultor',
+                href: 'https://wa.me/5511997889281',
+                icon: 'support_agent'
+            }}
+            backgroundColor="gray"
+        />
+
         <!-- CRM Benefits -->
         <FeatureGrid
             title="Seu CRM no Piloto Automático"
@@ -219,6 +249,19 @@ const faqs = [
             className="crm-benefits"
             autoplay={true}
             autoplayDelay={5000}
+        />
+
+        <!-- CTA 3: Após CRM Benefits -->
+        <CTAInline
+            title="Automatize Seu CRM Hoje Mesmo"
+            subtitle="Pare de perder tempo com planilhas. Comece a usar IA e libere 4h do seu dia."
+            primaryButton={{
+                text: 'Começar Agora',
+                href: 'https://wa.me/5511997889281',
+                icon: 'rocket_launch'
+            }}
+            variant="success"
+            backgroundColor="gradient"
         />
 
         <IntegrationsSection />
@@ -284,6 +327,18 @@ const faqs = [
             variant="light"
             autoplay={true}
             autoplayDelay={5000}
+        />
+
+        <!-- CTA 4: Antes do FAQ (Última Chamada) -->
+        <CTAInline
+            title="Últimas Vagas para Demonstração Gratuita"
+            subtitle="Apenas 5 demonstrações disponíveis esta semana. Garanta a sua agora!"
+            primaryButton={{
+                text: 'Garantir Minha Vaga',
+                href: 'https://wa.me/5511997889281',
+                icon: 'calendar_month'
+            }}
+            variant="urgent"
         />
 
         <FAQSection faqs={faqs} />
