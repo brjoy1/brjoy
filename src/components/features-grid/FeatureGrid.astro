@@ -12,6 +12,8 @@ interface Props {
   sectionId?: string;
   backgroundColor?: 'white' | 'gray';
   className?: string;
+  autoplay?: boolean;
+  autoplayDelay?: number;
 }
 
 const {
@@ -20,7 +22,9 @@ const {
   features,
   sectionId = '',
   backgroundColor = 'white',
-  className = ''
+  className = '',
+  autoplay = false,
+  autoplayDelay = 5000
 } = Astro.props;
 
 // Generate unique slider ID based on section or title
@@ -35,7 +39,12 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
         </div>
 
         <div class="feature-grid">
-            <div class="grid-3" data-slider={sliderId}>
+            <div
+                class="grid-3"
+                data-slider={sliderId}
+                data-slider-autoplay={autoplay.toString()}
+                data-slider-delay={autoplayDelay.toString()}
+            >
                 {features.map(feature => (
                     <div class="feature-card">
                         <span class="material-symbols-outlined">{feature.icon}</span>
@@ -67,8 +76,28 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
 
 .feature-grid .grid-3 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .feature-grid .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+    }
+}
+
+@media (min-width: 577px) {
+    .feature-grid .grid-3 {
+        display: grid;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .feature-grid .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+    }
 }
 
 .feature-card {
@@ -119,6 +148,16 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
     color: #15803d;
 }
 
+/* Seção de CRM Benefits - Ícones Azuis */
+.feature-section.crm-benefits .feature-card .material-symbols-outlined {
+    color: #1A73E8;
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.1) 0%, rgba(26, 115, 232, 0.05) 100%);
+}
+
+.feature-section.crm-benefits .feature-card:hover .material-symbols-outlined {
+    color: #0052CC;
+}
+
 .feature-card h3 {
     font-size: 1.25rem;
     margin-bottom: 12px;
@@ -132,7 +171,7 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
     font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .feature-grid .grid-3 {
         display: flex;
         overflow-x: auto;

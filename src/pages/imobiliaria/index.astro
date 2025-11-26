@@ -6,6 +6,7 @@ import StepsGrid from '../../components/features-grid/StepsGrid.astro';
 import CTATestimonialSlider from '../../components/cta/CTATestimonialSlider.astro';
 import IntegrationsSection from '../../components/IntegrationsSection.astro';
 import VideoSection from '../../components/VideoSection.astro';
+import FAQSection from '../../components/FAQSection.astro';
 
 // Features data
 const problemasFeatures = [
@@ -20,7 +21,7 @@ const problemasFeatures = [
         description: 'Você demora 2h para responder e o lead já fechou com o concorrente.'
     },
     {
-        icon: 'list_alt_off',
+        icon: 'error_outline',
         title: 'CRM bagunçado',
         description: 'Ninguém sabe quem atender.'
     },
@@ -74,7 +75,56 @@ const solucaoFeatures = [
     }
 ];
 
-// Unused variable removed
+const crmBenefitsFeatures = [
+    {
+        icon: 'database',
+        title: 'Dados sempre atualizados',
+        description: 'Orçamento, preferências e histórico registrados automaticamente. Zero trabalho manual de digitação.'
+    },
+    {
+        icon: 'target',
+        title: 'Leads qualificados e priorizados',
+        description: 'IA identifica os mais quentes e organiza por prioridade. Você foca apenas nos que estão prontos para fechar.'
+    },
+    {
+        icon: 'notifications_active',
+        title: 'Nunca perca um follow-up',
+        description: 'Lembretes automáticos de visitas e retornos. Agenda sincronizada com suas conversas.'
+    },
+    {
+        icon: 'trending_up',
+        title: 'Relatórios que você realmente usa',
+        description: 'Veja quantos leads viraram visitas. Identifique gargalos no funil de vendas.'
+    }
+];
+
+const faqs = [
+    {
+        icon: 'play_circle',
+        question: 'Como funciona a demonstração gratuita?',
+        answer: 'Agende uma demonstração personalizada de 30 minutos com nosso time. Vamos mostrar como a IA funciona no seu cenário específico, respondendo suas dúvidas em tempo real. Sem compromisso!'
+    },
+    {
+        icon: 'calendar_month',
+        question: 'Quanto tempo leva para implementar?',
+        answer: 'A implementação completa leva de 5 a 7 dias. Nós cuidamos de toda a configuração, treinamento da IA e integração com seu CRM. Você só precisa nos fornecer as informações dos seus imóveis e processos.'
+    },
+    {
+        icon: 'engineering',
+        question: 'Preciso ter conhecimentos técnicos?',
+        answer: 'Não! Nós cuidamos de tudo: desde a configuração inicial até a integração com suas ferramentas. Nossa equipe técnica faz o trabalho pesado. Você só precisa aprovar e começar a usar.'
+    },
+    {
+        icon: 'extension',
+        question: 'Como funciona a integração com meu CRM?',
+        answer: 'A BrJoy se integra nativamente com os principais CRMs imobiliários (Kommo, Vista, Universal, Salesforce). Todos os dados de conversas, leads qualificados e agendamentos são sincronizados automaticamente em tempo real.'
+    },
+    {
+        icon: 'star',
+        question: 'Qual o diferencial da BRJOY vs outros chatbots?',
+        answer: 'Somos especializados em imobiliárias. Nossa IA foi treinada especificamente para o mercado imobiliário: entende jargões do setor, qualifica leads com precisão e conduz o cliente até o agendamento da visita. Não é um chatbot genérico adaptado - é uma solução feita sob medida para vender e alugar imóveis.'
+    }
+];
 
 ---
 
@@ -157,6 +207,18 @@ const solucaoFeatures = [
             ]}
         />
 
+        <!-- CRM Benefits -->
+        <FeatureGrid
+            title="Seu CRM no Piloto Automático"
+            subtitle="Adeus, planilhas manuais. A IA atualiza tudo para você."
+            features={crmBenefitsFeatures}
+            sectionId="crm-benefits"
+            backgroundColor="gray"
+            className="crm-benefits"
+            autoplay={true}
+            autoplayDelay={5000}
+        />
+
         <IntegrationsSection />
 
         <CTATestimonialSlider
@@ -222,77 +284,7 @@ const solucaoFeatures = [
             autoplayDelay={5000}
         />
 
-        <!-- FAQ -->
-        <section class="faq section-spacing" id="faq" aria-labelledby="faq-title">
-            <div class="container">
-                <h2 id="faq-title" class="section-title text-center">Perguntas Frequentes</h2>
-                <p class="section-subtitle text-center">
-                    Tire suas dúvidas sobre a plataforma.
-                </p>
-                <div class="faq-container" role="list">
-                    <div class="faq-item" role="listitem">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-                            <div class="faq-question-content">
-                                <span class="faq-icon material-symbols-outlined">play_circle</span>
-                                <span class="faq-text">Como funciona a demonstração gratuita?</span>
-                            </div>
-                            <span class="faq-toggle material-symbols-outlined" aria-hidden="true">expand_more</span>
-                        </button>
-                        <div class="faq-answer" id="faq-answer-1" role="region">
-                            <p>Agende uma demonstração personalizada de 30 minutos com nosso time. Vamos mostrar como a IA funciona no seu cenário específico, respondendo suas dúvidas em tempo real. Sem compromisso!</p>
-                        </div>
-                    </div>
-                    <div class="faq-item" role="listitem">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
-                            <div class="faq-question-content">
-                                <span class="faq-icon material-symbols-outlined">calendar_month</span>
-                                <span class="faq-text">Quanto tempo leva para implementar?</span>
-                            </div>
-                            <span class="faq-toggle material-symbols-outlined" aria-hidden="true">expand_more</span>
-                        </button>
-                        <div class="faq-answer" id="faq-answer-2" role="region">
-                            <p>A implementação completa leva de 5 a 7 dias. Nós cuidamos de toda a configuração, treinamento da IA e integração com seu CRM. Você só precisa nos fornecer as informações dos seus imóveis e processos.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item" role="listitem">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
-                            <div class="faq-question-content">
-                                <span class="faq-icon material-symbols-outlined">engineering</span>
-                                <span class="faq-text">Preciso ter conhecimentos técnicos?</span>
-                            </div>
-                            <span class="faq-toggle material-symbols-outlined" aria-hidden="true">expand_more</span>
-                        </button>
-                        <div class="faq-answer" id="faq-answer-3" role="region">
-                            <p>Não! Nós cuidamos de tudo: desde a configuração inicial até a integração com suas ferramentas. Nossa equipe técnica faz o trabalho pesado. Você só precisa aprovar e começar a usar.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item" role="listitem">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
-                            <div class="faq-question-content">
-                                <span class="faq-icon material-symbols-outlined">extension</span>
-                                <span class="faq-text">Como funciona a integração com meu CRM?</span>
-                            </div>
-                            <span class="faq-toggle material-symbols-outlined" aria-hidden="true">expand_more</span>
-                        </button>
-                        <div class="faq-answer" id="faq-answer-4" role="region">
-                            <p>A BrJoy se integra nativamente com os principais CRMs imobiliários (Kommo, Vista, Universal, Salesforce). Todos os dados de conversas, leads qualificados e agendamentos são sincronizados automaticamente em tempo real.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item" role="listitem">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
-                            <div class="faq-question-content">
-                                <span class="faq-icon material-symbols-outlined">star</span>
-                                <span class="faq-text">Qual o diferencial da BRJOY vs outros chatbots?</span>
-                            </div>
-                            <span class="faq-toggle material-symbols-outlined" aria-hidden="true">expand_more</span>
-                        </button>
-                        <div class="faq-answer" id="faq-answer-5" role="region">
-                            <p>Somos especializados em imobiliárias. Nossa IA foi treinada especificamente para o mercado imobiliário: entende jargões do setor, qualifica leads com precisão e conduz o cliente até o agendamento da visita. Não é um chatbot genérico adaptado - é uma solução feita sob medida para vender e alugar imóveis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <FAQSection faqs={faqs} />
 
     </main>
 
@@ -305,85 +297,10 @@ const solucaoFeatures = [
 </Layout>
 
 <script>
-// FAQ Accordion
-document.addEventListener('DOMContentLoaded', function() {
-    const faqItems = document.querySelectorAll('.faq-item');
+import { initDataSliders } from '../../scripts/slider';
 
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-
-        if (question && answer) {
-            question.addEventListener('click', () => {
-                const isOpen = item.classList.contains('active');
-
-                // Close all items
-                faqItems.forEach(i => {
-                    i.classList.remove('active');
-                    const q = i.querySelector('.faq-question') as HTMLButtonElement;
-                    const a = i.querySelector('.faq-answer') as HTMLElement;
-                    if (q) q.setAttribute('aria-expanded', 'false');
-                    if (a) a.style.maxHeight = '0';
-                });
-
-                // Open clicked item if it wasn't open
-                if (!isOpen) {
-                    item.classList.add('active');
-                    (question as HTMLButtonElement).setAttribute('aria-expanded', 'true');
-                    (answer as HTMLElement).style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        }
-    });
-
-    // Feature Grid Slider for Mobile with IntersectionObserver
-    const sliders = document.querySelectorAll('[data-slider]');
-
-    sliders.forEach(slider => {
-        const sliderName = slider.getAttribute('data-slider');
-        const indicatorsContainer = document.getElementById(`slider-indicators-${sliderName}`);
-        const cards = slider.querySelectorAll('.feature-card');
-
-        if (!indicatorsContainer || cards.length === 0) return;
-
-        // Create indicators
-        cards.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
-            dot.addEventListener('click', () => {
-                const cardWidth = (cards[0] as HTMLElement).offsetWidth;
-                const gap = 16; // gap between cards
-                slider.scrollTo({
-                    left: (cardWidth + gap) * index,
-                    behavior: 'smooth'
-                });
-            });
-            indicatorsContainer.appendChild(dot);
-        });
-
-        // Intersection Observer for accurate active state
-        const observerOptions = {
-            root: slider,
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Find index of intersecting card
-                    const index = Array.from(cards).indexOf(entry.target as Element);
-                    
-                    // Update dots
-                    const dots = indicatorsContainer.querySelectorAll('.slider-dot');
-                    dots.forEach((dot, i) => {
-                        dot.classList.toggle('active', i === index);
-                    });
-                }
-            });
-        }, observerOptions);
-
-        cards.forEach(card => observer.observe(card));
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    initDataSliders();
 });
 </script>
 
@@ -393,185 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Import all component styles */
 @import '../../styles/components/results.css';
-@import '../../styles/components/faq.css';
-@import '../../styles/components/cta-inline.css';
 @import '../../styles/components/video.css';
 @import '../../styles/sections.css';
 
-/* Results grid */
-.results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 32px;
-    margin-top: 48px;
-}
-
-.result-card {
-    text-align: center;
-    padding: 40px 24px;
-    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-    border-radius: 16px;
-}
-
-.result-metric {
-    display: block;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 8px;
-}
-
-.result-label {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.result-description {
-    display: block;
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-}
-
-/* FAQ */
-.faq-container {
-    max-width: 900px;
-    margin: 48px auto 0;
-}
-
-.faq-item {
-    margin-bottom: 20px;
-    border: 1.5px solid var(--color-border);
-    border-radius: 16px;
-    overflow: hidden;
-    background: #FFFFFF;
-    transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-    border-color: rgba(26, 115, 232, 0.3);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-}
-
-.faq-item.active {
-    border-color: var(--color-primary);
-    box-shadow: 0 6px 24px rgba(26, 115, 232, 0.12);
-}
-
-.faq-question {
-    width: 100%;
-    padding: 24px 28px;
-    background: #FFFFFF;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    transition: background 0.3s ease;
-}
-
-.faq-question:hover {
-    background: rgba(26, 115, 232, 0.02);
-}
-
-.faq-question-content {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1;
-}
-
-.faq-icon {
-    font-size: 28px;
-    color: var(--color-primary);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: var(--color-bg-light-blue);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.faq-item.active .faq-icon {
-    background: var(--color-primary);
-    color: white;
-    transform: scale(1.05);
-}
-
-.faq-text {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-.faq-toggle {
-    transition: transform 0.3s ease;
-    color: var(--color-text-secondary);
-    font-size: 28px;
-    flex-shrink: 0;
-}
-
-.faq-item.active .faq-toggle {
-    transform: rotate(180deg);
-    color: var(--color-primary);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    background: var(--color-bg-alt);
-}
-
-.faq-answer p {
-    padding: 24px 28px 28px 92px;
-    margin: 0;
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-    font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-    .faq-container {
-        max-width: 100%;
-    }
-
-    .faq-question {
-        padding: 20px;
-    }
-
-    .faq-question-content {
-        gap: 12px;
-    }
-
-    .faq-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-        border-radius: 10px;
-    }
-
-    .faq-text {
-        font-size: 1rem;
-    }
-
-    .faq-toggle {
-        font-size: 24px;
-    }
-
-    .faq-answer p {
-        padding: 20px;
-        font-size: 0.95rem;
-    }
-}
-
-/* Floating WhatsApp Button Fixes */
+/* Floating WhatsApp Button */
 .floating-whatsapp {
     position: fixed;
     bottom: 24px;
