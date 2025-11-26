@@ -340,8 +340,8 @@
 
 @media (max-width: 768px) {
     .steps-container.orientation-horizontal {
-        grid-template-columns: 1fr;
-        gap: 56px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
     }
 }
 
