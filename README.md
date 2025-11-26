@@ -1,17 +1,18 @@
 # BRJOY Imobiliária AI 💫
 
-Landing page da BRJOY - solução de IA completa para automatização de atendimento via WhatsApp em imobiliárias.
+Landing page da BRJOY - solução de IA completa para automatização de atendimento via WhatsApp em imobiliárias e outros segmentos.
 
 ## 🎯 Visão Geral
 
-O BRJOY é uma ferramenta de IA especializada para o mercado imobiliário que automatiza completamente o funil de vendas, desde o primeiro contato até o agendamento de visitas. Nosso chatbot inteligente qualifica leads, busca imóveis ideais no seu banco de dados e agenda visitas automaticamente.
+O BRJOY é uma ferramenta de IA especializada que automatiza completamente o funil de vendas, desde o primeiro contato até o agendamento de visitas. Nossos agentes inteligentes qualificam leads, buscam soluções ideais e agendam automaticamente, disponíveis 24/7.
 
 ## 🚀 Tecnologias
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Build Tool**: Vite
-- **Deploy**: GitHub Pages
-- **Design**: Glassmorphism, Mobile-First Responsive
+- **Framework**: Astro 5.16.0 (Static Site Generation)
+- **Analytics**: Vercel Analytics + Google Analytics (GA4)
+- **SEO**: Astro Sitemap Integration
+- **Deploy**: GitHub Pages / Vercel
+- **Design**: Modern UI, Mobile-First Responsive
 
 ## 📦 Instalação e Desenvolvimento
 
@@ -31,46 +32,64 @@ npm install
 # Inicie o servidor de desenvolvimento
 npm run dev
 
-# Acesse http://localhost:3000
+# Acesse http://localhost:4321
 ```
 
 ### Scripts disponíveis
 ```bash
-npm run dev     # Servidor de desenvolvimento
-npm run build   # Build de produção
-npm run preview # Preview do build
-npm run deploy  # Deploy para GitHub Pages
+npm run dev     # Servidor de desenvolvimento (porta 4321)
+npm run start   # Alias para npm run dev
+npm run build   # Build de produção (gera pasta dist/)
+npm run preview # Preview do build local
+npm run deploy  # Build + Deploy para GitHub Pages
 ```
 
 ## 📁 Estrutura do Projeto
 
 ```
 brjoy-imobiliaria-ai/
-├── src/                    # Código fonte
-│   ├── images/            # Imagens otimizadas
-│   ├── styles/            # Arquivos CSS
-│   └── scripts/           # JavaScript
-├── public/                # Assets públicos
-├── dist/                  # Build de produção
-├── index.html            # Página principal
-├── styles.css           # Styles principais (temp)
-├── script.js            # Script principal (temp)
-├── particles.js         # Efeitos de fundo (temp)
-├── vite.config.js       # Configuração Vite
-├── package.json         # Dependências e scripts
-├── robots.txt          # SEO
-├── sitemap.xml         # Sitemap
-└── README.md           # Este arquivo
+├── src/
+│   ├── components/         # Componentes Astro reutilizáveis
+│   │   ├── cta/           # 8 variações de Call-to-Action
+│   │   ├── features-grid/ # Grids de features/soluções
+│   │   ├── Header.astro
+│   │   ├── Footer.astro
+│   │   ├── PopHero.astro
+│   │   ├── VideoSection.astro
+│   │   └── IntegrationsSection.astro
+│   ├── layouts/           # Layouts base
+│   │   └── Layout.astro   # Layout principal com SEO
+│   ├── pages/             # Páginas (rotas)
+│   │   ├── index.astro    # Homepage
+│   │   └── imobiliaria/   # Landing page imobiliárias
+│   └── styles/            # CSS modular (~1500 linhas)
+│       ├── variables.css
+│       ├── base.css
+│       ├── components/    # Estilos por componente
+│       └── ...
+├── public/                # Assets estáticos
+│   ├── favicon.webp
+│   ├── images/
+│   ├── fonts/
+│   ├── robots.txt
+│   └── CNAME
+├── dist/                  # Build de produção (gitignored)
+├── astro.config.mjs       # Configuração Astro
+├── tsconfig.json          # TypeScript config
+├── package.json           # Dependências
+└── README.md              # Este arquivo
 ```
 
 ## 🎨 Funcionalidades
 
-- ✅ **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
-- ✅ **Efeitos Visuais**: Glassmorphism, animações suaves, particles background
-- ✅ **SEO Otimizado**: Meta tags, Schema.org, OpenGraph
-- ✅ **Performance**: Lazy loading, pré-carregamento, otimizações
-- ✅ **Acessibilidade**: Navegação por teclado, foco visível, ARIA labels
-- ✅ **Conversão**: Múltiplos CTAs, copy persuasivo, prova social
+- ✅ **Design Responsivo**: Mobile-first, funciona perfeitamente em todos dispositivos
+- ✅ **SEO Avançado**: Meta tags OG/Twitter, Schema.org JSON-LD, Sitemap, URLs canônicas
+- ✅ **Analytics Duplo**: Google Analytics (GA4) + Vercel Analytics + Speed Insights
+- ✅ **Performance**: SSG com Astro = carregamento ultra-rápido (148KB total)
+- ✅ **Componentes Modulares**: 17+ componentes reutilizáveis
+- ✅ **Conversão Otimizada**: 8 variações de CTAs, copy persuasivo, depoimentos, FAQ
+- ✅ **UX Avançada**: Hero dinâmico, video section, slider mobile com IntersectionObserver
+- ✅ **Integrações**: Seção dedicada para CRMs imobiliários
 
 ## 📈 Resultados Atuais
 
@@ -81,15 +100,20 @@ brjoy-imobiliaria-ai/
 
 ## 🛠️ Desenvolvimento
 
-### Arquivos temporários
-Atualmente o projeto usa arquivos globais (styles.css, script.js). Em versões futuras será refatorado para uma estrutura modular em `/src`.
+### Tecnologias Principais
+- **Astro 5.16.0**: Framework SSG com islands architecture
+- **TypeScript**: Type safety em componentes
+- **CSS Modular**: Variáveis CSS + imports por componente
+- **Material Symbols**: Ícones do Google
 
 ### Próximos passos
-- [ ] Migração completa para estrutura modular
-- [ ] Implementação de testes automatizados
-- [ ] Configuração de CI/CD
-- [ ] Análise de performance via Lighthouse
-- [ ] Otimizações avançadas de SEO
+- [ ] Adicionar imagem OG real em `/public/images/og-image.jpg`
+- [ ] Implementar `<Image>` component do Astro para otimização
+- [ ] Criar páginas para outros segmentos (E-commerce, Saúde, Educação)
+- [ ] Implementar View Transitions do Astro 3+
+- [ ] Adicionar testes E2E (Playwright)
+- [ ] Configurar Google Search Console
+- [ ] Blog com Astro Content Collections
 
 ## 📬 Contato
 

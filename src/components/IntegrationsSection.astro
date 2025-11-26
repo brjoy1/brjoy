@@ -22,11 +22,50 @@ const integrations: Integration[] = [
 <section class="section-spacing integrations-section bg-gradient-soft">
     <div class="container section-container">
         <div class="text-center">
-            <h2 class="section-title">Integrado ao seu Ecossistema</h2>
+            <h2 class="section-title">Seu CRM no Piloto Automático</h2>
             <p class="section-subtitle">
-                Conecte a BrJoy AI às ferramentas que sua imobiliária já utiliza.
-                Sem burocracia, sem código.
+                Adeus, planilhas manuais. A IA atualiza tudo para você.
             </p>
+        </div>
+
+        <div class="crm-features-grid">
+            <div class="crm-feature-card">
+                <div class="crm-feature-icon">
+                    <span class="material-symbols-outlined">update</span>
+                </div>
+                <h3 class="crm-feature-title">Dados sempre atualizados</h3>
+                <p class="crm-feature-description">Orçamento, preferências e histórico registrados automaticamente. Zero trabalho manual de digitação.</p>
+            </div>
+            <div class="crm-feature-card">
+                <div class="crm-feature-icon">
+                    <span class="material-symbols-outlined">priority_high</span>
+                </div>
+                <h3 class="crm-feature-title">Leads qualificados e priorizados</h3>
+                <p class="crm-feature-description">IA identifica os mais quentes e organiza por prioridade. Você foca apenas nos que estão prontos para fechar.</p>
+            </div>
+            <div class="crm-feature-card">
+                <div class="crm-feature-icon">
+                    <span class="material-symbols-outlined">notification_important</span>
+                </div>
+                <h3 class="crm-feature-title">Nunca perca um follow-up</h3>
+                <p class="crm-feature-description">Lembretes automáticos de visitas e retornos. Agenda sincronizada com suas conversas.</p>
+            </div>
+            <div class="crm-feature-card">
+                <div class="crm-feature-icon">
+                    <span class="material-symbols-outlined">insights</span>
+                </div>
+                <h3 class="crm-feature-title">Relatórios que você realmente usa</h3>
+                <p class="crm-feature-description">Veja quantos leads viraram visitas. Identifique gargalos no funil de vendas.</p>
+            </div>
+        </div>
+
+        <div class="integrations-divider">
+            <div class="divider-line"></div>
+            <div class="divider-content">
+                <span class="material-symbols-outlined">link</span>
+                <h3>Integra com suas ferramentas favoritas</h3>
+            </div>
+            <div class="divider-line"></div>
         </div>
 
         <div class="integrations-grid">
@@ -35,10 +74,20 @@ const integrations: Integration[] = [
                     <div class="integration-icon">
                         <span class="material-symbols-outlined">{tool.icon}</span>
                     </div>
-                    <h3 class="integration-name">{tool.name}</h3>
-                    <span class="integration-type">{tool.type}</span>
+                    <div class="integration-info">
+                        <h3 class="integration-name">{tool.name}</h3>
+                        <span class="integration-type">{tool.type}</span>
+                    </div>
+                    <div class="integration-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Ativo</span>
+                    </div>
                 </div>
             ))}
+        </div>
+
+        <div class="integrations-footer">
+            <p>+ Centenas de outras integrações via Zapier, Make e webhooks</p>
         </div>
     </div>
 </section>

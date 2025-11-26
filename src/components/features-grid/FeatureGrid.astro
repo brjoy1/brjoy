@@ -99,6 +99,26 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
     border-radius: 16px;
 }
 
+/* Seção de Dor - Ícones Vermelhos */
+.feature-section.dor .feature-card .material-symbols-outlined {
+    color: #dc2626;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+}
+
+.feature-section.dor .feature-card:hover .material-symbols-outlined {
+    color: #b91c1c;
+}
+
+/* Seção de Solução - Ícones Verdes */
+.feature-section.solucao .feature-card .material-symbols-outlined {
+    color: #16a34a;
+    background: linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%);
+}
+
+.feature-section.solucao .feature-card:hover .material-symbols-outlined {
+    color: #15803d;
+}
+
 .feature-card h3 {
     font-size: 1.25rem;
     margin-bottom: 12px;

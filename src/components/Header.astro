@@ -6,20 +6,20 @@ const navigation = [
 ];
 ---
 
-<header class="site-header">
+<header class="site-header" role="banner">
     <div class="container header-container">
         <div class="logo">
-            <a href="/">
+            <a href="/" aria-label="BrJoy AI - Página inicial">
                 <span class="logo-text">BrJoy AI</span>
             </a>
         </div>
-        <nav class="site-nav" id="site-nav">
+        <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navegação principal">
             {navigation.map(item => (
                 <a href={item.href}>{item.label}</a>
             ))}
         </nav>
         <div class="header-actions" id="header-actions">
-            <a href="/imobiliaria/" class="btn-header-cta">Testar Grátis</a>
+            <a href="/imobiliaria/" class="btn-header-cta" aria-label="Testar plataforma gratuitamente">Testar Grátis</a>
         </div>
         <div class="mobile-menu-wrapper">
             <button class="hamburger-menu" aria-label="Menu" aria-expanded="false" id="hamburger-menu">
