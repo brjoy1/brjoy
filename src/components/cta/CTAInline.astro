@@ -108,15 +108,13 @@ const variantClass = `cta-inline--${variant}`;
 .cta-inline__content::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto 0;
   height: 4px;
   background: linear-gradient(90deg, #1A73E8 0%, #4285F4 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 18px 18px 0 0;
+  z-index: 1;
 }
 
 .cta-inline__content:hover::before {
