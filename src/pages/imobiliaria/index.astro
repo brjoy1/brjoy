@@ -6,7 +6,7 @@ import StepsGrid from '../../components/features-grid/StepsGrid.astro';
 import CTATestimonialSlider from '../../components/cta/CTATestimonialSlider.astro';
 import CTAInline from '../../components/cta/CTAInline.astro';
 import IntegrationsSection from '../../components/IntegrationsSection.astro';
-// import VideoSection from '../../components/VideoSection.astro'; // Temporariamente desabilitado
+
 import FAQSection from '../../components/FAQSection.astro';
 
 // Features data
@@ -146,8 +146,8 @@ const faqs = [
                 icon: 'support_agent'
             }}
             secondaryButton={{
-                text: 'Ver Demo',
-                href: '#video-section',
+                text: 'Ver Como Funciona',
+                href: '#como-funciona',
                 icon: 'play_circle'
             }}
             trustBadges={[
@@ -157,12 +157,7 @@ const faqs = [
             ]}
         />
 
-        <!-- VideoSection temporariamente desabilitado até ter vídeo demo real
-        <VideoSection
-            title="Demonstração BrJoy AI em Ação"
-            subtitle="Assista como nossa IA transforma leads em clientes automaticamente"
-        />
-        -->
+
 
         <!-- Features: O Problema -->
         <FeatureGrid
@@ -171,18 +166,16 @@ const faqs = [
             features={problemasFeatures}
             sectionId="problema"
             className="dor"
-        />
-
-        <!-- CTA 1: Após Problemas -->
-        <CTAInline
-            title="Cansado de Perder Leads?"
-            subtitle="Veja como a IA pode resolver todos esses problemas em uma demonstração gratuita."
-            primaryButton={{
-                text: 'Agendar Demonstração Grátis',
-                href: 'https://wa.me/5511997889281',
-                icon: 'calendar_today'
+            cta={{
+                title: 'Cansado de Perder Leads?',
+                subtitle: 'Veja como a IA pode resolver todos esses problemas em uma demonstração gratuita.',
+                primaryButton: {
+                    text: 'Resolver Esses Problemas Agora',
+                    href: 'https://wa.me/5511997889281',
+                    icon: 'calendar_today'
+                },
+                variant: 'urgent'
             }}
-            variant="urgent"
         />
 
         <!-- Features: A Solução -->
@@ -192,24 +185,24 @@ const faqs = [
             features={solucaoFeatures}
             sectionId="solucao"
             className="solucao"
-        />
-
-        <!-- CTA: Após Solução -->
-        <CTAInline
-            title="Pronto para Automatizar seu Atendimento?"
-            subtitle="Comece a converter mais leads em visitas hoje mesmo com nossa IA especializada."
-            primaryButton={{
-                text: 'Quero Automatizar Agora',
-                href: 'https://wa.me/5511997889281',
-                icon: 'rocket_launch'
+            cta={{
+                title: 'Pronto para Automatizar seu Atendimento?',
+                subtitle: 'Comece a converter mais leads em visitas hoje mesmo com nossa IA especializada.',
+                primaryButton: {
+                    text: 'Começar Minha Transformação',
+                    href: 'https://wa.me/5511997889281',
+                    icon: 'rocket_launch'
+                },
+                variant: 'success'
             }}
-            variant="success"
         />
 
         <!-- Como Funciona -->
         <StepsGrid
             title="Do Lead à Visita em 4 Passos"
             subtitle="Do primeiro contato até a visita agendada, tudo automatizado. Configure em 5 minutos."
+            sectionId="como-funciona"
+            className="has-cta-below"
             steps={[
                 {
                     icon: 'chat',
@@ -261,19 +254,16 @@ const faqs = [
             className="crm-benefits"
             autoplay={true}
             autoplayDelay={5000}
-        />
-
-        <!-- CTA 3: Após CRM Benefits -->
-        <CTAInline
-            title="Automatize Seu CRM Hoje Mesmo"
-            subtitle="Pare de perder tempo com planilhas. Comece a usar IA e libere 4h do seu dia."
-            primaryButton={{
-                text: 'Começar Agora',
-                href: 'https://wa.me/5511997889281',
-                icon: 'rocket_launch'
+            cta={{
+                title: 'Automatize Seu CRM Hoje Mesmo',
+                subtitle: 'Pare de perder tempo com planilhas. Comece a usar IA e libere 4h do seu dia.',
+                primaryButton: {
+                    text: 'Integrar Meu CRM',
+                    href: 'https://wa.me/5511997889281',
+                    icon: 'rocket_launch'
+                },
+                variant: 'success'
             }}
-            variant="success"
-            backgroundColor="gradient"
         />
 
         <IntegrationsSection />
@@ -328,7 +318,7 @@ const faqs = [
                 }
             ]}
             primaryButton={{
-                text: 'Agendar Demonstração',
+                text: 'Quero Resultados Semelhantes',
                 href: 'https://wa.me/5511997889281',
                 icon: 'rocket_launch'
             }}
@@ -346,7 +336,7 @@ const faqs = [
         <!-- CTA 4: Depois do FAQ (Última Chamada) -->
         <CTAInline
             title="Últimas Vagas para Demonstração Gratuita"
-            subtitle="Apenas 5 demonstrações disponíveis esta semana. Garanta a sua agora!"
+            subtitle="🔥 Apenas 3 vagas restantes esta semana. Garanta a sua agora!"
             primaryButton={{
                 text: 'Garantir Minha Vaga',
                 href: 'https://wa.me/5511997889281',
@@ -381,76 +371,4 @@ document.addEventListener('DOMContentLoaded', () => {
 @import '../../styles/components/results.css';
 @import '../../styles/components/video.css';
 @import '../../styles/sections.css';
-
-/* Floating WhatsApp Button */
-.floating-whatsapp {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.floating-whatsapp:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
-}
-
-@media (max-width: 768px) {
-    .floating-whatsapp {
-        width: 48px;
-        height: 48px;
-        bottom: 16px;
-        right: 16px;
-    }
-
-    .floating-whatsapp:hover {
-        transform: scale(1);
-    }
-
-    .floating-whatsapp svg {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-/* Slider Indicators (Dots) Fixes */
-.slider-indicators {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .slider-indicators {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 20px;
-    }
-
-    .slider-indicators .slider-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(26, 115, 232, 0.3);
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        padding: 0;
-    }
-
-    .slider-indicators .slider-dot.active {
-        background: #1A73E8;
-        width: 24px;
-        border-radius: 4px;
-    }
-}
-
 </style>

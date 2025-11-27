@@ -7,13 +7,16 @@
 }
 
 .crm-feature-card {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 16px;
     padding: 32px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .crm-feature-card::before {
@@ -25,14 +28,15 @@
     height: 4px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
     transform-origin: left;
 }
 
 .crm-feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-    border-color: transparent;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .crm-feature-card:hover::before {
@@ -42,24 +46,36 @@
 .crm-feature-icon {
     width: 56px;
     height: 56px;
-    background: var(--color-bg-light-blue);
-    border-radius: 12px;
+    background: rgba(26, 115, 232, 0.1);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.crm-feature-card:hover .crm-feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--color-primary);
+}
+
+.crm-feature-card:hover .crm-feature-icon .material-symbols-outlined {
+    color: white;
 }
 
 .crm-feature-icon .material-symbols-outlined {
     font-size: 32px;
     color: var(--color-primary);
+    transition: all 0.3s ease;
 }
 
 .crm-feature-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--color-text);
     margin-bottom: 12px;
+    letter-spacing: -0.02em;
 }
 
 .crm-feature-description {
@@ -74,17 +90,17 @@
     display: flex;
     align-items: center;
     gap: 24px;
-    margin-top: 64px;
-    margin-bottom: 40px;
+    margin-top: 80px;
+    margin-bottom: 48px;
 }
 
 .divider-line {
     flex: 1;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(26, 115, 232, 0.2) 50%,
-        transparent 100%);
+            transparent 0%,
+            rgba(26, 115, 232, 0.3) 50%,
+            transparent 100%);
 }
 
 .divider-content {
@@ -92,9 +108,11 @@
     align-items: center;
     gap: 12px;
     padding: 12px 24px;
-    background: rgba(26, 115, 232, 0.05);
-    border: 1px solid rgba(26, 115, 232, 0.15);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(26, 115, 232, 0.2);
     border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.05);
 }
 
 .divider-content .material-symbols-outlined {
@@ -112,21 +130,24 @@
 /* Integrations Grid */
 .integrations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
 }
 
 .integration-card {
-    background: var(--color-bg);
-    border: 1.5px solid var(--color-border);
-    border-radius: 12px;
-    padding: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 16px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .integration-card::before {
@@ -135,17 +156,18 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 3px;
+    width: 4px;
     background: var(--color-primary);
     transform: scaleY(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
     transform-origin: top;
 }
 
 .integration-card:hover {
-    transform: translateX(4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    border-color: rgba(26, 115, 232, 0.3);
+    transform: translateY(-4px) translateX(4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
 }
 
 .integration-card:hover::before {
@@ -155,18 +177,20 @@
 .integration-icon {
     width: 48px;
     height: 48px;
-    background: var(--color-bg-light-blue);
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .integration-card:hover .integration-icon {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, rgba(26, 115, 232, 0.15) 0%, rgba(26, 115, 232, 0.08) 100%);
+    transform: scale(1.1);
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .integration-icon .material-symbols-outlined {
@@ -192,17 +216,18 @@
 .integration-type {
     font-size: 0.75rem;
     color: var(--color-text-secondary);
-    background: var(--color-bg-alt);
+    background: rgba(0, 0, 0, 0.05);
     padding: 2px 8px;
     border-radius: 4px;
     width: fit-content;
+    font-weight: 500;
 }
 
 .integration-status {
     display: flex;
     align-items: center;
     gap: 6px;
-    opacity: 0;
+    opacity: 0.7;
     transition: opacity 0.3s ease;
 }
 
@@ -215,37 +240,46 @@
     height: 8px;
     background: #22c55e;
     border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse-green 2s infinite;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
+@keyframes pulse-green {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
     }
-    50% {
-        opacity: 0.5;
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
     }
 }
 
 .status-text {
     font-size: 0.75rem;
     color: #22c55e;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Footer */
 .integrations-footer {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 48px;
     padding-top: 32px;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .integrations-footer p {
     color: var(--color-text-secondary);
     font-size: 0.95rem;
     margin: 0;
-    font-style: italic;
+    font-weight: 500;
 }
 
 /* Responsive */
