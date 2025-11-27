@@ -27,7 +27,8 @@
   ],
   "devDependencies": {
     "astro": "^5.16.0",
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "terser": "^5.44.1"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

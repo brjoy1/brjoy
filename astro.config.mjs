@@ -18,7 +18,26 @@ export default defineConfig({
 
   build: {
     format: 'directory',
-    assets: 'assets'
+    assets: 'assets',
+    inlineStylesheets: 'auto'
+  },
+
+  vite: {
+    build: {
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true
+        }
+      },
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined
+        }
+      }
+    }
   },
 
   integrations: [sitemap()]
