@@ -36,7 +36,7 @@ const variantClass = `cta-inline--${variant}`;
 
 <section class={`cta-inline ${bgClass} ${variantClass}`}>
   <div class="container">
-    <div class="cta-inline__content">
+    <div class="cta-inline__wrapper">
       {variant === 'urgent' && (
         <div class="cta-badge cta-badge--urgent">
           <span class="material-symbols-outlined">schedule</span>
@@ -50,23 +50,25 @@ const variantClass = `cta-inline--${variant}`;
         </div>
       )}
 
-      <div class="cta-inline__text">
-        <h2 class="cta-inline__title">{title}</h2>
-        {subtitle && <p class="cta-inline__subtitle">{subtitle}</p>}
-      </div>
+      <div class="cta-inline__content">
+        <div class="cta-inline__text">
+          <h2 class="cta-inline__title">{title}</h2>
+          {subtitle && <p class="cta-inline__subtitle">{subtitle}</p>}
+        </div>
 
-      <div class="cta-inline__actions">
-        <a href={primaryButton.href} class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer">
-          {primaryButton.icon && <span class="material-symbols-outlined">{primaryButton.icon}</span>}
-          <span class="cta-btn__text">{primaryButton.text}</span>
-          <span class="cta-btn__arrow material-symbols-outlined">arrow_forward</span>
-        </a>
-        {secondaryButton && (
-          <a href={secondaryButton.href} class="cta-btn cta-btn--secondary">
-            {secondaryButton.icon && <span class="material-symbols-outlined">{secondaryButton.icon}</span>}
-            <span class="cta-btn__text">{secondaryButton.text}</span>
+        <div class="cta-inline__actions">
+          <a href={primaryButton.href} class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer">
+            {primaryButton.icon && <span class="material-symbols-outlined">{primaryButton.icon}</span>}
+            <span class="cta-btn__text">{primaryButton.text}</span>
+            <span class="cta-btn__arrow material-symbols-outlined">arrow_forward</span>
           </a>
-        )}
+          {secondaryButton && (
+            <a href={secondaryButton.href} class="cta-btn cta-btn--secondary">
+              {secondaryButton.icon && <span class="material-symbols-outlined">{secondaryButton.icon}</span>}
+              <span class="cta-btn__text">{secondaryButton.text}</span>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   </div>
@@ -87,6 +89,10 @@ const variantClass = `cta-inline--${variant}`;
 
 .cta-inline .container {
   max-width: 1100px;
+}
+
+.cta-inline__wrapper {
+  position: relative;
   margin-top: 16px;
 }
 
