@@ -13,89 +13,89 @@ import FAQSection from '../../components/FAQSection.astro';
 const problemasFeatures = [
     {
         icon: 'forum',
-        title: 'WhatsApp cheio',
-        description: 'Clientes sem resposta e leads esfriando.'
+        title: 'WhatsApp lotado',
+        description: 'Mensagens sem resposta acumulando enquanto leads esfriam a cada minuto.'
     },
     {
         icon: 'ac_unit',
         title: 'Leads esfriando',
-        description: 'Você demora 2h para responder e o lead já fechou com o concorrente.'
+        description: 'Demora de 2h para responder? O lead já fechou com seu concorrente agora.'
     },
     {
         icon: 'error_outline',
-        title: 'CRM bagunçado',
-        description: 'Ninguém sabe quem atender.'
+        title: 'CRM desorganizado',
+        description: 'Informações perdidas na bagunça e ninguém sabe quem atender primeiro.'
     },
     {
         icon: 'timer',
-        title: 'Corretores sobrecarregados',
-        description: 'Perdendo 4h/dia respondendo curiosos no WhatsApp.'
+        title: 'Tempo desperdiçado',
+        description: 'Sua equipe perde 4 horas por dia só respondendo leads não qualificados.'
     },
     {
         icon: 'event_busy',
-        title: 'Visitas perdidas',
-        description: 'Agendamentos que nunca acontecem.'
+        title: 'Visitas que não acontecem',
+        description: 'Agendamentos marcados com tanto esforço que viram no-show ou cancelamento.'
     },
     {
         icon: 'money_off',
-        title: 'Dinheiro perdido',
-        description: 'Verba de tráfego desperdiçada.'
+        title: 'Tráfego pago sem retorno',
+        description: 'Investimento pesado em anúncios mas você perde leads por demora na resposta.'
     }
 ];
 
 const solucaoFeatures = [
     {
         icon: 'schedule',
-        title: 'Atendimento 24h',
-        description: 'Responde instantaneamente, dia e noite.'
+        title: 'Atendimento 24/7',
+        description: 'Resposta instantânea em qualquer horário: madrugada, fim de semana ou feriado.'
     },
     {
         icon: 'psychology',
-        title: 'Conversa natural',
-        description: 'Interage como um humano, não um robô.'
+        title: 'Conversa humanizada',
+        description: 'IA que conversa naturalmente, entende contexto e cria conexão genuína com leads.'
     },
     {
         icon: 'verified',
-        title: 'Qualificação',
-        description: 'Filtra leads antes de passar ao corretor.'
+        title: 'Qualificação inteligente',
+        description: 'Filtra leads sérios automaticamente e identifica quem está pronto para visitar.'
     },
     {
         icon: 'home_work',
-        title: 'Sugestão de imóveis',
-        description: 'Busca opções ideais no seu banco de dados.'
+        title: 'Match perfeito de imóveis',
+        description: 'Analisa preferências e sugere as melhores opções do seu banco de imóveis.'
     },
     {
         icon: 'calendar_month',
-        title: 'Condução para visita',
-        description: 'Guia o cliente até o agendamento.'
+        title: 'Agendamento automático',
+        description: 'Conduz o lead naturalmente até marcar a visita diretamente no seu calendário.'
     },
     {
         icon: 'sync_alt',
-        title: 'Integração Kommo',
-        description: 'Tudo sincronizado em tempo real.'
+        title: 'Integração com CRM',
+        description: 'Sincroniza todos os dados de conversas e leads automaticamente em tempo real.'
     }
 ];
 
 const crmBenefitsFeatures = [
     {
         icon: 'database',
-        title: 'Dados sempre atualizados',
-        description: 'Orçamento, preferências e histórico registrados automaticamente. Zero trabalho manual de digitação.'
+        title: 'Dados atualizados automaticamente',
+        description: 'Orçamento, preferências e histórico salvos em tempo real. Zero digitação.'
     },
     {
         icon: 'target',
-        title: 'Leads qualificados e priorizados',
-        description: 'IA identifica os mais quentes e organiza por prioridade. Você foca apenas nos que estão prontos para fechar.'
+        title: 'Priorização inteligente',
+        description: 'IA identifica leads quentes e organiza por urgência. Foco em quem vai fechar.'
     },
     {
         icon: 'notifications_active',
-        title: 'Nunca perca um follow-up',
-        description: 'Lembretes automáticos de visitas e retornos. Agenda sincronizada com suas conversas.'
+        title: 'Follow-up no momento certo',
+        description: 'Lembretes automáticos de visitas e retornos sempre sincronizados com agenda.'
     },
     {
         icon: 'trending_up',
-        title: 'Relatórios que você realmente usa',
-        description: 'Veja quantos leads viraram visitas. Identifique gargalos no funil de vendas.'
+        title: 'Relatórios práticos e acionáveis',
+        description: 'Veja conversão de leads em visitas e identifique gargalos no funil de vendas.'
     }
 ];
 
@@ -192,6 +192,18 @@ const faqs = [
             features={solucaoFeatures}
             sectionId="solucao"
             className="solucao"
+        />
+
+        <!-- CTA: Após Solução -->
+        <CTAInline
+            title="Pronto para Automatizar seu Atendimento?"
+            subtitle="Comece a converter mais leads em visitas hoje mesmo com nossa IA especializada."
+            primaryButton={{
+                text: 'Quero Automatizar Agora',
+                href: 'https://wa.me/5511997889281',
+                icon: 'rocket_launch'
+            }}
+            variant="success"
         />
 
         <!-- Como Funciona -->
@@ -329,7 +341,9 @@ const faqs = [
             autoplayDelay={5000}
         />
 
-        <!-- CTA 4: Antes do FAQ (Última Chamada) -->
+        <FAQSection faqs={faqs} />
+
+        <!-- CTA 4: Depois do FAQ (Última Chamada) -->
         <CTAInline
             title="Últimas Vagas para Demonstração Gratuita"
             subtitle="Apenas 5 demonstrações disponíveis esta semana. Garanta a sua agora!"
@@ -340,8 +354,6 @@ const faqs = [
             }}
             variant="urgent"
         />
-
-        <FAQSection faqs={faqs} />
 
     </main>
 
