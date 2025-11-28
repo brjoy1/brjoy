@@ -27,12 +27,15 @@
   ],
   "devDependencies": {
     "astro": "^5.16.0",
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "terser": "^5.44.1"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/vite": "^4.1.17",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "tailwindcss": "^4.1.17",
     "zod": "^3.25.76"
   }
 }

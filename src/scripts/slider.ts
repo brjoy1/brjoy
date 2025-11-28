@@ -38,7 +38,7 @@ export class Slider {
       autoplayDelay: 5000,
       threshold: 0.5,
       indicatorsSelector: '',
-      onChange: () => {},
+      onChange: () => { },
       ...options
     };
 
@@ -129,6 +129,9 @@ export class Slider {
     if (!item) return;
 
     const itemWidth = item.offsetWidth;
+    // Prevent scrolling if item hasn't been rendered yet
+    if (itemWidth === 0) return;
+
     const scrollLeft = (itemWidth + this.options.gap) * index;
 
     this.slider.scrollTo({
@@ -204,12 +207,13 @@ export function initDataSliders(): void {
 
   sliders.forEach((sliderEl) => {
     const sliderName = sliderEl.getAttribute('data-slider');
+    const itemSelector = sliderEl.getAttribute('data-slider-item') || '.feature-card';
     const autoplay = sliderEl.getAttribute('data-slider-autoplay') === 'true';
     const autoplayDelay = parseInt(sliderEl.getAttribute('data-slider-delay') || '5000', 10);
 
     new Slider({
       sliderSelector: `[data-slider="${sliderName}"]`,
-      itemSelector: '.feature-card',
+      itemSelector,
       indicatorsSelector: `#slider-indicators-${sliderName}`,
       gap: 16,
       autoplay,

@@ -4,7 +4,7 @@
 }
 
 .footer-main {
-    padding: 80px 0 60px;
+    padding: var(--section-padding-large) 0 40px;
 }
 
 .footer-grid {
@@ -107,7 +107,7 @@
 }
 
 .footer-legal a {
-    color: #5f6368;
+    color: #3C4043;
     text-decoration: none;
     font-size: 0.8125rem;
     transition: color 0.2s ease;
@@ -131,7 +131,7 @@
 
 @media (max-width: 768px) {
     .footer-main {
-        padding: 60px 0 40px;
+        padding: var(--section-padding-large) 0 40px;
     }
 
     .footer-grid {
@@ -149,4 +149,20 @@
         flex-wrap: wrap;
         gap: 16px 24px;
     }
+}
+
+.footer-company-info {
+    margin-top: 24px;
+    font-size: 0.875rem;
+    color: #5f6368;
+    line-height: 1.6;
+}
+
+.footer-company-info p {
+    margin: 0;
+}
+
+.footer-copyright {
+    font-size: 0.875rem;
+    color: #5f6368;
 }

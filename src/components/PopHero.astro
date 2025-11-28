@@ -87,7 +87,14 @@ const {
 
     // Get dynamic words from data attribute to pass to script
     const heroSection = document.querySelector('.hero');
-    const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+    let dynamicWords = [];
+
+    try {
+        dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+    } catch (error) {
+        console.error('Failed to parse dynamic words:', error);
+        dynamicWords = [];
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         initHeroAnimation(dynamicWords);
@@ -98,20 +105,20 @@ const {
 #dynamic-word {
     display: inline-block;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    min-width: 120px;
+    min-width: 200px;
     text-align: left;
 }
 
 @media (max-width: 768px) {
     #dynamic-word {
-        min-width: 90px;
+        min-width: 150px;
         font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
     #dynamic-word {
-        min-width: 80px;
+        min-width: 120px;
         font-size: 1em;
     }
 }

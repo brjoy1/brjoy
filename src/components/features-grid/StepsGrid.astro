@@ -8,6 +8,23 @@ interface Step {
   description: string;
 }
 
+interface CTAProps {
+  title: string;
+  subtitle?: string;
+  primaryButton: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+    icon?: string;
+  };
+  variant?: 'default' | 'urgent' | 'success';
+  backgroundColor?: 'white' | 'gray' | 'gradient';
+}
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -17,6 +34,7 @@ interface Props {
   backgroundColor?: 'white' | 'gray' | 'gradient';
   className?: string;
   animated?: boolean;
+  cta?: CTAProps;
 }
 
 const {
@@ -27,7 +45,8 @@ const {
   orientation = 'horizontal',
   backgroundColor = 'gradient',
   className = '',
-  animated = true
+  animated = true,
+  cta
 } = Astro.props;
 ---
 

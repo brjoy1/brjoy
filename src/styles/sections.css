@@ -48,3 +48,20 @@
     margin: 0;
     border: none;
 }
+
+/* Utility: Reduce bottom padding when followed by CTA */
+.has-cta-below {
+    padding-bottom: 60px !important;
+}
+
+@media (max-width: 968px) {
+    .has-cta-below {
+        padding-bottom: 40px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .has-cta-below {
+        padding-bottom: 30px !important;
+    }
+}

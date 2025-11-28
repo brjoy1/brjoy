@@ -2,7 +2,7 @@
     /* Colors */
     --color-bg: #FFFFFF;
     --color-text: #202124;
-    --color-text-secondary: #5F6368;
+    --color-text-secondary: #3C4043;
     --color-primary: #1A73E8;
     --color-google-blue: #1A73E8;
     --color-google-red: #EA4335;
@@ -30,9 +30,9 @@
     --color-btn-secondary-text: #202124;
 
     /* Spacing - Desktop */
-    --section-padding-large: 120px;
-    --section-padding-medium: 80px;
-    --section-padding-small: 40px;
+    --section-padding-large: 70px;
+    --section-padding-medium: 30px;
+    --section-padding-small: 25px;
 
     /* Font */
     --font-primary: 'Plus Jakarta Sans', sans-serif;
@@ -41,24 +41,24 @@
 /* Responsive spacing adjustments */
 @media (max-width: 768px) {
     :root {
-        --section-padding-large: 60px;
-        --section-padding-medium: 50px;
-        --section-padding-small: 30px;
+        --section-padding-large: 50px;
+        --section-padding-medium: 25px;
+        --section-padding-small: 20px;
     }
 }
 
 @media (max-width: 480px) {
     :root {
-        --section-padding-large: 48px;
-        --section-padding-medium: 40px;
-        --section-padding-small: 24px;
+        --section-padding-large: 50px;
+        --section-padding-medium: 20px;
+        --section-padding-small: 18px;
     }
 }
 
 @media (max-width: 360px) {
     :root {
-        --section-padding-large: 40px;
-        --section-padding-medium: 32px;
-        --section-padding-small: 20px;
+        --section-padding-large: 20px;
+        --section-padding-medium: 18px;
+        --section-padding-small: 15px;
     }
 }
