@@ -240,18 +240,21 @@
 
     .floating-elements-container {
         bottom: 20px;
+        left: 7.5%;
         right: 7.5%;
-        width: 85%;
+        width: auto;
         gap: 12px;
     }
 
     .floating-cta-wrapper {
         flex: 1;
+        min-width: 0;
     }
 
     .floating-cta {
         padding: 16px 14px;
         gap: 8px;
+        max-width: 100%;
     }
 
     .floating-cta-text {
@@ -290,14 +293,16 @@
 
     .floating-elements-container {
         bottom: 16px;
+        left: 7.5%;
         right: 7.5%;
-        width: 85%;
+        width: auto;
         gap: 10px;
     }
 
     .floating-cta {
         padding: 14px 12px;
         gap: 6px;
+        max-width: 100%;
     }
 
     .floating-cta-text {
@@ -320,14 +325,16 @@
 @media (max-width: 360px) {
     .floating-elements-container {
         bottom: 14px;
+        left: 7.5%;
         right: 7.5%;
-        width: 85%;
+        width: auto;
         gap: 8px;
     }
 
     .floating-cta {
         padding: 12px 10px;
         gap: 6px;
+        max-width: 100%;
     }
 
     .floating-cta-text {

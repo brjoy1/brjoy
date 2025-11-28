@@ -388,8 +388,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let elementsShown = false;
     let timeoutId = null;
 
+    console.log('Floating elements:', { closeButton, ctaWrapper, whatsappStatus });
+
     // Check if CTA was previously closed
     const ctaClosed = localStorage.getItem('brjoy-cta-closed') === 'true';
+    console.log('CTA closed in localStorage:', ctaClosed);
+
     if (ctaClosed && ctaWrapper) {
         ctaWrapper.classList.add('hidden');
     }
@@ -399,15 +403,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (elementsShown) return;
 
         elementsShown = true;
+        console.log('Showing floating elements...');
 
         // Show CTA balloon (if not previously closed)
         if (!ctaClosed && ctaWrapper && !ctaWrapper.classList.contains('hidden')) {
             ctaWrapper.classList.add('show');
+            console.log('CTA shown');
+        } else {
+            console.log('CTA not shown:', { ctaClosed, hasWrapper: !!ctaWrapper });
         }
 
         // Start pulse animation on WhatsApp status indicator
         if (whatsappStatus) {
             whatsappStatus.classList.add('pulse');
+            console.log('Pulse animation started');
         }
 
         // Clear timeout if exists
