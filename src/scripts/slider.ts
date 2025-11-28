@@ -129,6 +129,9 @@ export class Slider {
     if (!item) return;
 
     const itemWidth = item.offsetWidth;
+    // Prevent scrolling if item hasn't been rendered yet
+    if (itemWidth === 0) return;
+
     const scrollLeft = (itemWidth + this.options.gap) * index;
 
     this.slider.scrollTo({

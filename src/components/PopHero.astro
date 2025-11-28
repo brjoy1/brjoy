@@ -87,7 +87,14 @@ const {
 
     // Get dynamic words from data attribute to pass to script
     const heroSection = document.querySelector('.hero');
-    const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+    let dynamicWords = [];
+
+    try {
+        dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+    } catch (error) {
+        console.error('Failed to parse dynamic words:', error);
+        dynamicWords = [];
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         initHeroAnimation(dynamicWords);
