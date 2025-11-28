@@ -1,21 +1,57 @@
 ---
 import '../styles/components/integrations.css';
 
-interface Integration {
+interface Feature {
   name: string;
-  type: string;
+  description: string;
   icon: string;
+  isViewMore?: boolean;
+  href?: string;
 }
 
-const integrations: Integration[] = [
-  { name: 'WhatsApp', type: 'Comunicação', icon: 'chat' },
-  { name: 'RD Station', type: 'Marketing', icon: 'campaign' },
-  { name: 'Vista', type: 'CRM', icon: 'domain' },
-  { name: 'Universal', type: 'CRM', icon: 'storage' },
-  { name: 'Salesforce', type: 'CRM', icon: 'cloud' },
-  { name: 'PipeDrive', type: 'CRM', icon: 'view_kanban' },
-  { name: 'Google Calendar', type: 'Agenda', icon: 'calendar_today' },
-  { name: 'Zapier', type: 'Automação', icon: 'bolt' }
+const features: Feature[] = [
+  {
+    name: 'IA Multimodal',
+    description: 'Entende voz, texto e fotos enviadas pelo cliente',
+    icon: 'psychology'
+  },
+  {
+    name: 'Atendimento 24/7',
+    description: 'WhatsApp sempre ativo, sem pausas ou horários',
+    icon: 'schedule'
+  },
+  {
+    name: 'Qualificação Automática',
+    description: 'Extrai e preenche dados do lead automaticamente',
+    icon: 'verified'
+  },
+  {
+    name: 'Match de Imóveis',
+    description: 'Sugere propriedades ideais para cada cliente',
+    icon: 'home_work'
+  },
+  {
+    name: 'Agendamento Inteligente',
+    description: 'Marca visitas sem intervenção humana',
+    icon: 'calendar_month'
+  },
+  {
+    name: 'CRM Sincronizado',
+    description: 'Dados atualizados em tempo real no seu sistema',
+    icon: 'sync_alt'
+  },
+  {
+    name: 'Follow-up Automatizado',
+    description: 'Nutre leads no momento certo automaticamente',
+    icon: 'autorenew'
+  },
+  {
+    name: 'Ver Mais Funcionalidades',
+    description: 'Descubra tudo que a BrJoy pode fazer por você',
+    icon: 'add_circle',
+    isViewMore: true,
+    href: 'https://wa.me/5511997889281'
+  }
 ];
 ---
 
@@ -24,32 +60,36 @@ const integrations: Integration[] = [
         <div class="integrations-divider">
             <div class="divider-line"></div>
             <div class="divider-content">
-                <span class="material-symbols-outlined">link</span>
-                <h3>Integra com suas ferramentas favoritas</h3>
+                <span class="material-symbols-outlined">auto_awesome</span>
+                <h3>Funcionalidades que fazem a diferença</h3>
             </div>
             <div class="divider-line"></div>
         </div>
 
         <div class="integrations-grid">
-            {integrations.map(tool => (
-                <div class="integration-card">
-                    <div class="integration-icon">
-                        <span class="material-symbols-outlined">{tool.icon}</span>
+            {features.map(feature => (
+                feature.isViewMore ? (
+                    <a href={feature.href} target="_blank" rel="noopener noreferrer" class="integration-card view-more-card">
+                        <div class="integration-icon">
+                            <span class="material-symbols-outlined">{feature.icon}</span>
+                        </div>
+                        <div class="integration-info">
+                            <h3 class="integration-name">{feature.name}</h3>
+                            <span class="integration-type">{feature.description}</span>
+                        </div>
+                    </a>
+                ) : (
+                    <div class="integration-card">
+                        <div class="integration-icon">
+                            <span class="material-symbols-outlined">{feature.icon}</span>
+                        </div>
+                        <div class="integration-info">
+                            <h3 class="integration-name">{feature.name}</h3>
+                            <span class="integration-type">{feature.description}</span>
+                        </div>
                     </div>
-                    <div class="integration-info">
-                        <h3 class="integration-name">{tool.name}</h3>
-                        <span class="integration-type">{tool.type}</span>
-                    </div>
-                    <div class="integration-status">
-                        <span class="status-dot"></span>
-                        <span class="status-text">Ativo</span>
-                    </div>
-                </div>
+                )
             ))}
-        </div>
-
-        <div class="integrations-footer">
-            <p>+ Centenas de outras integrações via Zapier, Make e webhooks</p>
         </div>
     </div>
 </section>
