@@ -127,18 +127,11 @@ canvas#hero-particles {
     }
 }
 
-/* Desktop padding override */
-@media (min-width: 769px) {
-    .hero {
-        padding: 80px 0;
-    }
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .hero {
         min-height: auto;
-        padding: 80px 24px 60px 24px;
+        padding: var(--section-padding-large) 24px;
     }
 
     .hero-container {
@@ -194,11 +187,11 @@ canvas#hero-particles {
 
 @media (max-width: 480px) {
     .hero {
-        padding: 60px 20px 50px 20px;
+        padding: var(--section-padding-large) 20px;
     }
 
     .hero-title {
-        font-size: 2.25rem;
+        font-size: 2.69rem;
         line-height: 1.2;
         margin-bottom: 16px;
         font-weight: 800;
@@ -240,7 +233,7 @@ canvas#hero-particles {
 
 @media (max-width: 360px) {
     .hero {
-        padding: 50px 16px 40px 16px;
+        padding: var(--section-padding-large) 16px;
     }
 
     .hero-title {

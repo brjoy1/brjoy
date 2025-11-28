@@ -2,7 +2,7 @@
    SECTION
    ================================ */
 .cta-testimonial-slider {
-    padding: 80px 0;
+    padding: var(--section-padding-large) 0;
     position: relative;
 }
 
@@ -423,10 +423,6 @@
     .cta-testimonial-slider .container {
         padding-left: 24px;
         padding-right: 24px;
-    }
-
-    .cta-testimonial-slider {
-        padding: 60px 0;
     }
 
     .cta-testimonial-title {
