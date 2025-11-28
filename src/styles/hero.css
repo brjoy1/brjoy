@@ -261,6 +261,7 @@ canvas#hero-particles {
 
 /* Disable hover effects on touch devices */
 @media (hover: none) and (pointer: coarse) {
+
     .hero-actions a:hover,
     .hero-actions button:hover {
         transform: none;

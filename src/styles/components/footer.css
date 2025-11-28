@@ -150,3 +150,19 @@
         gap: 16px 24px;
     }
 }
+
+.footer-company-info {
+    margin-top: 24px;
+    font-size: 0.875rem;
+    color: #5f6368;
+    line-height: 1.6;
+}
+
+.footer-company-info p {
+    margin: 0;
+}
+
+.footer-copyright {
+    font-size: 0.875rem;
+    color: #5f6368;
+}

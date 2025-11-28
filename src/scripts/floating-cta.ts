@@ -19,7 +19,7 @@ interface FloatingCTAConfig {
   avatarDelay?: number;        // Delay to show avatar (default: 3s)
   ctaDelay?: number;           // Additional delay after avatar (default: 2s)
   scrollTrigger?: boolean;      // Enable scroll trigger (default: true)
-  storageExpiry?: number;       // Days to remember close action (default: 7)
+  scrollTrigger?: boolean;      // Enable scroll trigger (default: true)
 }
 
 class FloatingCTA extends HTMLElement {
@@ -45,7 +45,7 @@ class FloatingCTA extends HTMLElement {
       avatarDelay: parseInt(this.getAttribute('avatar-delay') || '3000'),
       ctaDelay: parseInt(this.getAttribute('cta-delay') || '2000'),
       scrollTrigger: this.getAttribute('scroll-trigger') !== 'false',
-      storageExpiry: parseInt(this.getAttribute('storage-expiry') || '7')
+      scrollTrigger: this.getAttribute('scroll-trigger') !== 'false'
     };
   }
 
@@ -208,35 +208,11 @@ class FloatingCTA extends HTMLElement {
   }
 
   private isCtaClosed(): boolean {
-    try {
-      const stored = localStorage.getItem('brjoy-cta-closed');
-      if (!stored) return false;
-
-      const { closedAt } = JSON.parse(stored);
-      const expiryTime = this.config.storageExpiry * 24 * 60 * 60 * 1000; // days to ms
-      const now = Date.now();
-
-      // Check if storage has expired
-      if (now - closedAt > expiryTime) {
-        localStorage.removeItem('brjoy-cta-closed');
-        return false;
-      }
-
-      return true;
-    } catch {
-      return false;
-    }
+    return false;
   }
 
   private saveClosedState() {
-    try {
-      const data = {
-        closedAt: Date.now()
-      };
-      localStorage.setItem('brjoy-cta-closed', JSON.stringify(data));
-    } catch (error) {
-      console.error('Failed to save CTA closed state:', error);
-    }
+    // LocalStorage usage removed as per user request
   }
 
   private clearTimers() {

@@ -158,32 +158,11 @@ class FloatingCTAManager {
   }
 
   isCtaClosed() {
-    try {
-      const stored = localStorage.getItem('brjoy-cta-closed');
-      if (!stored) return false;
-
-      const { closedAt } = JSON.parse(stored);
-      const expiryTime = this.config.storageExpiry * 24 * 60 * 60 * 1000;
-      const now = Date.now();
-
-      if (now - closedAt > expiryTime) {
-        localStorage.removeItem('brjoy-cta-closed');
-        return false;
-      }
-
-      return true;
-    } catch {
-      return false;
-    }
+    return false;
   }
 
   saveClosedState() {
-    try {
-      const data = { closedAt: Date.now() };
-      localStorage.setItem('brjoy-cta-closed', JSON.stringify(data));
-    } catch (error) {
-      console.error('Failed to save CTA state:', error);
-    }
+    // LocalStorage usage removed as per user request
   }
 
   clearTimers() {
