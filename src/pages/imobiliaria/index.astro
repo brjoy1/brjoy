@@ -1,132 +1,147 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import PopHero from '../../components/PopHero.astro';
-import FeatureGrid from '../../components/features-grid/FeatureGrid.astro';
-import StepsGrid from '../../components/features-grid/StepsGrid.astro';
-import CTATestimonialSlider from '../../components/cta/CTATestimonialSlider.astro';
-import CTAInline from '../../components/cta/CTAInline.astro';
-import IntegrationsSection from '../../components/IntegrationsSection.astro';
+import Layout from "../../layouts/Layout.astro";
+import PopHero from "../../components/PopHero.astro";
+import FeatureGrid from "../../components/features-grid/FeatureGrid.astro";
+import StepsGrid from "../../components/features-grid/StepsGrid.astro";
+import CTATestimonialSlider from "../../components/cta/CTATestimonialSlider.astro";
+import CTAInline from "../../components/cta/CTAInline.astro";
+import IntegrationsSection from "../../components/IntegrationsSection.astro";
 
-import FAQSection from '../../components/FAQSection.astro';
+import FAQSection from "../../components/FAQSection.astro";
 
 // Features data
 const problemasFeatures = [
     {
-        icon: 'forum',
-        title: 'WhatsApp Sempre Lotado',
-        description: 'Mensagens sem resposta acumulando enquanto leads esfriam a cada minuto.'
+        icon: "forum",
+        title: "WhatsApp Sempre Lotado",
+        description:
+            "Mensagens sem resposta acumulando enquanto leads esfriam a cada minuto.",
     },
     {
-        icon: 'ac_unit',
-        title: 'Leads Esfriando Rápido',
-        description: 'Demora de 2h para responder? O lead já fechou com seu concorrente agora.'
+        icon: "ac_unit",
+        title: "Leads Esfriando Rápido",
+        description:
+            "Demora de 2h para responder? O lead já fechou com seu concorrente agora.",
     },
     {
-        icon: 'error_outline',
-        title: 'CRM Totalmente Desorganizado',
-        description: 'Informações perdidas na bagunça e ninguém sabe quem atender primeiro.'
+        icon: "error_outline",
+        title: "CRM Totalmente Desorganizado",
+        description:
+            "Informações perdidas na bagunça e ninguém sabe quem atender primeiro.",
     },
     {
-        icon: 'timer',
-        title: 'Tempo Sendo Desperdiçado',
-        description: 'Sua equipe perde 4 horas por dia só respondendo leads não qualificados.'
+        icon: "timer",
+        title: "Tempo Sendo Desperdiçado",
+        description:
+            "Sua equipe perde 4 horas por dia só respondendo leads não qualificados.",
     },
     {
-        icon: 'event_busy',
-        title: 'Visitas Não Acontecem',
-        description: 'Agendamentos marcados com tanto esforço que viram no-show ou cancelamento.'
+        icon: "event_busy",
+        title: "Visitas Não Acontecem",
+        description:
+            "Agendamentos marcados com tanto esforço que viram no-show ou cancelamento.",
     },
     {
-        icon: 'money_off',
-        title: 'Tráfego Sem Retorno',
-        description: 'Investimento pesado em anúncios mas você perde leads por demora na resposta.'
-    }
+        icon: "money_off",
+        title: "Tráfego Sem Retorno",
+        description:
+            "Investimento pesado em anúncios mas você perde leads por demora na resposta.",
+    },
 ];
 
 const solucaoFeatures = [
     {
-        icon: 'schedule',
-        title: 'Atendimento Sempre Ativo',
-        description: 'Resposta instantânea em qualquer horário: madrugada, fim de semana ou feriado.'
+        icon: "schedule",
+        title: "Atendimento Sempre Ativo",
+        description:
+            "Resposta instantânea em qualquer horário: madrugada, fim de semana ou feriado.",
     },
     {
-        icon: 'psychology',
-        title: 'Conversa Totalmente Humanizada',
-        description: 'IA que conversa naturalmente, entende contexto e cria conexão genuína com leads.'
+        icon: "psychology",
+        title: "Conversa Totalmente Humanizada",
+        description:
+            "IA que conversa naturalmente, entende contexto e cria conexão genuína com leads.",
     },
     {
-        icon: 'verified',
-        title: 'Qualificação Super Inteligente',
-        description: 'Filtra leads sérios automaticamente e identifica quem está pronto para visitar.'
+        icon: "verified",
+        title: "Qualificação Super Inteligente",
+        description:
+            "Filtra leads sérios automaticamente e identifica quem está pronto para visitar.",
     },
     {
-        icon: 'home_work',
-        title: 'Match Perfeito Imóveis',
-        description: 'Analisa preferências do lead e sugere automaticamente as melhores opções do seu portfólio.'
+        icon: "home_work",
+        title: "Match Perfeito Imóveis",
+        description:
+            "Analisa preferências do lead e sugere automaticamente as melhores opções do seu portfólio.",
     },
     {
-        icon: 'calendar_month',
-        title: 'Agendamento Automático',
-        description: 'Conduz o lead naturalmente até marcar a visita diretamente no seu calendário.'
+        icon: "calendar_month",
+        title: "Agendamento Automático",
+        description:
+            "Conduz o lead naturalmente até marcar a visita diretamente no seu calendário.",
     },
     {
-        icon: 'sync_alt',
-        title: 'Integração CRM Perfeita',
-        description: 'Sincroniza todos os dados de conversas e leads automaticamente em tempo real.'
-    }
+        icon: "sync_alt",
+        title: "Integração CRM Perfeita",
+        description:
+            "Sincroniza todos os dados de conversas e leads automaticamente em tempo real.",
+    },
 ];
 
 const crmBenefitsFeatures = [
     {
-        icon: 'database',
-        title: 'Dados Sempre Atualizados',
-        description: 'Orçamento, preferências e histórico salvos em tempo real. Zero digitação.'
+        icon: "database",
+        title: "Dados Sempre Atualizados",
+        description:
+            "Orçamento, preferências e histórico salvos em tempo real. Zero digitação.",
     },
     {
-        icon: 'target',
-        title: 'Priorização Super Inteligente',
-        description: 'IA identifica leads quentes e organiza por urgência. Foco em quem vai fechar.'
+        icon: "target",
+        title: "Priorização Super Inteligente",
+        description:
+            "IA identifica leads quentes e organiza por urgência. Foco em quem vai fechar.",
     },
     {
-        icon: 'notifications_active',
-        title: 'Follow-up Momento Certo',
-        description: 'Lembretes automáticos de visitas e retornos sempre sincronizados com agenda.'
+        icon: "history_edu",
+        title: "Histórico Unificado",
+        description:
+            "Acesse a transcrição completa e o contexto de cada conversa no seu CRM.",
     },
     {
-        icon: 'trending_up',
-        title: 'Relatórios Práticos Acionáveis',
-        description: 'Veja conversão de leads em visitas e identifique gargalos no funil de vendas.'
-    }
+        icon: "trending_up",
+        title: "Relatórios Práticos Acionáveis",
+        description:
+            "Veja conversão de leads em visitas e identifique gargalos no funil de vendas.",
+    },
 ];
 
 const faqs = [
     {
-        icon: 'play_circle',
-        question: 'Como funciona a demonstração gratuita?',
-        answer: 'Agende uma demonstração personalizada de 30 minutos com nosso time. Vamos mostrar como a IA funciona no seu cenário específico, respondendo suas dúvidas em tempo real. Sem compromisso!'
+        icon: "play_circle",
+        question: "Como funciona a demonstração gratuita?",
+        answer: "Agende uma demonstração personalizada de 30 minutos com nosso time. Vamos mostrar como a IA funciona no seu cenário específico, respondendo suas dúvidas em tempo real. Sem compromisso!",
     },
     {
-        icon: 'calendar_month',
-        question: 'Quanto tempo leva para implementar?',
-        answer: 'A implementação completa leva de 5 a 7 dias. Nós cuidamos de toda a configuração, treinamento da IA e integração com seu CRM. Você só precisa nos fornecer as informações dos seus imóveis e processos.'
+        icon: "calendar_month",
+        question: "Quanto tempo leva para implementar?",
+        answer: "A implementação completa leva de 5 a 7 dias. Nós cuidamos de toda a configuração, treinamento da IA e integração com seu CRM. Você só precisa nos fornecer as informações dos seus imóveis e processos.",
     },
     {
-        icon: 'engineering',
-        question: 'Preciso ter conhecimentos técnicos?',
-        answer: 'Não! Nós cuidamos de tudo: desde a configuração inicial até a integração com suas ferramentas. Nossa equipe técnica faz o trabalho pesado. Você só precisa aprovar e começar a usar.'
+        icon: "engineering",
+        question: "Preciso ter conhecimentos técnicos?",
+        answer: "Não! Nós cuidamos de tudo: desde a configuração inicial até a integração com suas ferramentas. Nossa equipe técnica faz o trabalho pesado. Você só precisa aprovar e começar a usar.",
     },
     {
-        icon: 'extension',
-        question: 'Como funciona a integração com meu CRM?',
-        answer: 'A BrJoy se integra nativamente com os principais CRMs imobiliários (Kommo, Vista, Universal, Salesforce). Todos os dados de conversas, leads qualificados e agendamentos são sincronizados automaticamente em tempo real.'
+        icon: "extension",
+        question: "Como funciona a integração com meu CRM?",
+        answer: "A BrJoy se integra nativamente com os principais CRMs imobiliários (Kommo, Vista, Universal, Salesforce). Todos os dados de conversas, leads qualificados e agendamentos são sincronizados automaticamente em tempo real.",
     },
     {
-        icon: 'star',
-        question: 'Qual o diferencial da BRJOY vs outros chatbots?',
-        answer: 'Somos especializados em imobiliárias. Nossa IA foi treinada especificamente para o mercado imobiliário: entende jargões do setor, qualifica leads com precisão e conduz o cliente até o agendamento da visita. Não é um chatbot genérico adaptado - é uma solução feita sob medida para vender e alugar imóveis.'
-    }
+        icon: "star",
+        question: "Qual o diferencial da BRJOY vs outros chatbots?",
+        answer: "Somos especializados em imobiliárias. Nossa IA foi treinada especificamente para o mercado imobiliário: entende jargões do setor, qualifica leads com precisão e conduz o cliente até o agendamento da visita. Não é um chatbot genérico adaptado - é uma solução feita sob medida para vender e alugar imóveis.",
+    },
 ];
-
 ---
 
 <Layout
@@ -135,29 +150,27 @@ const faqs = [
 >
     <main>
         <PopHero
-            dynamicWords={['Venda', 'Alugue']}
+            dynamicWords={["Venda", "Alugue"]}
             title="mais imóveis com"
             highlightedText="Agente IA no WhatsApp"
             subtitle="Atendimento com IA que qualifica leads e agenda visitas automaticamente."
             boldText="qualifica leads e agenda visitas"
             primaryButton={{
-                text: 'Falar com Especialista',
-                href: 'https://wa.me/5511997889281',
-                icon: 'support_agent'
+                text: "Falar com Especialista",
+                href: "https://wa.me/5511997889281",
+                icon: "support_agent",
             }}
             secondaryButton={{
-                text: 'Ver Como Funciona',
-                href: '#como-funciona',
-                icon: 'play_circle'
+                text: "Ver Como Funciona",
+                href: "#como-funciona",
+                icon: "play_circle",
             }}
             trustBadges={[
-                { icon: 'apartment', text: '200+ Empresas' },
-                { icon: 'visibility', text: '+1.500 Visitas/mês' },
-                { icon: 'speed', text: 'Resposta em 30s' }
+                { icon: "apartment", text: "200+ Empresas" },
+                { icon: "visibility", text: "+1.500 Visitas/mês" },
+                { icon: "speed", text: "Resposta em 30s" },
             ]}
         />
-
-
 
         <!-- Features: O Problema -->
         <FeatureGrid
@@ -167,14 +180,15 @@ const faqs = [
             sectionId="problema"
             className="dor"
             cta={{
-                title: 'Cansado de Perder Leads?',
-                subtitle: 'Veja como a IA pode resolver todos esses problemas em uma demonstração gratuita.',
+                title: "Cansado de Perder Leads?",
+                subtitle:
+                    "Veja como a IA pode resolver todos esses problemas em uma demonstração gratuita.",
                 primaryButton: {
-                    text: 'Resolver Esses Problemas Agora',
-                    href: 'https://wa.me/5511997889281',
-                    icon: 'calendar_today'
+                    text: "Resolver Esses Problemas Agora",
+                    href: "https://wa.me/5511997889281",
+                    icon: "calendar_today",
                 },
-                variant: 'urgent'
+                variant: "urgent",
             }}
         />
 
@@ -186,14 +200,15 @@ const faqs = [
             sectionId="solucao"
             className="solucao"
             cta={{
-                title: 'Pronto para Automatizar seu Atendimento?',
-                subtitle: 'Comece a converter mais leads em visitas hoje mesmo com nossa IA especializada.',
+                title: "Pronto para Automatizar seu Atendimento?",
+                subtitle:
+                    "Comece a converter mais leads em visitas hoje mesmo com nossa IA especializada.",
                 primaryButton: {
-                    text: 'Começar Minha Transformação',
-                    href: 'https://wa.me/5511997889281',
-                    icon: 'rocket_launch'
+                    text: "Começar Minha Transformação",
+                    href: "https://wa.me/5511997889281",
+                    icon: "rocket_launch",
                 },
-                variant: 'success'
+                variant: "success",
             }}
         />
 
@@ -205,25 +220,29 @@ const faqs = [
             className="has-cta-below"
             steps={[
                 {
-                    icon: 'chat',
-                    title: 'Atendimento e Qualificação',
-                    description: 'Responde na hora, qualifica o perfil e cadastra os dados no CRM.'
+                    icon: "chat",
+                    title: "Atendimento e Qualificação",
+                    description:
+                        "Responde na hora, qualifica o perfil e cadastra os dados no CRM.",
                 },
                 {
-                    icon: 'search',
-                    title: 'Match de Imóveis',
-                    description: 'Analisa o perfil e sugere os imóveis ideais do seu portfólio.'
+                    icon: "search",
+                    title: "Match de Imóveis",
+                    description:
+                        "Analisa o perfil e sugere os imóveis ideais do seu portfólio.",
                 },
                 {
-                    icon: 'event',
-                    title: 'Agendamento de Visitas',
-                    description: 'Coordena horários e agenda a visita direto no seu calendário.'
+                    icon: "event",
+                    title: "Agendamento de Visitas",
+                    description:
+                        "Coordena horários e agenda a visita direto no seu calendário.",
                 },
                 {
-                    icon: 'autorenew',
-                    title: 'Follow-up Inteligente',
-                    description: 'Realiza follow-up automático para manter o lead sempre aquecido.'
-                }
+                    icon: "autorenew",
+                    title: "Follow-up Inteligente",
+                    description:
+                        "Realiza follow-up automático para manter o lead sempre aquecido.",
+                },
             ]}
         />
 
@@ -232,14 +251,14 @@ const faqs = [
             title="Quer Ver Isso Funcionando na Prática?"
             subtitle="Agende uma demonstração personalizada e veja como é fácil automatizar seu atendimento."
             primaryButton={{
-                text: 'Ver Demonstração ao Vivo',
-                href: 'https://wa.me/5511997889281',
-                icon: 'play_circle'
+                text: "Ver Demonstração ao Vivo",
+                href: "https://wa.me/5511997889281",
+                icon: "play_circle",
             }}
             secondaryButton={{
-                text: 'Falar com Consultor',
-                href: 'https://wa.me/5511997889281',
-                icon: 'support_agent'
+                text: "Falar com Consultor",
+                href: "https://wa.me/5511997889281",
+                icon: "support_agent",
             }}
             backgroundColor="gray"
         />
@@ -255,14 +274,15 @@ const faqs = [
             autoplay={true}
             autoplayDelay={5000}
             cta={{
-                title: 'Automatize Seu CRM Hoje Mesmo',
-                subtitle: 'Pare de perder tempo com planilhas. Comece a usar IA e libere 4h do seu dia.',
+                title: "Automatize Seu CRM Hoje Mesmo",
+                subtitle:
+                    "Pare de perder tempo com planilhas. Comece a usar IA e libere 4h do seu dia.",
                 primaryButton: {
-                    text: 'Integrar Meu CRM',
-                    href: 'https://wa.me/5511997889281',
-                    icon: 'rocket_launch'
+                    text: "Integrar Meu CRM",
+                    href: "https://wa.me/5511997889281",
+                    icon: "rocket_launch",
                 },
-                variant: 'success'
+                variant: "success",
             }}
         />
 
@@ -274,57 +294,57 @@ const faqs = [
                 {
                     quote: "Com a BrJoy AI, nossa equipe conseguiu focar em fechar negócios enquanto a IA cuida de todo atendimento inicial. Aumentamos 40% nas visitas agendadas em apenas 2 meses!",
                     author: {
-                        name: 'Maria Silva',
-                        role: 'Diretora Comercial',
-                        company: 'Imobiliária Silva & Santos'
+                        name: "Maria Silva",
+                        role: "Diretora Comercial",
+                        company: "Imobiliária Silva & Santos",
                     },
-                    rating: 5
+                    rating: 5,
                 },
                 {
                     quote: "A qualificação automática de leads mudou completamente meu dia a dia. Agora só falo com clientes realmente interessados e qualificados. A economia de tempo é impressionante e minhas vendas triplicaram!",
                     author: {
-                        name: 'João Oliveira',
-                        role: 'Corretor de Imóveis',
-                        company: 'Oliveira Negócios Imobiliários'
+                        name: "João Oliveira",
+                        role: "Corretor de Imóveis",
+                        company: "Oliveira Negócios Imobiliários",
                     },
-                    rating: 5
+                    rating: 5,
                 },
                 {
                     quote: "Nossos clientes adoram o atendimento instantâneo 24/7. Nunca mais perdemos leads por demora no retorno. A BrJoy AI se tornou parte essencial da nossa operação!",
                     author: {
-                        name: 'Ana Costa',
-                        role: 'Gerente',
-                        company: 'Costa Imóveis'
+                        name: "Ana Costa",
+                        role: "Gerente",
+                        company: "Costa Imóveis",
                     },
-                    rating: 5
+                    rating: 5,
                 },
                 {
                     quote: "Implementamos a BrJoy AI e em 3 meses dobramos nosso número de visitas agendadas. A integração com nosso CRM foi perfeita e a equipe adorou trabalhar com leads pré-qualificados.",
                     author: {
-                        name: 'Carlos Mendes',
-                        role: 'CEO',
-                        company: 'Mendes Imóveis Premium'
+                        name: "Carlos Mendes",
+                        role: "CEO",
+                        company: "Mendes Imóveis Premium",
                     },
-                    rating: 5
+                    rating: 5,
                 },
                 {
                     quote: "O ROI foi absurdo! Recuperamos o investimento em menos de 1 mês. A IA atende melhor que muitos atendentes humanos e está disponível 24 horas por dia, 7 dias por semana.",
                     author: {
-                        name: 'Patricia Alves',
-                        role: 'Diretora de Vendas',
-                        company: 'Grupo Alves Imobiliário'
+                        name: "Patricia Alves",
+                        role: "Diretora de Vendas",
+                        company: "Grupo Alves Imobiliário",
                     },
-                    rating: 5
-                }
+                    rating: 5,
+                },
             ]}
             primaryButton={{
-                text: 'Quero Resultados Semelhantes',
-                href: 'https://wa.me/5511997889281',
-                icon: 'rocket_launch'
+                text: "Quero Resultados Semelhantes",
+                href: "https://wa.me/5511997889281",
+                icon: "rocket_launch",
             }}
             secondaryButton={{
-                text: 'Ver Mais Casos de Sucesso',
-                href: '#faq'
+                text: "Ver Mais Casos de Sucesso",
+                href: "#faq",
             }}
             variant="light"
             autoplay={true}
@@ -338,142 +358,34 @@ const faqs = [
             title="Últimas Vagas para Demonstração Gratuita"
             subtitle="🔥 Apenas 3 vagas restantes esta semana. Garanta a sua agora!"
             primaryButton={{
-                text: 'Garantir Minha Vaga',
-                href: 'https://wa.me/5511997889281',
-                icon: 'calendar_month'
+                text: "Garantir Minha Vaga",
+                href: "https://wa.me/5511997889281",
+                icon: "calendar_month",
             }}
             variant="urgent"
         />
-
     </main>
-
-    <!-- Floating Elements Container -->
-    <div class="floating-elements-container">
-        <!-- Floating CTA Leadster Style -->
-        <div class="floating-cta-wrapper">
-            <a href="https://wa.me/5511997889281" target="_blank" rel="noopener noreferrer" class="floating-cta">
-                <button class="floating-cta-close" aria-label="Fechar" type="button">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="currentColor"/>
-                    </svg>
-                </button>
-                <div class="floating-cta-message">
-                    <p class="floating-cta-text">
-                        Vamos começar sua demonstração grátis? 🚀
-                    </p>
-                </div>
-            </a>
-        </div>
-
-        <!-- Floating WhatsApp Button with Avatar -->
-        <a href="https://wa.me/5511997889281" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Fale conosco no WhatsApp">
-            <div class="floating-whatsapp-avatar">
-                <img src="/images/mari.jpeg" alt="Consultora BrJoy" class="floating-whatsapp-avatar-img" />
-                <span class="floating-whatsapp-status"></span>
-            </div>
-        </a>
-    </div>
 </Layout>
 
 <script>
-import { initDataSliders } from '../../scripts/slider';
+    import { initDataSliders } from "../../scripts/slider";
+    import { initFloatingCTA } from "../../scripts/floating-cta-simple";
 
-document.addEventListener('DOMContentLoaded', () => {
-    initDataSliders();
-
-    // Floating elements
-    const closeButton = document.querySelector('.floating-cta-close');
-    const ctaWrapper = document.querySelector('.floating-cta-wrapper');
-    const whatsappStatus = document.querySelector('.floating-whatsapp-status');
-    let elementsShown = false;
-    let timeoutId = null;
-
-    console.log('Floating elements:', { closeButton, ctaWrapper, whatsappStatus });
-
-    // Check if CTA was previously closed
-    const ctaClosed = localStorage.getItem('brjoy-cta-closed') === 'true';
-    console.log('CTA closed in localStorage:', ctaClosed);
-
-    if (ctaClosed && ctaWrapper) {
-        ctaWrapper.classList.add('hidden');
-    }
-
-    // Function to show floating elements
-    const showFloatingElements = () => {
-        if (elementsShown) return;
-
-        elementsShown = true;
-        console.log('Showing floating elements...');
-
-        // Show CTA balloon (if not previously closed)
-        if (!ctaClosed && ctaWrapper && !ctaWrapper.classList.contains('hidden')) {
-            ctaWrapper.classList.add('show');
-            console.log('CTA shown');
-        } else {
-            console.log('CTA not shown:', { ctaClosed, hasWrapper: !!ctaWrapper });
-        }
-
-        // Start pulse animation on WhatsApp status indicator
-        if (whatsappStatus) {
-            whatsappStatus.classList.add('pulse');
-            console.log('Pulse animation started');
-        }
-
-        // Clear timeout if exists
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-    };
-
-    // Show elements after 7 seconds
-    timeoutId = setTimeout(() => {
-        showFloatingElements();
-    }, 7000);
-
-    // Show elements when user scrolls past hero section
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // When hero is no longer in viewport (scrolled past)
-            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-                showFloatingElements();
-            }
-        });
-    }, {
-        threshold: 0,
-        rootMargin: '0px'
+    document.addEventListener("DOMContentLoaded", () => {
+        initDataSliders();
+        initFloatingCTA();
     });
-
-    // Observe the hero section
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        observer.observe(heroSection);
-    }
-
-    // Close button functionality
-    if (closeButton && ctaWrapper) {
-        closeButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            ctaWrapper.classList.remove('show');
-            ctaWrapper.classList.add('hidden');
-            localStorage.setItem('brjoy-cta-closed', 'true');
-            if (timeoutId) {
-                clearTimeout(timeoutId);
-            }
-        });
-    }
-});
 </script>
 
 <style is:global>
-/* Import variables first */
-@import '../../styles/variables.css';
+    /* Import variables first */
+    @import "../../styles/variables.css";
 
-/* Import page-specific styles */
-@import '../../styles/imobiliaria.css';
+    /* Import page-specific styles */
+    @import "../../styles/imobiliaria.css";
 
-/* Import all component styles */
-@import '../../styles/components/results.css';
-@import '../../styles/components/video.css';
-@import '../../styles/sections.css';
+    /* Import all component styles */
+    @import "../../styles/components/results.css";
+    @import "../../styles/components/video.css";
+    @import "../../styles/sections.css";
 </style>

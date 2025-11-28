@@ -1,5 +1,5 @@
 ---
-import '../styles/components/integrations.css';
+import "../styles/components/integrations.css";
 
 interface Feature {
   name: string;
@@ -11,85 +11,92 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    name: 'IA Multimodal',
-    description: 'Entende voz, texto e fotos enviadas pelo cliente',
-    icon: 'psychology'
+    name: "IA Multimodal",
+    description: "Entende voz, texto e fotos enviadas pelo cliente",
+    icon: "psychology",
   },
   {
-    name: 'Atendimento 24/7',
-    description: 'WhatsApp sempre ativo, sem pausas ou horários',
-    icon: 'schedule'
+    name: "Envio de Áudios",
+    description: "Envia áudios naturais como se fossem gravados na hora",
+    icon: "graphic_eq",
   },
   {
-    name: 'Qualificação Automática',
-    description: 'Extrai e preenche dados do lead automaticamente',
-    icon: 'verified'
+    name: "Transbordo Humano",
+    description: "Transfere para um atendente real sempre que necessário",
+    icon: "support_agent",
   },
   {
-    name: 'Match de Imóveis',
-    description: 'Sugere propriedades ideais para cada cliente',
-    icon: 'home_work'
+    name: "Personalidade Adaptável",
+    description: "Ajuste o tom de voz da IA para a sua marca",
+    icon: "tune",
   },
   {
-    name: 'Agendamento Inteligente',
-    description: 'Marca visitas sem intervenção humana',
-    icon: 'calendar_month'
+    name: "Detecção de Intenção",
+    description: "Identifica se o lead quer comprar, alugar ou vender",
+    icon: "filter_center_focus",
   },
   {
-    name: 'CRM Sincronizado',
-    description: 'Dados atualizados em tempo real no seu sistema',
-    icon: 'sync_alt'
+    name: "Sincronização de Agenda",
+    description: "Conecta com Google Calendar e Outlook em tempo real",
+    icon: "event_available",
   },
   {
-    name: 'Follow-up Automatizado',
-    description: 'Nutre leads no momento certo automaticamente',
-    icon: 'autorenew'
+    name: "Suporte Multi-Agente",
+    description: "Múltiplos números e atendentes na mesma plataforma",
+    icon: "groups",
   },
   {
-    name: 'Ver Mais Funcionalidades',
-    description: 'Descubra tudo que a BrJoy pode fazer por você',
-    icon: 'add_circle',
+    name: "Ver Mais Funcionalidades",
+    description: "Descubra tudo que a BrJoy pode fazer por você",
+    icon: "add_circle",
     isViewMore: true,
-    href: 'https://wa.me/5511997889281'
-  }
+    href: "https://wa.me/5511997889281",
+  },
 ];
 ---
 
 <section class="section-spacing integrations-section bg-gradient-soft">
-    <div class="container section-container">
-        <div class="integrations-divider">
-            <div class="divider-line"></div>
-            <div class="divider-content">
-                <span class="material-symbols-outlined">auto_awesome</span>
-                <h3>Funcionalidades que fazem a diferença</h3>
-            </div>
-            <div class="divider-line"></div>
-        </div>
-
-        <div class="integrations-grid">
-            {features.map(feature => (
-                feature.isViewMore ? (
-                    <a href={feature.href} target="_blank" rel="noopener noreferrer" class="integration-card view-more-card">
-                        <div class="integration-icon">
-                            <span class="material-symbols-outlined">{feature.icon}</span>
-                        </div>
-                        <div class="integration-info">
-                            <h3 class="integration-name">{feature.name}</h3>
-                            <span class="integration-type">{feature.description}</span>
-                        </div>
-                    </a>
-                ) : (
-                    <div class="integration-card">
-                        <div class="integration-icon">
-                            <span class="material-symbols-outlined">{feature.icon}</span>
-                        </div>
-                        <div class="integration-info">
-                            <h3 class="integration-name">{feature.name}</h3>
-                            <span class="integration-type">{feature.description}</span>
-                        </div>
-                    </div>
-                )
-            ))}
-        </div>
+  <div class="container section-container">
+    <div class="integrations-divider">
+      <div class="divider-line"></div>
+      <div class="divider-content">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <h3>Funcionalidades que fazem a diferença</h3>
+      </div>
+      <div class="divider-line"></div>
     </div>
+
+    <div class="integrations-grid">
+      {
+        features.map((feature) =>
+          feature.isViewMore ? (
+            <a
+              href={feature.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="integration-card view-more-card"
+            >
+              <div class="integration-icon">
+                <span class="material-symbols-outlined">{feature.icon}</span>
+              </div>
+              <div class="integration-info">
+                <h3 class="integration-name">{feature.name}</h3>
+                <span class="integration-type">{feature.description}</span>
+              </div>
+            </a>
+          ) : (
+            <div class="integration-card">
+              <div class="integration-icon">
+                <span class="material-symbols-outlined">{feature.icon}</span>
+              </div>
+              <div class="integration-info">
+                <h3 class="integration-name">{feature.name}</h3>
+                <span class="integration-type">{feature.description}</span>
+              </div>
+            </div>
+          ),
+        )
+      }
+    </div>
+  </div>
 </section>
