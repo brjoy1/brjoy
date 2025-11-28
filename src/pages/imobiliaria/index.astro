@@ -352,16 +352,16 @@ const faqs = [
         <!-- Floating CTA Leadster Style -->
         <div class="floating-cta-wrapper">
             <a href="https://wa.me/5511997889281" target="_blank" rel="noopener noreferrer" class="floating-cta">
-                <div class="floating-cta-message">
-                    <p class="floating-cta-text">
-                        Vamos começar sua demonstração grátis? 🚀
-                    </p>
-                </div>
                 <button class="floating-cta-close" aria-label="Fechar" type="button">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="currentColor"/>
                     </svg>
                 </button>
+                <div class="floating-cta-message">
+                    <p class="floating-cta-text">
+                        Vamos começar sua demonstração grátis? 🚀
+                    </p>
+                </div>
             </a>
         </div>
 
@@ -381,25 +381,77 @@ import { initDataSliders } from '../../scripts/slider';
 document.addEventListener('DOMContentLoaded', () => {
     initDataSliders();
 
-    // Floating CTA close functionality
+    // Floating elements
     const closeButton = document.querySelector('.floating-cta-close');
     const ctaWrapper = document.querySelector('.floating-cta-wrapper');
+    const whatsappStatus = document.querySelector('.floating-whatsapp-status');
+    let elementsShown = false;
+    let timeoutId = null;
 
+    // Check if CTA was previously closed
+    const ctaClosed = localStorage.getItem('brjoy-cta-closed') === 'true';
+    if (ctaClosed && ctaWrapper) {
+        ctaWrapper.classList.add('hidden');
+    }
+
+    // Function to show floating elements
+    const showFloatingElements = () => {
+        if (elementsShown) return;
+
+        elementsShown = true;
+
+        // Show CTA balloon (if not previously closed)
+        if (!ctaClosed && ctaWrapper && !ctaWrapper.classList.contains('hidden')) {
+            ctaWrapper.classList.add('show');
+        }
+
+        // Start pulse animation on WhatsApp status indicator
+        if (whatsappStatus) {
+            whatsappStatus.classList.add('pulse');
+        }
+
+        // Clear timeout if exists
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+    };
+
+    // Show elements after 7 seconds
+    timeoutId = setTimeout(() => {
+        showFloatingElements();
+    }, 7000);
+
+    // Show elements when user scrolls past hero section
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When hero is no longer in viewport (scrolled past)
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                showFloatingElements();
+            }
+        });
+    }, {
+        threshold: 0,
+        rootMargin: '0px'
+    });
+
+    // Observe the hero section
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        observer.observe(heroSection);
+    }
+
+    // Close button functionality
     if (closeButton && ctaWrapper) {
         closeButton.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            ctaWrapper.classList.remove('show');
             ctaWrapper.classList.add('hidden');
-            // Save to localStorage so it doesn't show again in this session
             localStorage.setItem('brjoy-cta-closed', 'true');
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
         });
-    }
-
-    // Check if CTA was previously closed
-    if (localStorage.getItem('brjoy-cta-closed') === 'true') {
-        if (ctaWrapper) {
-            ctaWrapper.classList.add('hidden');
-        }
     }
 });
 </script>
