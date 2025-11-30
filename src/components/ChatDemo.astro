@@ -110,28 +110,40 @@ import "../styles/components/chat-demo.css";
 
                     <div class="crm-fields">
                         <div class="crm-field-group">
-                            <label>Interesse</label>
+                            <label>
+                                <span class="material-symbols-outlined field-icon">home_work</span>
+                                Interesse
+                            </label>
                             <div class="crm-value" id="crm-interest">
                                 <span class="placeholder">Aguardando...</span>
                             </div>
                         </div>
 
                         <div class="crm-field-group">
-                            <label>Orçamento</label>
+                            <label>
+                                <span class="material-symbols-outlined field-icon">payments</span>
+                                Orçamento
+                            </label>
                             <div class="crm-value" id="crm-budget">
                                 <span class="placeholder">Aguardando...</span>
                             </div>
                         </div>
 
                         <div class="crm-field-group">
-                            <label>Localização</label>
+                            <label>
+                                <span class="material-symbols-outlined field-icon">location_on</span>
+                                Localização
+                            </label>
                             <div class="crm-value" id="crm-location">
                                 <span class="placeholder">Aguardando...</span>
                             </div>
                         </div>
 
                         <div class="crm-field-group highlight">
-                            <label>Próximo Passo</label>
+                            <label>
+                                <span class="material-symbols-outlined field-icon">event</span>
+                                Próximo Passo
+                            </label>
                             <div class="crm-value" id="crm-next-step">
                                 <span class="placeholder"
                                     >Em atendimento...</span
@@ -562,16 +574,57 @@ import "../styles/components/chat-demo.css";
 
         if (data.field === "score") {
             if (crmScoreNumber) crmScoreNumber.textContent = data.value;
-            if (crmScoreBar) crmScoreBar.style.width = `${data.value}%`;
+            if (crmScoreBar) {
+                crmScoreBar.style.width = `${data.value}%`;
+
+                // Color based on score
+                let color = '#EA4335'; // Red (low)
+                if (data.value >= 70) {
+                    color = '#34A853'; // Green (high)
+                } else if (data.value >= 40) {
+                    color = '#FBBC04'; // Yellow (medium)
+                }
+                crmScoreBar.style.background = `linear-gradient(90deg, ${color}, ${color}dd)`;
+            }
             return;
         }
 
         if (data.field === "handoff") {
             if (crmFooter) {
                 crmFooter.innerHTML = `
-                    <div class="handoff-notification">
-                        <span class="material-symbols-outlined handoff-icon">notifications_active</span>
-                        <span class="handoff-text">${data.value}</span>
+                    <div class="handoff-notification enhanced">
+                        <div class="handoff-header">
+                            <span class="material-symbols-outlined handoff-icon">person_check</span>
+                            <div class="handoff-info">
+                                <strong>Corretor Atribuído</strong>
+                                <span class="handoff-time">Agora</span>
+                            </div>
+                        </div>
+
+                        <div class="corretor-card">
+                            <div class="corretor-avatar">
+                                <span class="material-symbols-outlined">person</span>
+                            </div>
+                            <div class="corretor-info">
+                                <strong class="corretor-name">Ricardo Silva</strong>
+                                <span class="corretor-role">Especialista Zona Leste</span>
+                            </div>
+                            <span class="corretor-status online">
+                                <span class="status-dot"></span>
+                                Online
+                            </span>
+                        </div>
+
+                        <div class="handoff-actions">
+                            <div class="action-item">
+                                <span class="material-symbols-outlined">notifications</span>
+                                <span>Notificado via WhatsApp</span>
+                            </div>
+                            <div class="action-item">
+                                <span class="material-symbols-outlined">schedule</span>
+                                <span>Contato 1h antes da visita</span>
+                            </div>
+                        </div>
                     </div>
                 `;
             }
