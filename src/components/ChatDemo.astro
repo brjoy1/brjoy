@@ -167,18 +167,12 @@ import "../styles/components/chat-demo.css";
     const crmFooter = document.querySelector(".crm-footer");
 
     const conversation = [
-        // Step 1: Initial Contact
+        // Step 1: Initial Contact - 3 BUBBLES MAX
         {
             type: "user",
-            text: "Oi! Vi o anúncio de vocês",
+            text: "Oi! Vi o anúncio de vocês. Tô procurando apt pra alugar na região",
             time: "14:23",
-            delay: 1000,
-        },
-        {
-            type: "user",
-            text: "Tô procurando apt pra alugar na região",
-            time: "14:23",
-            delay: 800,
+            delay: 1200,
         },
         {
             type: "crm_update",
@@ -191,25 +185,13 @@ import "../styles/components/chat-demo.css";
             type: "bot",
             text: "Oi! Tudo bem? 😊",
             time: "14:23",
-            delay: 1200,
+            delay: 1000,
         },
         {
             type: "bot",
-            text: "Que bom que entrou em contato!",
-            time: "14:23",
-            delay: 900,
-        },
-        {
-            type: "bot",
-            text: "Eu sou a Maria, trabalho aqui na imobiliária",
+            text: "Sou a Maria, da BrJoy Imobiliária. Qual seu nome?",
             time: "14:23",
             delay: 1100,
-        },
-        {
-            type: "bot",
-            text: "Qual seu nome?",
-            time: "14:23",
-            delay: 700,
         },
 
         // Step 2: Name Capture
@@ -242,15 +224,9 @@ import "../styles/components/chat-demo.css";
         // Step 3: Intent confirmation
         {
             type: "bot",
-            text: "Prazer, Carlos! 😊",
+            text: "Prazer, Carlos! Você tá procurando pra alugar, né?",
             time: "14:24",
-            delay: 900,
-        },
-        {
-            type: "bot",
-            text: "Você mencionou que tá procurando pra alugar, né?",
-            time: "14:24",
-            delay: 1100,
+            delay: 1000,
         },
         {
             type: "user",
@@ -274,21 +250,9 @@ import "../styles/components/chat-demo.css";
         // Step 4: Budget (Audio)
         {
             type: "bot",
-            text: "Legal! 👍",
+            text: "Legal! E quanto você tá pensando em gastar por mês? Mais ou menos",
             time: "14:24",
-            delay: 800,
-        },
-        {
-            type: "bot",
-            text: "E quanto você tá pensando em gastar por mês?",
-            time: "14:24",
-            delay: 1300,
-        },
-        {
-            type: "bot",
-            text: "Mais ou menos",
-            time: "14:24",
-            delay: 600,
+            delay: 1100,
         },
         {
             type: "user_audio",
@@ -312,21 +276,15 @@ import "../styles/components/chat-demo.css";
         // Step 5: Property Match with Card
         {
             type: "bot",
-            text: "Perfeito!",
+            text: "Perfeito! Deixa eu ver aqui o que tenho...",
             time: "14:25",
-            delay: 1000,
+            delay: 1200,
         },
         {
             type: "bot",
-            text: "Deixa eu ver aqui o que tenho...",
+            text: "Encontrei um apartamento no Tatuapé dentro do seu orçamento 🏠",
             time: "14:25",
             delay: 1400,
-        },
-        {
-            type: "bot",
-            text: "Opa! Achei um que combina demais com você 🎯",
-            time: "14:25",
-            delay: 1800,
         },
         {
             type: "property_card",
@@ -347,15 +305,9 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Quer ver mais fotos?",
+            text: "Quer ver mais fotos do apartamento?",
             time: "14:26",
             delay: 900,
-        },
-        {
-            type: "bot",
-            text: "Esse apt é lindo! 😍",
-            time: "14:26",
-            delay: 700,
         },
         {
             type: "user",
@@ -375,54 +327,30 @@ import "../styles/components/chat-demo.css";
             time: "14:26",
             delay: 1000,
         },
-        // Step 6: Pet Question - SPLIT INTO MULTIPLE BUBBLES
+        // Step 6: Pet Question - 3 BUBBLES MAX
         {
             type: "user",
-            text: "Gostei!",
+            text: "Gostei! Mas aceita pet? Tenho um gato 🐱",
             time: "14:27",
             delay: 1800,
         },
         {
-            type: "user",
-            text: "Mas aceita pet?",
-            time: "14:27",
-            delay: 900,
-        },
-        {
-            type: "user",
-            text: "Tenho um gato 🐱",
-            time: "14:27",
-            delay: 700,
-        },
-        {
             type: "bot",
-            text: "Que legal! Eu adoro gatos 😺",
-            time: "14:27",
-            delay: 1100,
-        },
-        {
-            type: "bot",
-            text: "E sim, aceita pet!",
-            time: "14:27",
-            delay: 800,
-        },
-        {
-            type: "bot",
-            text: "O proprietário adora animais 🐾",
+            text: "Sim, aceita pet! 😺",
             time: "14:27",
             delay: 1000,
         },
         {
             type: "bot",
-            text: "Inclusive o condomínio tem Pet Place completo",
+            text: "O proprietário aceita animais de estimação",
             time: "14:27",
-            delay: 1200,
+            delay: 900,
         },
         {
             type: "bot",
-            text: "Seu gatinho vai adorar! 😊",
+            text: "E o condomínio tem Pet Place completo 🐾",
             time: "14:27",
-            delay: 700,
+            delay: 1100,
         },
         {
             type: "crm_update",
@@ -432,7 +360,7 @@ import "../styles/components/chat-demo.css";
             delay: 500,
         },
 
-        // Step 7: Scheduling - SPLIT INTO MULTIPLE BUBBLES
+        // Step 7: Scheduling - 3 BUBBLES MAX
         {
             type: "user",
             text: "Perfeito então! 🎉",
@@ -441,31 +369,13 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Ótimo!",
+            text: "Ótimo! Quando você pode vir visitar?",
             time: "14:27",
-            delay: 900,
+            delay: 1000,
         },
         {
             type: "bot",
-            text: "Quando você pode vir visitar?",
-            time: "14:27",
-            delay: 1100,
-        },
-        {
-            type: "bot",
-            text: "Tenho segunda às 14h",
-            time: "14:28",
-            delay: 800,
-        },
-        {
-            type: "bot",
-            text: "Ou terça às 9h",
-            time: "14:28",
-            delay: 600,
-        },
-        {
-            type: "bot",
-            text: "O que funciona melhor pra você?",
+            text: "Tenho segunda às 14h ou terça às 9h",
             time: "14:28",
             delay: 900,
         },
@@ -499,48 +409,30 @@ import "../styles/components/chat-demo.css";
             value: 100,
             delay: 0,
         },
-        // Step 8: Confirmation - SPLIT INTO MULTIPLE BUBBLES
+        // Step 8: Confirmation - 3 BUBBLES MAX
         {
             type: "bot",
-            text: "Pronto! ✅",
+            text: "Pronto! Agendei sua visita pra terça às 9h ✅",
+            time: "14:28",
+            delay: 1100,
+        },
+        {
+            type: "bot",
+            text: "📍 Rua Tuiuti, 1234 - Tatuapé\n🏢 Condomínio Residencial Vista Verde",
             time: "14:28",
             delay: 1000,
         },
         {
             type: "bot",
-            text: "Agendei sua visita pra terça às 9h",
-            time: "14:28",
-            delay: 1100,
-        },
-        {
-            type: "bot",
-            text: "📍 Rua Tuiuti, 1234 - Tatuapé",
-            time: "14:28",
-            delay: 800,
-        },
-        {
-            type: "bot",
-            text: "🏢 Condomínio Residencial Vista Verde",
-            time: "14:28",
-            delay: 900,
-        },
-        {
-            type: "bot",
-            text: "O corretor Ricardo vai te encontrar lá",
-            time: "14:29",
-            delay: 1200,
-        },
-        {
-            type: "bot",
-            text: "Ele entra em contato 1h antes, tá?",
-            time: "14:29",
-            delay: 900,
-        },
-        {
-            type: "bot",
-            text: "Ah! E você recebe um lembrete aqui no WhatsApp também 😊",
+            text: "O corretor Ricardo vai te encontrar lá e entra em contato 1h antes",
             time: "14:29",
             delay: 1100,
+        },
+        {
+            type: "bot",
+            text: "Você recebe um lembrete aqui no WhatsApp também 😊",
+            time: "14:29",
+            delay: 900,
         },
         {
             type: "crm_update",
@@ -562,13 +454,7 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Imagina! 😊",
-            time: "14:29",
-            delay: 800,
-        },
-        {
-            type: "bot",
-            text: "Qualquer coisa é só chamar aqui",
+            text: "Imagina! Qualquer coisa é só chamar aqui 😊",
             time: "14:29",
             delay: 900,
         },
