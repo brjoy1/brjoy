@@ -1,8 +1,8 @@
 ---
 // Header único e global - mesmos links em todas as páginas
 const navigation = [
-    { href: '/#solucoes', label: 'Soluções' },
-    { href: '/imobiliaria/', label: 'Imobiliárias' }
+    { href: "/#solucoes", label: "Soluções" },
+    { href: "/imobiliaria/", label: "Imobiliárias" },
 ];
 ---
 
@@ -10,71 +10,97 @@ const navigation = [
     <div class="container header-container">
         <div class="logo">
             <a href="/" aria-label="BrJoy AI - Página inicial">
-                <span class="logo-text">BrJoy AI</span>
+                <img
+                    src="/images/logo_brjoy.svg"
+                    alt="BrJoy AI"
+                    class="logo-image"
+                    width="120"
+                    height="36"
+                />
             </a>
         </div>
-        <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navegação principal">
-            {navigation.map(item => (
-                <a href={item.href}>{item.label}</a>
-            ))}
+        <nav
+            class="site-nav"
+            id="site-nav"
+            role="navigation"
+            aria-label="Navegação principal"
+        >
+            {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
         </nav>
         <div class="header-actions" id="header-actions">
-            <a href="/imobiliaria/" class="btn-header-cta" aria-label="Testar plataforma gratuitamente">Testar Grátis</a>
+            <a
+                href="/imobiliaria/"
+                class="btn-header-cta"
+                aria-label="Testar plataforma gratuitamente">Testar Grátis</a
+            >
         </div>
         <div class="mobile-menu-wrapper">
-            <button class="hamburger-menu" aria-label="Menu" aria-expanded="false" id="hamburger-menu">
+            <button
+                class="hamburger-menu"
+                aria-label="Menu"
+                aria-expanded="false"
+                id="hamburger-menu"
+            >
                 <span class="material-symbols-outlined">menu</span>
             </button>
             <div class="mobile-dropdown" id="mobile-dropdown">
-                {navigation.map(item => (
-                    <a href={item.href} class="dropdown-item">{item.label}</a>
-                ))}
-                <a href="/imobiliaria/" class="dropdown-item dropdown-cta">Testar Grátis</a>
+                {
+                    navigation.map((item) => (
+                        <a href={item.href} class="dropdown-item">
+                            {item.label}
+                        </a>
+                    ))
+                }
+                <a href="/imobiliaria/" class="dropdown-item dropdown-cta"
+                    >Testar Grátis</a
+                >
             </div>
         </div>
     </div>
 </header>
 
 <script>
-// Header functionality
-function initHeader() {
-    const hamburger = document.getElementById('hamburger-menu');
-    const dropdown = document.getElementById('mobile-dropdown');
-    const mobileWrapper = document.querySelector('.mobile-menu-wrapper');
+    // Header functionality
+    function initHeader() {
+        const hamburger = document.getElementById("hamburger-menu");
+        const dropdown = document.getElementById("mobile-dropdown");
+        const mobileWrapper = document.querySelector(".mobile-menu-wrapper");
 
-    if (hamburger && dropdown) {
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            hamburger.classList.toggle('active');
-            dropdown.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded',
-                hamburger.classList.contains('active').toString());
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const target = e.target as Node;
-            if (mobileWrapper && !mobileWrapper.contains(target)) {
-                hamburger.classList.remove('active');
-                dropdown.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // Close menu when clicking a link
-        dropdown.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                dropdown.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
+        if (hamburger && dropdown) {
+            hamburger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                hamburger.classList.toggle("active");
+                dropdown.classList.toggle("active");
+                hamburger.setAttribute(
+                    "aria-expanded",
+                    hamburger.classList.contains("active").toString(),
+                );
             });
-        });
-    }
-}
 
-document.addEventListener('DOMContentLoaded', initHeader);
+            // Close menu when clicking outside
+            document.addEventListener("click", (e) => {
+                const target = e.target as Node;
+                if (mobileWrapper && !mobileWrapper.contains(target)) {
+                    hamburger.classList.remove("active");
+                    dropdown.classList.remove("active");
+                    hamburger.setAttribute("aria-expanded", "false");
+                }
+            });
+
+            // Close menu when clicking a link
+            dropdown.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    hamburger.classList.remove("active");
+                    dropdown.classList.remove("active");
+                    hamburger.setAttribute("aria-expanded", "false");
+                });
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", initHeader);
 </script>
 
 <style>
-@import '../styles/components/header.css';
+    @import "../styles/components/header.css";
 </style>
