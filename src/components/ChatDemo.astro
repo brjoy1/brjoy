@@ -360,7 +360,7 @@ import "../styles/components/chat-demo.css";
             delay: 500,
         },
 
-        // Step 7: Scheduling - 3 BUBBLES MAX
+        // Step 7: Scheduling - REALISTIC NEGOTIATION
         {
             type: "user",
             text: "Perfeito então! 🎉",
@@ -375,15 +375,27 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Tenho segunda às 14h ou terça às 9h",
+            text: "Tenho segunda às 14h disponível",
             time: "14:28",
             delay: 900,
         },
         {
             type: "user",
-            text: "Terça às 9h é melhor",
+            text: "Segunda não consigo",
             time: "14:28",
-            delay: 1600,
+            delay: 1400,
+        },
+        {
+            type: "user",
+            text: "Mas quarta às 9h pode ser?",
+            time: "14:28",
+            delay: 1100,
+        },
+        {
+            type: "bot",
+            text: "Pode sim! Quarta às 9h tá ótimo 👍",
+            time: "14:28",
+            delay: 1200,
         },
         {
             type: "crm_update",
@@ -395,10 +407,10 @@ import "../styles/components/chat-demo.css";
             type: "crm_update",
             field: "calendar_event",
             value: {
-                day: "12",
+                day: "13",
                 month: "OUT",
                 title: "Visita: Ap. Tatuapé",
-                time: "Terça, 09:00",
+                time: "Quarta, 09:00",
             },
             highlight: true,
             delay: 800,
@@ -412,7 +424,7 @@ import "../styles/components/chat-demo.css";
         // Step 8: Confirmation - 3 BUBBLES MAX
         {
             type: "bot",
-            text: "Pronto! Agendei sua visita pra terça às 9h ✅",
+            text: "Pronto! Agendei sua visita pra quarta às 9h ✅",
             time: "14:28",
             delay: 1100,
         },
@@ -460,7 +472,7 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Até terça! 👋",
+            text: "Até quarta! 👋",
             time: "14:29",
             delay: 700,
         },
