@@ -167,7 +167,7 @@ import "../styles/components/chat-demo.css";
     const crmFooter = document.querySelector(".crm-footer");
 
     const conversation = [
-        // Step 1: Initial Contact - 3 BUBBLES MAX
+        // Step 1: Initial Contact - 1 BUBBLE
         {
             type: "user",
             text: "Oi! Vi o anúncio de vocês. Tô procurando apt pra alugar na região",
@@ -183,13 +183,7 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Oi! Tudo bem? 😊",
-            time: "14:23",
-            delay: 1000,
-        },
-        {
-            type: "bot",
-            text: "Sou a Maria, da BrJoy Imobiliária. Qual seu nome?",
+            text: "Oi! Sou a Maria, da BrJoy Imobiliária. Qual seu nome? 😊",
             time: "14:23",
             delay: 1100,
         },
@@ -221,19 +215,7 @@ import "../styles/components/chat-demo.css";
             delay: 0,
         },
 
-        // Step 3: Intent confirmation
-        {
-            type: "bot",
-            text: "Prazer, Carlos! Você tá procurando pra alugar, né?",
-            time: "14:24",
-            delay: 1000,
-        },
-        {
-            type: "user",
-            text: "Isso, alugar mesmo",
-            time: "14:24",
-            delay: 1600,
-        },
+        // Step 3: Budget (Direct - Skip redundant intent confirmation)
         {
             type: "crm_update",
             field: "interest",
@@ -246,11 +228,9 @@ import "../styles/components/chat-demo.css";
             value: 50,
             delay: 0,
         },
-
-        // Step 4: Budget (Audio)
         {
             type: "bot",
-            text: "Legal! E quanto você tá pensando em gastar por mês? Mais ou menos",
+            text: "Prazer, Carlos! E quanto você tá pensando em gastar por mês? Mais ou menos",
             time: "14:24",
             delay: 1100,
         },
@@ -327,7 +307,7 @@ import "../styles/components/chat-demo.css";
             time: "14:26",
             delay: 1000,
         },
-        // Step 6: Pet Question - 3 BUBBLES MAX
+        // Step 6: Pet Question - 2 BUBBLES
         {
             type: "user",
             text: "Gostei! Mas aceita pet? Tenho um gato 🐱",
@@ -339,12 +319,6 @@ import "../styles/components/chat-demo.css";
             text: "Sim, aceita pet! 😺",
             time: "14:27",
             delay: 1000,
-        },
-        {
-            type: "bot",
-            text: "O proprietário aceita animais de estimação",
-            time: "14:27",
-            delay: 900,
         },
         {
             type: "bot",
@@ -396,6 +370,18 @@ import "../styles/components/chat-demo.css";
             text: "Pode sim! Quarta às 9h tá ótimo 👍",
             time: "14:28",
             delay: 1200,
+        },
+        {
+            type: "bot",
+            text: "Quer que eu agende pra você?",
+            time: "14:28",
+            delay: 800,
+        },
+        {
+            type: "user",
+            text: "Sim, pode agendar",
+            time: "14:28",
+            delay: 1500,
         },
         {
             type: "crm_update",
