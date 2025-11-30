@@ -438,7 +438,6 @@
 .crm-slider {
     position: relative;
     width: 100%;
-    min-height: 400px;
 }
 
 .crm-slide {
@@ -732,42 +731,49 @@
     }
 }
 
-/* Lead Score */
-.lead-score-container {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.score-header {
+/* Notifications Container */
+.crm-notifications {
+    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Hand-off Notification */
+.handoff-notification {
+    background: #E0F7E9;
+    border: 1px solid #34C759;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
     align-items: center;
-    margin-bottom: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #86868B;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    gap: 10px;
+    animation: slideUpFade 0.5s ease forwards;
 }
 
-.score-value {
+.handoff-icon {
+    color: #34C759;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.handoff-text {
+    font-size: 13px;
     color: #1D1D1F;
+    font-weight: 500;
+    flex: 1;
 }
 
-.score-bar-bg {
-    height: 6px;
-    background: #F2F2F7;
-    border-radius: 3px;
-    overflow: hidden;
-}
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 
-.score-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
-    width: 10%;
-    border-radius: 3px;
-    transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Calendar Event Card */
