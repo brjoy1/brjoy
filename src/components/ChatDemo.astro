@@ -215,23 +215,18 @@ import "../styles/components/chat-demo.css";
             delay: 0,
         },
 
-        // Step 3: Intent (Rent vs Buy) - Quick Replies
+        // Step 3: Intent (Rent vs Buy)
         {
             type: "bot",
-            text: "Prazer, Carlos! 😊\n\nVocê está buscando imóvel para:",
+            text: "Prazer, Carlos! 😊\n\nVocê está buscando imóvel para comprar ou alugar?",
             time: "14:24",
             delay: 1200,
         },
         {
-            type: "quick_replies",
-            options: ["🏠 Comprar", "🔑 Alugar"],
-            delay: 300,
-        },
-        {
             type: "user",
-            text: "🔑 Alugar",
+            text: "Quero alugar",
             time: "14:24",
-            delay: 1500,
+            delay: 1800,
         },
         {
             type: "crm_update",
@@ -282,7 +277,7 @@ import "../styles/components/chat-demo.css";
         {
             type: "property_card",
             property: {
-                image: "/images/apttatuape1.webp",
+                image: "/images/aptatuape1.webp",
                 title: "Apartamento Tatuapé - 3º Andar",
                 price: "R$ 2.800/mês",
                 details: "2 quartos • 1 vaga • 65m² • Mobiliado",
@@ -298,28 +293,23 @@ import "../styles/components/chat-demo.css";
         },
         {
             type: "bot",
-            text: "Quer ver mais fotos?",
+            text: "Quer ver mais fotos do apartamento?",
             time: "14:26",
             delay: 1000,
         },
         {
-            type: "quick_replies",
-            options: ["📷 Sim, quero ver", "📅 Agendar visita"],
-            delay: 300,
-        },
-        {
             type: "user",
-            text: "📷 Sim, quero ver",
+            text: "Sim, por favor!",
             time: "14:26",
             delay: 1500,
         },
         {
             type: "bot_image",
             imageUrls: [
-                "/images/apttatuape1.webp",
-                "/images/apttatuape2.webp",
-                "/images/apttatuape3.webp",
-                "/images/apttatuape4.webp",
+                "/images/aptatuape1.webp",
+                "/images/aptatuape2.webp",
+                "/images/aptatuape3.webp",
+                "/images/aptatuape4.webp",
             ],
             caption: "Confira essas fotos! 😍",
             time: "14:26",
@@ -348,18 +338,13 @@ import "../styles/components/chat-demo.css";
         // Step 6: Scheduling
         {
             type: "bot",
-            text: "Perfeito! Quando você gostaria de visitar?",
+            text: "Perfeito! Quando você gostaria de visitar?\n\nTenho disponibilidade na segunda às 14h ou terça às 9h",
             time: "14:27",
             delay: 1500,
         },
         {
-            type: "quick_replies",
-            options: ["🗓️ Segunda 14h", "🗓️ Terça 9h", "📆 Outro horário"],
-            delay: 300,
-        },
-        {
             type: "user",
-            text: "🗓️ Terça 9h",
+            text: "Terça às 9h pra mim é melhor",
             time: "14:28",
             delay: 1800,
         },
@@ -425,19 +410,6 @@ import "../styles/components/chat-demo.css";
         return msgDiv;
     }
 
-    function createQuickReplies(options) {
-        const container = document.createElement("div");
-        container.className = "quick-replies-container";
-
-        options.forEach(option => {
-            const button = document.createElement("button");
-            button.className = "quick-reply-button";
-            button.textContent = option;
-            container.appendChild(button);
-        });
-
-        return container;
-    }
 
     function createPropertyCard(property) {
         const msgDiv = document.createElement("div");
@@ -625,9 +597,6 @@ import "../styles/components/chat-demo.css";
         const executeStep = () => {
             if (step.type === "crm_update") {
                 updateCRM(step);
-            } else if (step.type === "quick_replies") {
-                chatMessages.appendChild(createQuickReplies(step.options));
-                scrollToBottom();
             } else if (step.type === "property_card") {
                 const typing = createTypingIndicator();
                 chatMessages.appendChild(typing);
