@@ -1,0 +1,150 @@
+---
+import "../styles/components/roi-calculator.css";
+---
+
+<section class="roi-section section-spacing">
+    <div class="container">
+        <div class="roi-grid">
+            <div class="roi-content">
+                <h2 class="section-title">
+                    Quanto você está <span class="text-gradient"
+                        >deixando na mesa?</span
+                    >
+                </h2>
+                <p class="section-subtitle">
+                    Faça uma simulação rápida e descubra o impacto financeiro de
+                    automatizar seu atendimento com a BrJoy AI.
+                </p>
+                <ul class="roi-benefits">
+                    <li>
+                        <span class="material-symbols-outlined"
+                            >check_circle</span
+                        >
+                        <span>Cálculo baseado em métricas reais do mercado</span
+                        >
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined"
+                            >check_circle</span
+                        >
+                        <span>Considerando conversão média de 2%</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined"
+                            >check_circle</span
+                        >
+                        <span>Ticket médio de imóvel: R$ 500.000</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="roi-card">
+                <div class="roi-input-group">
+                    <label for="leads-slider" class="roi-label"
+                        >Quantos leads você recebe por mês?</label
+                    >
+                    <div class="roi-slider-container">
+                        <input
+                            type="range"
+                            id="leads-slider"
+                            min="50"
+                            max="1000"
+                            step="10"
+                            value="200"
+                            class="roi-slider"
+                        />
+                        <div class="roi-value-display">
+                            <span id="leads-value">200</span> leads/mês
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roi-results">
+                    <div class="roi-result-item">
+                        <span class="result-label">Tempo Economizado</span>
+                        <div class="result-value-group">
+                            <span class="material-symbols-outlined icon"
+                                >schedule</span
+                            >
+                            <span id="hours-saved" class="result-number"
+                                >50</span
+                            >
+                            <span class="result-unit">horas/mês</span>
+                        </div>
+                        <p class="result-description">
+                            Equivalente a <span id="days-saved">6</span> dias de
+                            trabalho de um corretor.
+                        </p>
+                    </div>
+
+                    <div class="roi-result-item highlight">
+                        <span class="result-label">Comissão Potencial</span>
+                        <div class="result-value-group">
+                            <span class="material-symbols-outlined icon"
+                                >payments</span
+                            >
+                            <span class="currency">R$</span>
+                            <span id="revenue-potential" class="result-number"
+                                >60.000</span
+                            >
+                        </div>
+                        <p class="result-description">
+                            Em vendas geradas por atendimento imediato.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="roi-cta">
+                    <a
+                        href="https://wa.me/5511997889281"
+                        class="btn btn-primary btn-full"
+                    >
+                        <span class="material-symbols-outlined"
+                            >rocket_launch</span
+                        >
+                        Quero Esses Resultados
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const slider = document.getElementById("leads-slider") as HTMLInputElement;
+    const leadsValue = document.getElementById("leads-value");
+    const hoursSaved = document.getElementById("hours-saved");
+    const daysSaved = document.getElementById("days-saved");
+    const revenuePotential = document.getElementById("revenue-potential");
+
+    function formatCurrency(value) {
+        return new Intl.NumberFormat("pt-BR", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(value);
+    }
+
+    function updateCalculator() {
+        const leads = parseInt(slider.value);
+
+        // Logic: 1 lead = 15 mins (0.25 hours)
+        const hours = Math.round(leads * 0.25);
+        const days = (hours / 8).toFixed(1); // 8h work day
+
+        // Logic: 2% conversion * 500k ticket * 6% commission (30k)
+        // So: Leads * 0.02 * 30000 = Leads * 600
+        const revenue = leads * 600;
+
+        if (leadsValue) leadsValue.textContent = leads.toString();
+        if (hoursSaved) hoursSaved.textContent = hours.toString();
+        if (daysSaved) daysSaved.textContent = days.replace(".", ",");
+        if (revenuePotential)
+            revenuePotential.textContent = formatCurrency(revenue);
+    }
+
+    if (slider) {
+        slider.addEventListener("input", updateCalculator);
+        // Initialize
+        updateCalculator();
+    }
+</script>

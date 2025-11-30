@@ -1,0 +1,41 @@
+---
+import "../styles/components/security-badges.css";
+
+const badges = [
+    {
+        icon: "gpp_good",
+        title: "100% Adequado à LGPD",
+        description: "Seus dados e de seus clientes protegidos por lei.",
+    },
+    {
+        icon: "lock",
+        title: "Criptografia Avançada",
+        description: "Segurança de nível bancário para todas as conversas.",
+    },
+    {
+        icon: "cloud_done",
+        title: "Backup Automático",
+        description: "Histórico salvo na nuvem com redundância tripla.",
+    },
+];
+---
+
+<section class="security-section">
+    <div class="container">
+        <div class="security-grid">
+            {
+                badges.map((badge) => (
+                    <div class="security-item">
+                        <span class="material-symbols-outlined icon">
+                            {badge.icon}
+                        </span>
+                        <div class="security-info">
+                            <h3 class="security-title">{badge.title}</h3>
+                            <p class="security-desc">{badge.description}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

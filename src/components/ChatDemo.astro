@@ -1,0 +1,710 @@
+---
+import "../styles/components/chat-demo.css";
+---
+
+<section class="chat-demo-section section-spacing">
+    <div class="container">
+        <div class="chat-demo-header">
+            <h2 class="section-title">
+                Veja a IA em <span class="text-gradient">Ação</span>
+            </h2>
+            <p class="section-subtitle">
+                Acompanhe em tempo real como a BrJoy AI qualifica leads,
+                sugere imóveis e agenda visitas automaticamente via WhatsApp.
+            </p>
+        </div>
+
+        <div class="demo-split-view">
+            <!-- Left Side: WhatsApp Chat -->
+            <div class="chat-phone-wrapper">
+                <div class="whatsapp-window">
+                    <div class="whatsapp-screen">
+                        <!-- WhatsApp Header -->
+                        <div class="whatsapp-header">
+                            <div class="header-left">
+                                <button class="back-button" aria-label="Voltar para lista de conversas">
+                                    <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                                </button>
+                                <div class="contact-avatar" role="img" aria-label="Avatar BrJoy AI">
+                                    <span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>
+                                </div>
+                                <div class="contact-info">
+                                    <span class="contact-name">BrJoy AI</span>
+                                    <span class="contact-status" id="status-text" role="status" aria-live="polite">online</span>
+                                </div>
+                            </div>
+                            <div class="header-actions">
+                                <button class="icon-button" aria-label="Iniciar videochamada">
+                                    <span class="material-symbols-outlined" aria-hidden="true">videocam</span>
+                                </button>
+                                <button class="icon-button" aria-label="Fazer ligação">
+                                    <span class="material-symbols-outlined" aria-hidden="true">call</span>
+                                </button>
+                                <button class="icon-button" aria-label="Mais opções">
+                                    <span class="material-symbols-outlined" aria-hidden="true">more_vert</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages Area -->
+                        <div class="chat-messages" id="chat-messages" role="log" aria-label="Conversa com BrJoy AI" aria-live="polite">
+                            <div class="date-separator" role="separator">
+                                <span>HOJE</span>
+                            </div>
+                            <!-- Messages injected by JS -->
+                        </div>
+
+                        <!-- WhatsApp Input Area -->
+                        <div class="whatsapp-input-area">
+                            <button class="attach-button" aria-label="Anexar arquivo">
+                                <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                            </button>
+                            <div class="input-field" role="textbox" aria-label="Digite uma mensagem">
+                                <span class="placeholder-text">Mensagem</span>
+                                <button class="emoji-button" aria-label="Inserir emoji">
+                                    <span class="material-symbols-outlined" aria-hidden="true">sentiment_satisfied</span>
+                                </button>
+                            </div>
+                            <button class="mic-button" aria-label="Gravar áudio">
+                                <span class="material-symbols-outlined" aria-hidden="true">mic</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Intelligence Feed (Glassmorphism) -->
+            <!-- Right Side: Live CRM Card -->
+            <div class="crm-wrapper">
+                <div class="crm-card">
+                    <div class="crm-header">
+                        <div class="crm-avatar">
+                            <span class="material-symbols-outlined">person</span
+                            >
+                        </div>
+                        <div class="crm-title">
+                            <span class="crm-label">Novo Lead</span>
+                            <h3 class="crm-name" id="crm-name">
+                                Identificando...
+                            </h3>
+                        </div>
+                        <div class="crm-status-badge" id="crm-status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Visitante</span>
+                        </div>
+                    </div>
+
+                    <!-- Lead Score -->
+                    <div class="lead-score-container">
+                        <div class="score-header">
+                            <span>Lead Score</span>
+                            <span class="score-value"
+                                ><span id="crm-score-number">10</span>/100</span
+                            >
+                        </div>
+                        <div class="score-bar-bg">
+                            <div class="score-bar-fill" id="crm-score-bar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="crm-fields">
+                        <div class="crm-field-group">
+                            <label>Interesse</label>
+                            <div class="crm-value" id="crm-interest">
+                                <span class="placeholder">Aguardando...</span>
+                            </div>
+                        </div>
+
+                        <div class="crm-field-group">
+                            <label>Orçamento</label>
+                            <div class="crm-value" id="crm-budget">
+                                <span class="placeholder">Aguardando...</span>
+                            </div>
+                        </div>
+
+                        <div class="crm-field-group">
+                            <label>Localização</label>
+                            <div class="crm-value" id="crm-location">
+                                <span class="placeholder">Aguardando...</span>
+                            </div>
+                        </div>
+
+                        <div class="crm-field-group highlight">
+                            <label>Próximo Passo</label>
+                            <div class="crm-value" id="crm-next-step">
+                                <span class="placeholder"
+                                    >Em atendimento...</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="crm-footer">
+                        <div class="crm-system-info">
+                            <span class="material-symbols-outlined">sync</span>
+                            Sincronizando com CRM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const chatMessages = document.getElementById("chat-messages");
+
+    // CRM Elements
+    const crmName = document.getElementById("crm-name");
+    const crmStatus = document.getElementById("crm-status");
+    const crmInterest = document.getElementById("crm-interest");
+    const crmBudget = document.getElementById("crm-budget");
+    const crmLocation = document.getElementById("crm-location");
+    const crmNextStep = document.getElementById("crm-next-step");
+    const crmScoreNumber = document.getElementById("crm-score-number");
+    const crmScoreBar = document.getElementById("crm-score-bar");
+    const crmFooter = document.querySelector(".crm-footer");
+
+    const conversation = [
+        // Step 1: Initial Contact
+        {
+            type: "user",
+            text: "Olá, gostaria de saber mais sobre imóveis na região.",
+            time: "14:23",
+            delay: 1000,
+        },
+        {
+            type: "crm_update",
+            field: "status",
+            value: "Visitante",
+            active: false,
+            delay: 0,
+        },
+        {
+            type: "bot",
+            text: "Olá! 👋 Sou a BrJoy, sua assistente inteligente de imóveis.\n\nTerei prazer em te ajudar a encontrar o imóvel perfeito! Para começar, qual é o seu nome?",
+            time: "14:23",
+            delay: 1500,
+        },
+
+        // Step 2: Name Capture
+        {
+            type: "user",
+            text: "Carlos",
+            time: "14:24",
+            delay: 1500,
+        },
+        {
+            type: "crm_update",
+            field: "name",
+            value: "Carlos",
+            delay: 500,
+        },
+        {
+            type: "crm_update",
+            field: "status",
+            value: "Lead Qualificado",
+            active: true,
+            delay: 200,
+        },
+        {
+            type: "crm_update",
+            field: "score",
+            value: 30,
+            delay: 0,
+        },
+
+        // Step 3: Intent (Rent vs Buy) - Quick Replies
+        {
+            type: "bot",
+            text: "Prazer, Carlos! 😊\n\nVocê está buscando imóvel para:",
+            time: "14:24",
+            delay: 1200,
+        },
+        {
+            type: "quick_replies",
+            options: ["🏠 Comprar", "🔑 Alugar"],
+            delay: 300,
+        },
+        {
+            type: "user",
+            text: "🔑 Alugar",
+            time: "14:24",
+            delay: 1500,
+        },
+        {
+            type: "crm_update",
+            field: "interest",
+            value: "Locação",
+            delay: 500,
+        },
+        {
+            type: "crm_update",
+            field: "score",
+            value: 50,
+            delay: 0,
+        },
+
+        // Step 4: Budget (Audio)
+        {
+            type: "bot",
+            text: "Ótimo, Carlos! 👍\n\nE qual seria a faixa de valor mensal que você tem em mente?",
+            time: "14:25",
+            delay: 1500,
+        },
+        {
+            type: "user_audio",
+            duration: "0:03",
+            time: "14:25",
+            delay: 2000,
+        },
+        {
+            type: "crm_update",
+            field: "budget",
+            value: "Até R$ 3.000,00",
+            delay: 500,
+        },
+        {
+            type: "crm_update",
+            field: "score",
+            value: 70,
+            delay: 0,
+        },
+
+        // Step 5: Property Match with Card
+        {
+            type: "bot",
+            text: "Encontrei uma opção perfeita! 🎯",
+            time: "14:25",
+            delay: 1500,
+        },
+        {
+            type: "property_card",
+            property: {
+                image: "/images/apttatuape1.webp",
+                title: "Apartamento Tatuapé - 3º Andar",
+                price: "R$ 2.800/mês",
+                details: "2 quartos • 1 vaga • 65m² • Mobiliado",
+                location: "Tatuapé, São Paulo - SP"
+            },
+            delay: 1000,
+        },
+        {
+            type: "crm_update",
+            field: "location",
+            value: "Tatuapé (Sugerido)",
+            delay: 500,
+        },
+        {
+            type: "bot",
+            text: "Quer ver mais fotos?",
+            time: "14:26",
+            delay: 1000,
+        },
+        {
+            type: "quick_replies",
+            options: ["📷 Sim, quero ver", "📅 Agendar visita"],
+            delay: 300,
+        },
+        {
+            type: "user",
+            text: "📷 Sim, quero ver",
+            time: "14:26",
+            delay: 1500,
+        },
+        {
+            type: "bot_image",
+            imageUrls: [
+                "/images/apttatuape1.webp",
+                "/images/apttatuape2.webp",
+                "/images/apttatuape3.webp",
+                "/images/apttatuape4.webp",
+            ],
+            caption: "Confira essas fotos! 😍",
+            time: "14:26",
+            delay: 1000,
+        },
+        {
+            type: "user",
+            text: "Gostei! Mas aceita pet? Tenho um gato 🐱",
+            time: "14:27",
+            delay: 2000,
+        },
+        {
+            type: "bot",
+            text: "Aceita sim! 😺\n\nO proprietário adora animais de estimação! O condomínio tem Pet Place completo com área de lazer exclusiva para pets. Seu gatinho vai adorar! 🐾",
+            time: "14:27",
+            delay: 1500,
+        },
+        {
+            type: "crm_update",
+            field: "interest",
+            value: "Locação (Pet Friendly)",
+            highlight: true,
+            delay: 500,
+        },
+
+        // Step 6: Scheduling
+        {
+            type: "bot",
+            text: "Perfeito! Quando você gostaria de visitar?",
+            time: "14:27",
+            delay: 1500,
+        },
+        {
+            type: "quick_replies",
+            options: ["🗓️ Segunda 14h", "🗓️ Terça 9h", "📆 Outro horário"],
+            delay: 300,
+        },
+        {
+            type: "user",
+            text: "🗓️ Terça 9h",
+            time: "14:28",
+            delay: 1800,
+        },
+        {
+            type: "crm_update",
+            field: "next_step",
+            value: "Verificando agenda...",
+            delay: 500,
+        },
+        {
+            type: "crm_update",
+            field: "calendar_event",
+            value: {
+                day: "12",
+                month: "OUT",
+                title: "Visita: Ap. Tatuapé",
+                time: "Terça, 09:00",
+            },
+            highlight: true,
+            delay: 800,
+        },
+        {
+            type: "crm_update",
+            field: "score",
+            value: 100,
+            delay: 0,
+        },
+        {
+            type: "bot",
+            text: "Agendado com sucesso! ✅\n\n📅 Terça-feira, 09:00h\n📍 Rua Tuiuti, 1234 - Tatuapé\n🏢 Condomínio Residencial Vista Verde\n\nO corretor Ricardo já foi notificado e entrará em contato com você 1 hora antes da visita.\n\nVocê receberá um lembrete aqui no WhatsApp também! 😊",
+            time: "14:28",
+            delay: 1200,
+        },
+        {
+            type: "crm_update",
+            field: "handoff",
+            value: "Corretor Ricardo notificado",
+            delay: 1000,
+        },
+        {
+            type: "bot",
+            text: "Precisa de mais alguma coisa?",
+            time: "14:28",
+            delay: 1500,
+        },
+    ];
+
+    let currentStep = 0;
+
+    function createMessageElement(text, type, time) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `message ${type}`;
+
+        const checkmark = type === 'user' ?
+            '<span class="message-status"><span class="checkmark">✓✓</span></span>' : '';
+
+        msgDiv.innerHTML = `
+            <div class="message-bubble">
+                ${text.replace(/\n/g, "<br>")}
+                <span class="message-time">${time || ''} ${checkmark}</span>
+            </div>
+        `;
+        return msgDiv;
+    }
+
+    function createQuickReplies(options) {
+        const container = document.createElement("div");
+        container.className = "quick-replies-container";
+
+        options.forEach(option => {
+            const button = document.createElement("button");
+            button.className = "quick-reply-button";
+            button.textContent = option;
+            container.appendChild(button);
+        });
+
+        return container;
+    }
+
+    function createPropertyCard(property) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = "message bot";
+        msgDiv.innerHTML = `
+            <div class="property-card">
+                <img src="${property.image}" alt="${property.title}" class="property-image" loading="lazy" />
+                <div class="property-details">
+                    <h4 class="property-title">${property.title}</h4>
+                    <div class="property-price">${property.price}</div>
+                    <div class="property-info">${property.details}</div>
+                    <div class="property-location">
+                        <span class="material-symbols-outlined">location_on</span>
+                        ${property.location}
+                    </div>
+                </div>
+            </div>
+        `;
+        return msgDiv;
+    }
+
+    function createAudioMessage(duration, time) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = "message user audio-msg";
+        msgDiv.innerHTML = `
+            <div class="message-bubble audio-bubble">
+                <span class="material-symbols-outlined play-icon">play_circle</span>
+                <div class="audio-wave">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <span class="audio-duration">${duration}</span>
+                <span class="message-time">${time} <span class="message-status"><span class="checkmark">✓✓</span></span></span>
+            </div>
+        `;
+        return msgDiv;
+    }
+
+    function createImageMessage(data, caption, time) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = "message bot image-msg";
+        let content = '<div class="image-bubble">';
+
+        if (Array.isArray(data)) {
+            // Grid View
+            content += '<div class="image-grid">';
+            data.forEach((url) => {
+                content += `<img src="${url}" alt="Foto do imóvel" class="grid-image" loading="lazy" />`;
+            });
+            content += "</div>";
+        } else {
+            // Single Image
+            content += `<img src="${data}" alt="Foto do imóvel" class="message-image" loading="lazy" />`;
+        }
+
+        if (caption) {
+            content += `<div class="image-caption">${caption}</div>`;
+        }
+
+        content += `<span class="message-time">${time || ''}</span>`;
+        content += `</div>`;
+        msgDiv.innerHTML = content;
+        return msgDiv;
+    }
+
+    function createTypingIndicator() {
+        const typingDiv = document.createElement("div");
+        typingDiv.className = "message bot typing-indicator";
+        typingDiv.innerHTML = `
+            <div class="message-bubble">
+                <div class="typing-dots"><span></span><span></span><span></span></div>
+            </div>
+        `;
+        return typingDiv;
+    }
+
+    function updateCRM(data) {
+        let element;
+
+        if (data.field === "score") {
+            if (crmScoreNumber) crmScoreNumber.textContent = data.value;
+            if (crmScoreBar) crmScoreBar.style.width = `${data.value}%`;
+            return;
+        }
+
+        if (data.field === "handoff") {
+            if (crmFooter) {
+                crmFooter.innerHTML = `
+                    <div class="handoff-notification">
+                        <span class="material-symbols-outlined handoff-icon">notifications_active</span>
+                        <span class="handoff-text">${data.value}</span>
+                    </div>
+                `;
+            }
+            return;
+        }
+
+        if (data.field === "calendar_event") {
+            element = crmNextStep;
+            // Create Calendar Card HTML
+            const html = `
+                <div class="calendar-event">
+                    <div class="calendar-date">
+                        <span class="month">${data.value.month}</span>
+                        <span class="day">${data.value.day}</span>
+                    </div>
+                    <div class="calendar-details">
+                        <div class="calendar-title">${data.value.title}</div>
+                        <div class="calendar-time">
+                            <span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                            ${data.value.time}
+                        </div>
+                    </div>
+                </div>
+            `;
+            element.innerHTML = html;
+
+            // Highlight parent
+            const parent = element.closest(".crm-field-group");
+            if (parent) {
+                parent.classList.remove("updated");
+                void parent.offsetWidth;
+                parent.classList.add("updated");
+                parent.classList.add("highlight");
+            }
+            return;
+        }
+
+        switch (data.field) {
+            case "name":
+                element = crmName;
+                break;
+            case "status":
+                if (crmStatus) {
+                    const textSpan = crmStatus.querySelector(".status-text");
+                    if (textSpan) textSpan.textContent = data.value;
+                    if (data.active) crmStatus.classList.add("active");
+                    else crmStatus.classList.remove("active");
+                }
+                return;
+            case "interest":
+                element = crmInterest;
+                break;
+            case "budget":
+                element = crmBudget;
+                break;
+            case "location":
+                element = crmLocation;
+                break;
+            case "next_step":
+                element = crmNextStep;
+                break;
+        }
+
+        if (element) {
+            element.textContent = data.value;
+            // Add flash animation class
+            const parent = element.closest(".crm-field-group");
+            if (parent) {
+                parent.classList.remove("updated");
+                void parent.offsetWidth; // trigger reflow
+                parent.classList.add("updated");
+
+                if (data.highlight) {
+                    parent.classList.add("highlight");
+                }
+            }
+        }
+    }
+
+    function scrollToBottom() {
+        if (chatMessages) {
+            chatMessages.scrollTo({
+                top: chatMessages.scrollHeight,
+                behavior: "smooth",
+            });
+        }
+    }
+
+    function processStep() {
+        if (currentStep >= conversation.length) return;
+
+        const step = conversation[currentStep];
+        const statusText = document.getElementById("status-text");
+
+        const executeStep = () => {
+            if (step.type === "crm_update") {
+                updateCRM(step);
+            } else if (step.type === "quick_replies") {
+                chatMessages.appendChild(createQuickReplies(step.options));
+                scrollToBottom();
+            } else if (step.type === "property_card") {
+                const typing = createTypingIndicator();
+                chatMessages.appendChild(typing);
+                if (statusText) statusText.textContent = "digitando...";
+                scrollToBottom();
+                setTimeout(() => {
+                    typing.remove();
+                    if (statusText) statusText.textContent = "online";
+                    chatMessages.appendChild(createPropertyCard(step.property));
+                    scrollToBottom();
+                    currentStep++;
+                    processStep();
+                }, step.delay);
+                return;
+            } else if (step.type === "user_audio") {
+                chatMessages.appendChild(createAudioMessage(step.duration, step.time));
+                scrollToBottom();
+            } else if (step.type === "bot_image") {
+                const typing = createTypingIndicator();
+                chatMessages.appendChild(typing);
+                if (statusText) statusText.textContent = "digitando...";
+                scrollToBottom();
+                setTimeout(() => {
+                    typing.remove();
+                    if (statusText) statusText.textContent = "online";
+                    const imgData = step.imageUrls || step.imageUrl;
+                    chatMessages.appendChild(
+                        createImageMessage(imgData, step.caption, step.time),
+                    );
+                    scrollToBottom();
+                    currentStep++;
+                    processStep();
+                }, step.delay);
+                return;
+            } else if (step.type === "bot") {
+                const typing = createTypingIndicator();
+                chatMessages.appendChild(typing);
+                if (statusText) statusText.textContent = "digitando...";
+                scrollToBottom();
+                setTimeout(() => {
+                    typing.remove();
+                    if (statusText) statusText.textContent = "online";
+                    chatMessages.appendChild(
+                        createMessageElement(step.text, "bot", step.time),
+                    );
+                    scrollToBottom();
+                    currentStep++;
+                    processStep();
+                }, step.delay);
+                return;
+            } else if (step.type === "user") {
+                chatMessages.appendChild(
+                    createMessageElement(step.text, "user", step.time),
+                );
+                scrollToBottom();
+            }
+
+            currentStep++;
+            processStep();
+        };
+
+        if (step.type === "bot" || step.type === "bot_image" || step.type === "property_card") {
+            executeStep();
+        } else {
+            setTimeout(executeStep, step.delay);
+        }
+    }
+
+    // Start
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && chatMessages.children.length <= 1) {
+                // 1 because of timestamp
+                setTimeout(processStep, 500);
+            }
+        });
+    });
+
+    if (chatMessages) observer.observe(chatMessages);
+</script>
