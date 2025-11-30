@@ -74,23 +74,89 @@ import "../styles/components/chat-demo.css";
             </div>
 
             <!-- Right Side: Intelligence Feed (Glassmorphism) -->
-            <!-- Right Side: Live CRM Card -->
+            <!-- Right Side: Live CRM Card with Slider -->
             <div class="crm-wrapper">
                 <div class="crm-card">
-                    <div class="crm-header">
-                        <div class="crm-avatar">
-                            <span class="material-symbols-outlined">person</span
-                            >
+                    <!-- Slider Container -->
+                    <div class="crm-slider-container">
+                        <div class="crm-slider" id="crm-slider">
+                            <!-- Slide 1: Novo Lead -->
+                            <div class="crm-slide active" data-slide="1">
+                                <div class="crm-header">
+                                    <div class="crm-avatar">
+                                        <span class="material-symbols-outlined">person</span>
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label">Novo Lead</span>
+                                        <h3 class="crm-name" id="crm-name">
+                                            Identificando...
+                                        </h3>
+                                    </div>
+                                    <div class="crm-status-badge" id="crm-status">
+                                        <span class="status-dot"></span>
+                                        <span class="status-text">Visitante</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Lead Qualificado -->
+                            <div class="crm-slide" data-slide="2">
+                                <div class="crm-header qualified">
+                                    <div class="crm-avatar qualified">
+                                        <span class="material-symbols-outlined">person_search</span>
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label qualified-label">Lead Qualificado</span>
+                                        <h3 class="crm-name" id="crm-name-2"></h3>
+                                    </div>
+                                    <div class="crm-status-badge active">
+                                        <span class="status-dot"></span>
+                                        <span class="status-text">Qualificando</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Hot Lead -->
+                            <div class="crm-slide" data-slide="3">
+                                <div class="crm-header hot">
+                                    <div class="crm-avatar hot">
+                                        <span class="material-symbols-outlined">local_fire_department</span>
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label hot-label">Hot Lead 🔥</span>
+                                        <h3 class="crm-name" id="crm-name-3"></h3>
+                                    </div>
+                                    <div class="crm-status-badge active hot">
+                                        <span class="status-dot hot"></span>
+                                        <span class="status-text">Pronto para Fechar</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Corretor Atribuído -->
+                            <div class="crm-slide" data-slide="4">
+                                <div class="crm-header assigned">
+                                    <div class="crm-avatar assigned">
+                                        <span class="material-symbols-outlined">person_check</span>
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label assigned-label">Corretor Atribuído</span>
+                                        <h3 class="crm-name" id="crm-name-4"></h3>
+                                    </div>
+                                    <div class="crm-status-badge active assigned">
+                                        <span class="status-dot assigned"></span>
+                                        <span class="status-text">Em Negociação</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="crm-title">
-                            <span class="crm-label">Novo Lead</span>
-                            <h3 class="crm-name" id="crm-name">
-                                Identificando...
-                            </h3>
-                        </div>
-                        <div class="crm-status-badge" id="crm-status">
-                            <span class="status-dot"></span>
-                            <span class="status-text">Visitante</span>
+
+                        <!-- Slider Indicators -->
+                        <div class="slider-indicators">
+                            <span class="indicator active" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                            <span class="indicator" data-slide="3"></span>
+                            <span class="indicator" data-slide="4"></span>
                         </div>
                     </div>
 
@@ -177,6 +243,10 @@ import "../styles/components/chat-demo.css";
     const crmScoreNumber = document.getElementById("crm-score-number");
     const crmScoreBar = document.getElementById("crm-score-bar");
     const crmFooter = document.querySelector(".crm-footer");
+    const crmSlider = document.getElementById("crm-slider");
+
+    let currentSlide = 1;
+    let leadName = "Identificando...";
 
     const conversation = [
         // Step 1: Initial Contact - 1 BUBBLE
@@ -569,8 +639,40 @@ import "../styles/components/chat-demo.css";
         return typingDiv;
     }
 
+    function changeSlide(slideNumber) {
+        if (slideNumber === currentSlide) return;
+
+        const slides = document.querySelectorAll('.crm-slide');
+        const indicators = document.querySelectorAll('.slider-indicators .indicator');
+
+        // Remove active from current
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
+
+        // Add active to new slide
+        const newSlide = document.querySelector(`[data-slide="${slideNumber}"]`);
+        if (newSlide) {
+            newSlide.classList.add('active');
+            indicators[slideNumber - 1].classList.add('active');
+        }
+
+        currentSlide = slideNumber;
+    }
+
     function updateCRM(data) {
         let element;
+
+        if (data.field === "name") {
+            leadName = data.value;
+            // Update name in all slides
+            document.getElementById("crm-name").textContent = leadName;
+            const name2 = document.getElementById("crm-name-2");
+            const name3 = document.getElementById("crm-name-3");
+            const name4 = document.getElementById("crm-name-4");
+            if (name2) name2.textContent = leadName;
+            if (name3) name3.textContent = leadName;
+            if (name4) name4.textContent = leadName;
+        }
 
         if (data.field === "score") {
             if (crmScoreNumber) crmScoreNumber.textContent = data.value;
@@ -585,6 +687,17 @@ import "../styles/components/chat-demo.css";
                     color = '#FBBC04'; // Yellow (medium)
                 }
                 crmScoreBar.style.background = `linear-gradient(90deg, ${color}, ${color}dd)`;
+
+                // Change slide based on score
+                if (data.value >= 100) {
+                    changeSlide(4); // Corretor Atribuído
+                } else if (data.value >= 70) {
+                    changeSlide(3); // Hot Lead
+                } else if (data.value >= 31) {
+                    changeSlide(2); // Lead Qualificado
+                } else {
+                    changeSlide(1); // Novo Lead
+                }
             }
             return;
         }
