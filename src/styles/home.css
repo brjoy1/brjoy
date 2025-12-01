@@ -3,7 +3,7 @@
 /* Solutions Section */
 .solutions {
     padding: var(--section-padding-large) 0;
-    background: #FAFAFA;
+    background: #fafafa;
 }
 
 .solutions-grid {
@@ -15,7 +15,7 @@
 }
 
 .solution-card {
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 24px;
     padding: 40px;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -47,13 +47,17 @@
 
 .solution-card.highlight {
     border: 2px solid var(--color-primary);
-    background: linear-gradient(135deg, rgba(26, 115, 232, 0.02) 0%, #FFFFFF 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(26, 115, 232, 0.02) 0%,
+        #ffffff 100%
+    );
 }
 
 .solution-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;

@@ -1,41 +1,56 @@
 {
-  "name": "brjoy-astro",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "BrJoy AI - Landing Page em Astro",
-  "author": "BRJOY AI",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brjoy1/brjoy.git"
-  },
-  "homepage": "https://brjoy.com.br",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "deploy": "npm run build && npx gh-pages -d dist"
-  },
-  "keywords": [
-    "astro",
-    "landing-page",
-    "brjoy",
-    "imobiliaria",
-    "ia",
-    "crm"
-  ],
-  "devDependencies": {
-    "astro": "^5.16.0",
-    "gh-pages": "^6.0.0",
-    "terser": "^5.44.1"
-  },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
-    "@tailwindcss/vite": "^4.1.17",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
-    "tailwindcss": "^4.1.17",
-    "zod": "^3.25.76"
-  }
+    "name": "brjoy-astro",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "BrJoy AI - Landing Page em Astro",
+    "author": "BRJOY AI",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/brjoy1/brjoy.git"
+    },
+    "homepage": "https://brjoy.com.br",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "deploy": "npm run build && npx gh-pages -d dist",
+        "lint": "eslint . --ext .js,.ts,.astro",
+        "format": "prettier --write .",
+        "test": "vitest run",
+        "prepare": "husky"
+    },
+    "keywords": [
+        "astro",
+        "landing-page",
+        "brjoy",
+        "imobiliaria",
+        "ia",
+        "crm"
+    ],
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.48.0",
+        "@typescript-eslint/parser": "^8.48.0",
+        "astro": "^5.16.0",
+        "astro-eslint-parser": "^1.2.2",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-astro": "^1.5.0",
+        "gh-pages": "^6.0.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "prettier": "^3.7.3",
+        "prettier-plugin-astro": "^0.14.1",
+        "terser": "^5.44.1",
+        "vitest": "^4.0.14"
+    },
+    "dependencies": {
+        "@astrojs/sitemap": "^3.6.0",
+        "@tailwindcss/vite": "^4.1.17",
+        "@vercel/analytics": "^1.5.0",
+        "@vercel/speed-insights": "^1.2.0",
+        "tailwindcss": "^4.1.17",
+        "zod": "^3.25.76"
+    }
 }

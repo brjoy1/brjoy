@@ -1,5 +1,9 @@
 .comparison-section {
-    background: linear-gradient(to bottom, var(--color-surface), var(--color-surface-subtle));
+    background: linear-gradient(
+        to bottom,
+        var(--color-surface),
+        var(--color-surface-subtle)
+    );
 }
 
 .comparison-table-wrapper {
@@ -98,7 +102,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-
     .comparison-table th,
     .comparison-table td {
         padding: 1rem 0.5rem;

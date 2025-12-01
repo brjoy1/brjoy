@@ -17,10 +17,12 @@ O BRJOY é uma ferramenta de IA especializada que automatiza completamente o fun
 ## 📦 Instalação e Desenvolvimento
 
 ### Pré-requisitos
+
 - Node.js (versão 16+)
 - npm ou yarn
 
 ### Setup inicial
+
 ```bash
 # Clone o repositório
 git clone https://github.com/brjoy1/brjoy.git
@@ -36,6 +38,7 @@ npm run dev
 ```
 
 ### Scripts disponíveis
+
 ```bash
 npm run dev     # Servidor de desenvolvimento (porta 4321)
 npm run start   # Alias para npm run dev
@@ -101,12 +104,14 @@ brjoy-imobiliaria-ai/
 ## 🛠️ Desenvolvimento
 
 ### Tecnologias Principais
+
 - **Astro 5.16.0**: Framework SSG com islands architecture
 - **TypeScript**: Type safety em componentes
 - **CSS Modular**: Variáveis CSS + imports por componente
 - **Material Symbols**: Ícones do Google
 
 ### Próximos passos
+
 - [ ] Adicionar imagem OG real em `/public/images/og-image.jpg`
 - [ ] Implementar `<Image>` component do Astro para otimização
 - [ ] Criar páginas para outros segmentos (E-commerce, Saúde, Educação)

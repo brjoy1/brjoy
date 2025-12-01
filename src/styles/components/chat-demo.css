@@ -1,10 +1,12 @@
 /* WhatsApp Business Demo CSS */
 
 .chat-demo-section {
-    background: linear-gradient(180deg, #F0F2F5 0%, #FFFFFF 100%);
+    background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%);
     padding: 6rem 0;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
 }
 
 .chat-demo-header {
@@ -15,12 +17,12 @@
 .chat-demo-header .section-title {
     font-size: 3rem;
     letter-spacing: -0.02em;
-    color: #1D1D1F;
+    color: #1d1d1f;
 }
 
 .chat-demo-header .section-subtitle {
     font-size: 1.25rem;
-    color: #86868B;
+    color: #86868b;
     max-width: 700px;
     margin: 1rem auto 0;
     font-weight: 400;
@@ -63,7 +65,7 @@
 
 /* WhatsApp Header */
 .whatsapp-header {
-    background: #075E54;
+    background: #075e54;
     color: #fff;
     padding: 10px 16px;
     display: flex;
@@ -93,7 +95,7 @@
 .contact-avatar {
     width: 40px;
     height: 40px;
-    background: #25D366;
+    background: #25d366;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -142,7 +144,7 @@
 /* Chat Messages Area */
 .chat-messages {
     flex: 1;
-    background: #E5DDD5;
+    background: #e5ddd5;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" opacity="0.04"><path d="M52.5 0L0 52.5 52.5 105 105 52.5z"/></svg>');
     padding: 16px 12px 80px;
     overflow-y: auto;
@@ -204,13 +206,13 @@
 }
 
 .message.bot .message-bubble {
-    background: #FFFFFF;
+    background: #ffffff;
     color: #111;
     border-top-left-radius: 0;
 }
 
 .message.user .message-bubble {
-    background: #D9FDD3;
+    background: #d9fdd3;
     color: #111;
     border-top-right-radius: 0;
 }
@@ -268,7 +270,7 @@
 .property-price {
     font-size: 16px;
     font-weight: 700;
-    color: #25D366;
+    color: #25d366;
     margin-bottom: 6px;
 }
 
@@ -315,7 +317,7 @@
 
 .audio-wave span {
     width: 3px;
-    background: #25D366;
+    background: #25d366;
     border-radius: 2px;
     animation: wave 1s ease-in-out infinite;
 }
@@ -346,7 +348,6 @@
 }
 
 @keyframes wave {
-
     0%,
     100% {
         transform: scaleY(0.5);
@@ -445,7 +446,8 @@
     visibility: hidden;
     display: none;
     transform: translateX(50px);
-    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transition:
+        opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
         transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
         visibility 0s 0.6s;
     width: 100%;
@@ -456,13 +458,13 @@
     visibility: visible;
     display: block;
     transform: translateX(0);
-    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transition:
+        opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
         transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
         visibility 0s 0s;
 }
 
 @keyframes typing {
-
     0%,
     80%,
     100% {
@@ -482,7 +484,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #F0F2F5;
+    background: #f0f2f5;
     padding: 8px;
     display: flex;
     align-items: center;
@@ -584,12 +586,12 @@
 .crm-avatar {
     width: 48px;
     height: 48px;
-    background: #F2F2F7;
+    background: #f2f2f7;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8E8E93;
+    color: #8e8e93;
 }
 
 .crm-title {
@@ -601,14 +603,14 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #86868B;
+    color: #86868b;
     margin-bottom: 2px;
 }
 
 .crm-name {
     font-size: 17px;
     font-weight: 600;
-    color: #1D1D1F;
+    color: #1d1d1f;
     margin: 0;
 }
 
@@ -617,17 +619,17 @@
     align-items: center;
     gap: 6px;
     padding: 6px 10px;
-    background: #F2F2F7;
+    background: #f2f2f7;
     border-radius: 20px;
     font-size: 11px;
     font-weight: 600;
-    color: #86868B;
+    color: #86868b;
     transition: all 0.3s ease;
 }
 
 .crm-status-badge.active {
-    background: #E0F7E9;
-    color: #34C759;
+    background: #e0f7e9;
+    color: #34c759;
 }
 
 .status-dot {
@@ -652,7 +654,7 @@
 
 .crm-field-group label {
     font-size: 12px;
-    color: #86868B;
+    color: #86868b;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -663,12 +665,12 @@
 
 .field-icon {
     font-size: 16px !important;
-    color: #1A73E8;
+    color: #1a73e8;
 }
 
 .crm-value {
     font-size: 15px;
-    color: #1D1D1F;
+    color: #1d1d1f;
     font-weight: 500;
     min-height: 20px;
     display: flex;
@@ -676,13 +678,13 @@
 }
 
 .crm-value .placeholder {
-    color: #D1D1D6;
+    color: #d1d1d6;
     font-style: italic;
     font-weight: 400;
 }
 
 .crm-field-group.highlight {
-    background: #F5F5F7;
+    background: #f5f5f7;
     padding: 12px;
     border-radius: 12px;
     margin: 0 -12px;
@@ -694,12 +696,12 @@
 
 @keyframes flashUpdate {
     0% {
-        color: #25D366;
+        color: #25d366;
         font-weight: 600;
     }
 
     100% {
-        color: #1D1D1F;
+        color: #1d1d1f;
         font-weight: 500;
     }
 }
@@ -714,7 +716,7 @@
 
 .crm-system-info {
     font-size: 11px;
-    color: #86868B;
+    color: #86868b;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -741,8 +743,8 @@
 
 /* Hand-off Notification */
 .handoff-notification {
-    background: #E0F7E9;
-    border: 1px solid #34C759;
+    background: #e0f7e9;
+    border: 1px solid #34c759;
     border-radius: 12px;
     padding: 12px 14px;
     display: flex;
@@ -752,14 +754,14 @@
 }
 
 .handoff-icon {
-    color: #34C759;
+    color: #34c759;
     font-size: 20px;
     flex-shrink: 0;
 }
 
 .handoff-text {
     font-size: 13px;
-    color: #1D1D1F;
+    color: #1d1d1f;
     font-weight: 500;
     flex: 1;
 }
@@ -779,7 +781,7 @@
 /* Calendar Event Card */
 .calendar-event {
     background: #fff;
-    border: 1px solid #E5E5EA;
+    border: 1px solid #e5e5ea;
     border-radius: 12px;
     padding: 12px;
     display: flex;
@@ -790,7 +792,7 @@
 }
 
 .calendar-date {
-    background: #25D366;
+    background: #25d366;
     color: #fff;
     border-radius: 8px;
     width: 44px;
@@ -821,18 +823,17 @@
 .calendar-title {
     font-size: 13px;
     font-weight: 600;
-    color: #1D1D1F;
+    color: #1d1d1f;
     margin-bottom: 2px;
 }
 
 .calendar-time {
     font-size: 12px;
-    color: #86868B;
+    color: #86868b;
     display: flex;
     align-items: center;
     gap: 4px;
 }
-
 
 /* Responsive */
 @media (max-width: 900px) {

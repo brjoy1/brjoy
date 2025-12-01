@@ -10,6 +10,7 @@
 ## 📊 RESUMO EXECUTIVO
 
 ### ✅ Pontos Fortes
+
 - ✓ Sanitização de dados implementada com Zod
 - ✓ Rate limiting na API
 - ✓ CORS configurado corretamente
@@ -20,6 +21,7 @@
 - ✓ SEO bem estruturado (Schema.org, meta tags)
 
 ### ⚠️ Pontos de Atenção
+
 - ⚠️ Falta Content Security Policy (CSP)
 - ⚠️ Imagem JPEG pode ser otimizada para WebP
 - ⚠️ Google Analytics pode impactar performance
@@ -33,50 +35,57 @@
 ### ✅ Cores Principais - Análise de Contraste
 
 #### Texto Principal
+
 - **Fundo branco (#FFFFFF) + Texto escuro (#202124)**
-  - Ratio: **16.1:1** ✅ AAA (mínimo 4.5:1)
+    - Ratio: **16.1:1** ✅ AAA (mínimo 4.5:1)
 
 #### Texto Secundário
+
 - **Fundo branco (#FFFFFF) + Texto secundário (#3C4043)**
-  - Ratio: **11.5:1** ✅ AAA (mínimo 4.5:1)
+    - Ratio: **11.5:1** ✅ AAA (mínimo 4.5:1)
 
 #### Botão Primário
+
 - **Fundo escuro (#202124) + Texto branco (#FFFFFF)**
-  - Ratio: **16.1:1** ✅ AAA
+    - Ratio: **16.1:1** ✅ AAA
 
 #### Botão WhatsApp
+
 - **Gradiente verde (#25D366) + Texto branco (#FFFFFF)**
-  - Ratio: **3.4:1** ⚠️ **FALHA AA** (mínimo 4.5:1)
-  - **RECOMENDAÇÃO:** Escurecer o verde ou aumentar peso da fonte
+    - Ratio: **3.4:1** ⚠️ **FALHA AA** (mínimo 4.5:1)
+    - **RECOMENDAÇÃO:** Escurecer o verde ou aumentar peso da fonte
 
 #### Texto Azul sobre Branco
+
 - **Link azul (#1A73E8) + Fundo branco (#FFFFFF)**
-  - Ratio: **4.6:1** ✅ AA (mínimo 4.5:1)
+    - Ratio: **4.6:1** ✅ AA (mínimo 4.5:1)
 
 ### 🔧 Recomendações de Acessibilidade
 
 1. **Botão WhatsApp:**
-   ```css
-   /* Sugestão: usar tom mais escuro */
-   background: linear-gradient(135deg, #1FA855 0%, #0D7F4F 100%);
-   /* Ou aumentar peso da fonte */
-   font-weight: 700; /* já implementado ✅ */
-   ```
+
+    ```css
+    /* Sugestão: usar tom mais escuro */
+    background: linear-gradient(135deg, #1fa855 0%, #0d7f4f 100%);
+    /* Ou aumentar peso da fonte */
+    font-weight: 700; /* já implementado ✅ */
+    ```
 
 2. **Textos sobre gradientes:**
-   - Verificar contraste em todas as variações do gradiente
-   - Considerar sombra de texto em casos críticos
+    - Verificar contraste em todas as variações do gradiente
+    - Considerar sombra de texto em casos críticos
 
 3. **Estados de foco:**
-   ```css
-   /* Adicionar para todos os elementos interativos */
-   :focus-visible {
-     outline: 3px solid #1A73E8;
-     outline-offset: 2px;
-   }
-   ```
+    ```css
+    /* Adicionar para todos os elementos interativos */
+    :focus-visible {
+        outline: 3px solid #1a73e8;
+        outline-offset: 2px;
+    }
+    ```
 
 ### ✅ ARIA e Semântica HTML
+
 - ✓ `role="banner"` no header
 - ✓ `role="navigation"` no nav
 - ✓ `aria-label` em botões e links
@@ -93,39 +102,44 @@
 #### A. API Endpoint ([send-lead.js](api/send-lead.js))
 
 **✅ Sanitização de Inputs (Linha 79-88)**
+
 ```javascript
 const sanitizedData = {
-  name: validatedData.name.trim(),
-  phone: validatedData.phone.replace(/[^\d+\s()-]/g, ''),
-  // Remove caracteres perigosos do telefone
-}
+    name: validatedData.name.trim(),
+    phone: validatedData.phone.replace(/[^\d+\s()-]/g, ""),
+    // Remove caracteres perigosos do telefone
+};
 ```
 
 **✅ Validação com Zod (Linha 4-10)**
+
 ```javascript
 const leadSchema = z.object({
-  name: z.string().min(2).max(100),
-  email: z.string().email().optional(),
-  phone: z.string().min(10).max(20),
-  message: z.string().max(1000).optional()
+    name: z.string().min(2).max(100),
+    email: z.string().email().optional(),
+    phone: z.string().min(10).max(20),
+    message: z.string().max(1000).optional(),
 });
 ```
 
 **✅ Rate Limiting (Linha 17-31)**
+
 - 5 requisições por minuto por IP
 - Proteção contra DoS/spam
 - Implementação simples mas efetiva
 
 **✅ CORS Restritivo (Linha 35-45)**
+
 - Whitelist de domínios permitidos
 - Rejeita requisições de origens não autorizadas
 
 **✅ Headers HTTP de Segurança ([vercel.json](vercel.json:28-43))**
+
 ```json
 {
-  "X-Content-Type-Options": "nosniff",
-  "X-Frame-Options": "DENY",
-  "X-XSS-Protection": "1; mode=block"
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-XSS-Protection": "1; mode=block"
 }
 ```
 
@@ -136,25 +150,27 @@ const leadSchema = z.object({
 **Risco:** XSS (Cross-Site Scripting)
 
 **Solução:** Adicionar ao [vercel.json](vercel.json):
+
 ```json
 {
-  "key": "Content-Security-Policy",
-  "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';"
+    "key": "Content-Security-Policy",
+    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';"
 }
 ```
 
 #### 2. **MÉDIO: JSON.parse sem try-catch**
 
 **Arquivo:** [PopHero.astro](src/components/PopHero.astro:90)
+
 ```javascript
 // VULNERÁVEL
-const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || "[]");
 
 // SEGURO
 try {
-  const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+    const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || "[]");
 } catch {
-  const dynamicWords = [];
+    const dynamicWords = [];
 }
 ```
 
@@ -163,6 +179,7 @@ try {
 **Problema:** Reseta a cada deploy no serverless
 
 **Solução:** Usar Redis ou Upstash para persistência:
+
 ```javascript
 // Usar serviço externo para rate limiting
 import { Ratelimit } from "@upstash/ratelimit";
@@ -179,10 +196,9 @@ import { Ratelimit } from "@upstash/ratelimit";
 **Problema:** Google Fonts carregados sem hash de verificação
 
 **Solução:** Adicionar `integrity` e `crossorigin` nos links:
+
 ```html
-<link href="..."
-      integrity="sha384-..."
-      crossorigin="anonymous">
+<link href="..." integrity="sha384-..." crossorigin="anonymous" />
 ```
 
 ---
@@ -221,6 +237,7 @@ cwebp -q 85 mari.jpeg -o mari.webp
 **Atual:** Carrega após 3s ou primeira interação
 
 **Sugestão:** Aumentar para 5s para melhorar FCP/LCP:
+
 ```javascript
 setTimeout(loadAnalytics, 5000); // era 3000
 ```
@@ -229,8 +246,8 @@ setTimeout(loadAnalytics, 5000); // era 3000
 
 ```html
 <!-- Adicionar no head -->
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+<link rel="preconnect" href="https://www.google-analytics.com" />
 ```
 
 ---
@@ -238,12 +255,14 @@ setTimeout(loadAnalytics, 5000); // era 3000
 ## 📱 4. RESPONSIVIDADE
 
 ### ✅ Breakpoints Implementados
+
 - ✓ Desktop: 1440px max-width
 - ✓ Tablet: 768px
 - ✓ Mobile: 480px
 - ✓ Small Mobile: 360px
 
 ### ✅ Boas Práticas
+
 - ✓ Mobile-first approach
 - ✓ Containers responsivos
 - ✓ Tipografia fluida
@@ -251,6 +270,7 @@ setTimeout(loadAnalytics, 5000); // era 3000
 - ✓ `overflow-x: hidden` para prevenir scroll horizontal
 
 ### 🔧 Testes Recomendados
+
 - [ ] iPhone SE (375px)
 - [ ] iPhone 12/13/14 (390px)
 - [ ] Samsung Galaxy (360px)
@@ -262,6 +282,7 @@ setTimeout(loadAnalytics, 5000); // era 3000
 ## 🔍 5. SEO
 
 ### ✅ Implementações
+
 - ✓ Meta tags completas
 - ✓ Open Graph (Facebook)
 - ✓ Twitter Cards
@@ -275,6 +296,7 @@ setTimeout(loadAnalytics, 5000); // era 3000
 ### 🔧 Melhorias Sugeridas
 
 #### 1. **Adicionar Breadcrumbs Schema**
+
 ```json
 {
   "@context": "https://schema.org",
@@ -284,6 +306,7 @@ setTimeout(loadAnalytics, 5000); // era 3000
 ```
 
 #### 2. **Melhorar og:image**
+
 - Tamanho ideal: 1200x630px
 - Formato recomendado: PNG ou JPG
 - Atual: SVG (pode não renderizar em todas as plataformas)
@@ -295,17 +318,20 @@ setTimeout(loadAnalytics, 5000); // era 3000
 ### ✅ Scripts Analisados
 
 #### [accordion.ts](src/scripts/accordion.ts)
+
 - ✓ Null checks adequados
 - ✓ Event listeners limpos
 - ✓ ARIA attributes corretos
 
 #### [slider.ts](src/scripts/slider.ts)
+
 - ✓ IntersectionObserver implementado
 - ✓ Método destroy() para cleanup
 - ✓ Autoplay com pause on hover
 - ⚠️ **POTENCIAL BUG:** Linha 128 - `offsetWidth` pode ser 0 antes do DOM carregar
 
 **Sugestão:**
+
 ```typescript
 goToSlide(index: number): void {
   const item = this.items[index] as HTMLElement;
@@ -315,6 +341,7 @@ goToSlide(index: number): void {
 ```
 
 #### [hero-animation.js](src/scripts/hero-animation.js)
+
 - **NÃO ANALISADO** - Arquivo não lido ainda
 
 ### 🔍 Bugs Potenciais Identificados
@@ -330,13 +357,13 @@ goToSlide(index: number): void {
 ### ⚠️ Verificações Necessárias
 
 1. **WEBHOOK_URL**
-   - ✓ Verificação implementada (linha 69-73)
-   - Nunca commitar no Git
-   - Configurar na Vercel
+    - ✓ Verificação implementada (linha 69-73)
+    - Nunca commitar no Git
+    - Configurar na Vercel
 
 2. **Google Analytics ID**
-   - Hardcoded no código: `G-9LB0M4KF40`
-   - Considerar mover para variável de ambiente
+    - Hardcoded no código: `G-9LB0M4KF40`
+    - Considerar mover para variável de ambiente
 
 ### 🔧 Recomendação: Criar `.env.example`
 
@@ -351,6 +378,7 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ## 📋 8. CHECKLIST PRÉ-DEPLOY
 
 ### Segurança
+
 - [ ] Adicionar CSP headers
 - [ ] Proteger JSON.parse com try-catch
 - [ ] Configurar WEBHOOK_URL na Vercel
@@ -359,6 +387,7 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 - [ ] Implementar logging de erros (Sentry)
 
 ### Performance
+
 - [ ] Converter mari.jpeg para WebP
 - [ ] Otimizar carregamento de Analytics
 - [ ] Adicionar resource hints
@@ -366,6 +395,7 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 - [ ] Verificar bundle size após mudanças
 
 ### Acessibilidade
+
 - [ ] Ajustar contraste do botão WhatsApp
 - [ ] Adicionar estados :focus-visible
 - [ ] Testar navegação por teclado
@@ -373,12 +403,14 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 - [ ] Testar zoom até 200%
 
 ### SEO
+
 - [ ] Criar og:image otimizada (1200x630)
 - [ ] Adicionar breadcrumbs schema
 - [ ] Testar rich results (Google)
 - [ ] Validar sitemap
 
 ### Testes
+
 - [ ] Testar em dispositivos reais
 - [ ] Validar formulários
 - [ ] Testar rate limiting
@@ -391,18 +423,21 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ## 🎯 9. PRIORIZAÇÃO DE CORREÇÕES
 
 ### 🔴 CRÍTICO (Fazer Antes do Deploy)
+
 1. ✅ Adicionar Content Security Policy
 2. ✅ Proteger JSON.parse
 3. ✅ Configurar variáveis de ambiente
 4. ✅ Testar em produção
 
 ### 🟡 IMPORTANTE (Primeira Semana)
+
 1. Ajustar contraste WhatsApp button
 2. Converter imagem para WebP
 3. Implementar logging de erros
 4. Otimizar og:image
 
 ### 🟢 MELHORIA CONTÍNUA
+
 1. Migrar rate limiting para Redis
 2. Adicionar SRI
 3. Implementar testes automatizados
@@ -413,17 +448,20 @@ GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ## 📊 10. MÉTRICAS DE SUCESSO
 
 ### Objetivos de Performance (Lighthouse)
+
 - Performance: **> 90**
 - Accessibility: **> 95**
 - Best Practices: **> 95**
 - SEO: **> 95**
 
 ### Objetivos de Segurança
+
 - Zero vulnerabilidades críticas
 - Headers de segurança: 100%
 - Sanitização: 100%
 
 ### Objetivos de Acessibilidade
+
 - WCAG 2.1 AA: 100%
 - Contraste: Todos > 4.5:1
 - Navegação por teclado: 100%

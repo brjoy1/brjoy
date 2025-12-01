@@ -1,10 +1,10 @@
 export function initHeroAnimation(dynamicWords) {
     // Particles animation
     function initParticles() {
-        const canvas = document.getElementById('hero-particles');
+        const canvas = document.getElementById("hero-particles");
         if (!canvas) return;
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
         let particlesArray = [];
@@ -15,22 +15,30 @@ export function initHeroAnimation(dynamicWords) {
         let mouse = {
             x: null,
             y: null,
-            radius: (canvas.height / 80) * (canvas.width / 80)
-        }
+            radius: (canvas.height / 80) * (canvas.width / 80),
+        };
 
-        window.addEventListener('mousemove', function (event) {
+        window.addEventListener("mousemove", function (event) {
             const rect = canvas.getBoundingClientRect();
             mouse.x = event.clientX - rect.left;
             mouse.y = event.clientY - rect.top;
         });
 
-        window.addEventListener('mouseleave', function () {
+        window.addEventListener("mouseleave", function () {
             mouse.x = null;
             mouse.y = null;
         });
 
         class Particle {
-            constructor(x, y, directionX, directionY, size, color, type = 'basic') {
+            constructor(
+                x,
+                y,
+                directionX,
+                directionY,
+                size,
+                color,
+                type = "basic",
+            ) {
                 this.x = x;
                 this.y = y;
                 this.directionX = directionX;
@@ -52,31 +60,51 @@ export function initHeroAnimation(dynamicWords) {
                 ctx.save();
                 ctx.globalAlpha = this.opacity;
 
-                if (this.type === 'smooth') {
+                if (this.type === "smooth") {
                     // Smooth particles with subtle gradient
                     const gradient = ctx.createRadialGradient(
-                        this.x, this.y, 0,
-                        this.x, this.y, this.size * 1.5
+                        this.x,
+                        this.y,
+                        0,
+                        this.x,
+                        this.y,
+                        this.size * 1.5,
                     );
                     gradient.addColorStop(0, this.color);
-                    gradient.addColorStop(1, 'transparent');
+                    gradient.addColorStop(1, "transparent");
                     ctx.fillStyle = gradient;
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size * 1.5, 0, Math.PI * 2);
                     ctx.fill();
-                } else if (this.type === 'glowing') {
+                } else if (this.type === "glowing") {
                     // Stronger glowing particles with larger effect
                     const glowGradient = ctx.createRadialGradient(
-                        this.x, this.y, 0,
-                        this.x, this.y, this.size * 4
+                        this.x,
+                        this.y,
+                        0,
+                        this.x,
+                        this.y,
+                        this.size * 4,
                     );
                     // Extract base color without opacity
-                    const baseColor = this.color.replace(/,\s*\d*\.?\d+\)/, ')');
+                    const baseColor = this.color.replace(
+                        /,\s*\d*\.?\d+\)/,
+                        ")",
+                    );
 
-                    glowGradient.addColorStop(0, baseColor.replace(')', ', 0.9)'));
-                    glowGradient.addColorStop(0.4, baseColor.replace(')', ', 0.4)'));
-                    glowGradient.addColorStop(0.8, baseColor.replace(')', ', 0.1)'));
-                    glowGradient.addColorStop(1, 'transparent');
+                    glowGradient.addColorStop(
+                        0,
+                        baseColor.replace(")", ", 0.9)"),
+                    );
+                    glowGradient.addColorStop(
+                        0.4,
+                        baseColor.replace(")", ", 0.4)"),
+                    );
+                    glowGradient.addColorStop(
+                        0.8,
+                        baseColor.replace(")", ", 0.1)"),
+                    );
+                    glowGradient.addColorStop(1, "transparent");
 
                     ctx.fillStyle = glowGradient;
                     ctx.beginPath();
@@ -101,17 +129,19 @@ export function initHeroAnimation(dynamicWords) {
 
             update() {
                 // Wave motion for more organic movement
-                if (this.type !== 'basic') {
+                if (this.type !== "basic") {
                     this.angle += this.frequency;
                     const waveX = Math.sin(this.angle) * this.amplitude * 0.3;
-                    const waveY = Math.cos(this.angle * 0.7) * this.amplitude * 0.2;
+                    const waveY =
+                        Math.cos(this.angle * 0.7) * this.amplitude * 0.2;
                     this.directionX += waveX * 0.001;
                     this.directionY += waveY * 0.001;
                 }
 
                 // Breathing effect
-                if (this.type === 'smooth') {
-                    this.size = this.baseSize + Math.sin(Date.now() * 0.002) * 0.5;
+                if (this.type === "smooth") {
+                    this.size =
+                        this.baseSize + Math.sin(Date.now() * 0.002) * 0.5;
                 }
 
                 // Boundary collision with damping
@@ -143,7 +173,7 @@ export function initHeroAnimation(dynamicWords) {
                     const forceDirectionY = dy / distance;
 
                     // Different interaction based on particle type
-                    if (this.type === 'glowing') {
+                    if (this.type === "glowing") {
                         this.x -= forceDirectionX * force * 3 * this.speed;
                         this.y -= forceDirectionY * force * 3 * this.speed;
                     } else {
@@ -162,11 +192,16 @@ export function initHeroAnimation(dynamicWords) {
                 }
 
                 // Speed limiting
-                const maxSpeed = this.type === 'glowing' ? 2 : 1.5;
-                const currentSpeed = Math.sqrt(this.directionX * this.directionX + this.directionY * this.directionY);
+                const maxSpeed = this.type === "glowing" ? 2 : 1.5;
+                const currentSpeed = Math.sqrt(
+                    this.directionX * this.directionX +
+                        this.directionY * this.directionY,
+                );
                 if (currentSpeed > maxSpeed) {
-                    this.directionX = (this.directionX / currentSpeed) * maxSpeed;
-                    this.directionY = (this.directionY / currentSpeed) * maxSpeed;
+                    this.directionX =
+                        (this.directionX / currentSpeed) * maxSpeed;
+                    this.directionY =
+                        (this.directionY / currentSpeed) * maxSpeed;
                 }
 
                 this.x += this.directionX;
@@ -194,23 +229,23 @@ export function initHeroAnimation(dynamicWords) {
 
             // Enhanced brand color palette with higher visibility
             const colorPalette = [
-                'rgba(26, 115, 232, 0.8)',   // Primary blue - more visible
-                'rgba(25, 211, 102, 0.8)',   // WhatsApp green - vibrant
-                'rgba(255, 152, 0, 0.7)',    // Orange - bright
-                'rgba(103, 126, 234, 0.7)',  // Light blue - stronger
-                'rgba(156, 39, 176, 0.6)',   // Purple - balanced
-                'rgba(76, 175, 80, 0.7)',    // Material green - visible
+                "rgba(26, 115, 232, 0.8)", // Primary blue - more visible
+                "rgba(25, 211, 102, 0.8)", // WhatsApp green - vibrant
+                "rgba(255, 152, 0, 0.7)", // Orange - bright
+                "rgba(103, 126, 234, 0.7)", // Light blue - stronger
+                "rgba(156, 39, 176, 0.6)", // Purple - balanced
+                "rgba(76, 175, 80, 0.7)", // Material green - visible
             ];
 
             // Particle type distribution (70% basic, 20% smooth, 10% glowing)
             const particleTypes = [];
             for (let i = 0; i < numberOfParticles; i++) {
                 if (i < numberOfParticles * 0.7) {
-                    particleTypes.push('basic');
+                    particleTypes.push("basic");
                 } else if (i < numberOfParticles * 0.9) {
-                    particleTypes.push('smooth');
+                    particleTypes.push("smooth");
                 } else {
-                    particleTypes.push('glowing');
+                    particleTypes.push("glowing");
                 }
             }
 
@@ -220,23 +255,40 @@ export function initHeroAnimation(dynamicWords) {
                 // Size distribution based on particle type
                 const type = particleTypes[i];
                 switch (type) {
-                    case 'glowing':
+                    case "glowing":
                         baseSize = Math.random() * 3 + 2; // 2-5px (larger for glow effect)
                         break;
-                    case 'smooth':
+                    case "smooth":
                         baseSize = Math.random() * 2 + 1; // 1-3px (medium)
                         break;
                     default:
                         baseSize = Math.random() * 1.5 + 0.5; // 0.5-2px (smaller basic)
                 }
 
-                let x = Math.random() * (window.innerWidth - baseSize * 2) + baseSize;
-                let y = Math.random() * (window.innerHeight - baseSize * 2) + baseSize;
-                let directionX = (Math.random() * 0.4) - 0.2;
-                let directionY = (Math.random() * 0.4) - 0.2;
-                let color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+                let x =
+                    Math.random() * (window.innerWidth - baseSize * 2) +
+                    baseSize;
+                let y =
+                    Math.random() * (window.innerHeight - baseSize * 2) +
+                    baseSize;
+                let directionX = Math.random() * 0.4 - 0.2;
+                let directionY = Math.random() * 0.4 - 0.2;
+                let color =
+                    colorPalette[
+                        Math.floor(Math.random() * colorPalette.length)
+                    ];
 
-                particlesArray.push(new Particle(x, y, directionX, directionY, baseSize, color, type));
+                particlesArray.push(
+                    new Particle(
+                        x,
+                        y,
+                        directionX,
+                        directionY,
+                        baseSize,
+                        color,
+                        type,
+                    ),
+                );
             }
         }
 
@@ -249,14 +301,14 @@ export function initHeroAnimation(dynamicWords) {
             }
         }
 
-        window.addEventListener('resize', function () {
+        window.addEventListener("resize", function () {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            mouse.radius = ((canvas.height / 80) * (canvas.height / 80));
+            mouse.radius = (canvas.height / 80) * (canvas.height / 80);
             init();
         });
 
-        window.addEventListener('mouseout', function () {
+        window.addEventListener("mouseout", function () {
             mouse.x = null;
             mouse.y = null;
         });
@@ -267,15 +319,15 @@ export function initHeroAnimation(dynamicWords) {
 
     // Dynamic Word Animation
     function initDynamicWord() {
-        const dynamicWord = document.getElementById('dynamic-word');
+        const dynamicWord = document.getElementById("dynamic-word");
         if (!dynamicWord || !dynamicWords || dynamicWords.length <= 1) return;
 
         let currentIndex = 0;
 
         function changeWord() {
             // Fade out
-            dynamicWord.style.opacity = '0';
-            dynamicWord.style.transform = 'translateY(-10px)';
+            dynamicWord.style.opacity = "0";
+            dynamicWord.style.transform = "translateY(-10px)";
 
             setTimeout(() => {
                 // Change word
@@ -283,13 +335,13 @@ export function initHeroAnimation(dynamicWords) {
                 dynamicWord.textContent = dynamicWords[currentIndex];
 
                 // Fade in
-                dynamicWord.style.opacity = '1';
-                dynamicWord.style.transform = 'translateY(0)';
+                dynamicWord.style.opacity = "1";
+                dynamicWord.style.transform = "translateY(0)";
             }, 300);
         }
         // Initial style
-        dynamicWord.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        dynamicWord.style.display = 'inline-block';
+        dynamicWord.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        dynamicWord.style.display = "inline-block";
 
         // Change word every 5 seconds
         setInterval(changeWord, 5000);

@@ -12,13 +12,13 @@ A aplicação **BrJoy AI** foi auditada e otimizada para deploy em produção. T
 
 ### 📊 Métricas Finais
 
-| Categoria | Status | Score |
-|-----------|--------|-------|
-| **Segurança** | ✅ Aprovado | 95/100 |
-| **Performance** | ✅ Aprovado | 90/100 |
-| **Acessibilidade** | ✅ Aprovado | 95/100 |
-| **SEO** | ✅ Aprovado | 98/100 |
-| **Bundle Size** | ✅ Excelente | 208KB |
+| Categoria          | Status       | Score  |
+| ------------------ | ------------ | ------ |
+| **Segurança**      | ✅ Aprovado  | 95/100 |
+| **Performance**    | ✅ Aprovado  | 90/100 |
+| **Acessibilidade** | ✅ Aprovado  | 95/100 |
+| **SEO**            | ✅ Aprovado  | 98/100 |
+| **Bundle Size**    | ✅ Excelente | 208KB  |
 
 ---
 
@@ -27,22 +27,25 @@ A aplicação **BrJoy AI** foi auditada e otimizada para deploy em produção. T
 ### 🔐 1. Segurança
 
 #### ✅ Content Security Policy (CSP)
+
 **Arquivo:** [vercel.json](vercel.json:42-45)
 
 ```json
 {
-  "key": "Content-Security-Policy",
-  "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://vercel.live https://*.vercel-insights.com https://*.vercel-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://*.vercel-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    "key": "Content-Security-Policy",
+    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://vercel.live https://*.vercel-insights.com https://*.vercel-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://*.vercel-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
 }
 ```
 
 **Benefícios:**
+
 - ✅ Proteção contra XSS (Cross-Site Scripting)
 - ✅ Previne injeção de código malicioso
 - ✅ Restringe origens de recursos externos
 - ✅ Bloqueia clickjacking (`frame-ancestors 'none'`)
 
 #### ✅ Headers de Segurança Adicionais
+
 **Arquivo:** [vercel.json](vercel.json:46-53)
 
 ```json
@@ -57,34 +60,40 @@ A aplicação **BrJoy AI** foi auditada e otimizada para deploy em produção. T
 ```
 
 **Benefícios:**
+
 - ✅ Controle de permissões de APIs do navegador
 - ✅ Privacidade aprimorada (bloqueia FLoC)
 - ✅ Política de referrer segura
 
 #### ✅ Proteção de JSON.parse
+
 **Arquivo:** [src/components/PopHero.astro](src/components/PopHero.astro:92-97)
 
 **Antes:**
+
 ```javascript
-const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+const dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || "[]");
 ```
 
 **Depois:**
+
 ```javascript
 try {
-  dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || '[]');
+    dynamicWords = JSON.parse(heroSection?.dataset.dynamicWords || "[]");
 } catch (error) {
-  console.error('Failed to parse dynamic words:', error);
-  dynamicWords = [];
+    console.error("Failed to parse dynamic words:", error);
+    dynamicWords = [];
 }
 ```
 
 **Benefícios:**
+
 - ✅ Previne crashes por JSON malformado
 - ✅ Graceful degradation
 - ✅ Logging de erros para debug
 
 #### ✅ Bug Fix no Slider
+
 **Arquivo:** [src/scripts/slider.ts](src/scripts/slider.ts:132-133)
 
 ```typescript
@@ -94,6 +103,7 @@ if (itemWidth === 0) return;
 ```
 
 **Benefícios:**
+
 - ✅ Previne comportamento inesperado
 - ✅ Melhora estabilidade do carousel
 
@@ -104,37 +114,42 @@ if (itemWidth === 0) return;
 #### ✅ Contraste de Cores Corrigido
 
 **Cores WhatsApp Atualizadas:**
+
 - **Antes:** `#25D366` → `#128C7E` (ratio 3.4:1 ❌)
 - **Depois:** `#1FA855` → `#0D7F4F` (ratio 4.8:1 ✅)
 
 **Arquivos modificados:**
+
 - [src/styles/buttons.css](src/styles/buttons.css:49)
 - [src/styles/buttons.css](src/styles/buttons.css:95)
 - [src/styles/hero.css](src/styles/hero.css:66)
 
 **Benefícios:**
+
 - ✅ Conformidade WCAG 2.1 AA
 - ✅ Legibilidade melhorada para usuários com baixa visão
 - ✅ Maior contraste mantém identidade visual do WhatsApp
 
 #### ✅ Estados de Foco Globais
+
 **Arquivo:** [src/styles/base.css](src/styles/base.css:7-17)
 
 ```css
 /* Accessibility: Focus states */
 *:focus-visible {
-  outline: 3px solid #1A73E8;
-  outline-offset: 2px;
-  border-radius: 2px;
+    outline: 3px solid #1a73e8;
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 /* Remove outline for mouse users, keep for keyboard */
 *:focus:not(:focus-visible) {
-  outline: none;
+    outline: none;
 }
 ```
 
 **Benefícios:**
+
 - ✅ Navegação por teclado clara
 - ✅ Não interfere com navegação por mouse
 - ✅ Conformidade com diretrizes de acessibilidade
@@ -144,6 +159,7 @@ if (itemWidth === 0) return;
 ### ⚙️ 3. Configuração e Segurança
 
 #### ✅ Arquivo .env.example Criado
+
 **Arquivo:** [.env.example](.env.example)
 
 ```bash
@@ -155,11 +171,13 @@ NODE_ENV=production
 ```
 
 **Benefícios:**
+
 - ✅ Documentação de variáveis necessárias
 - ✅ Guia para configuração
 - ✅ Previne exposição de credenciais
 
 #### ✅ .gitignore Verificado
+
 **Arquivo:** [.gitignore](.gitignore:14-18)
 
 ```
@@ -188,6 +206,7 @@ Breakdown:
 ```
 
 **Análise:**
+
 - ✅ Minificação ativa (Terser)
 - ✅ CSS otimizado
 - ✅ Tree-shaking funcionando
@@ -197,24 +216,25 @@ Breakdown:
 ### ✅ Otimizações de Carregamento
 
 1. **Google Fonts:**
-   - ✅ Preconnect implementado
-   - ✅ Font-display: swap
-   - ✅ Carregamento assíncrono
+    - ✅ Preconnect implementado
+    - ✅ Font-display: swap
+    - ✅ Carregamento assíncrono
 
 2. **Google Analytics:**
-   - ✅ Lazy loading após interação
-   - ✅ Fallback de 3s
-   - ✅ Event listeners passivos
+    - ✅ Lazy loading após interação
+    - ✅ Fallback de 3s
+    - ✅ Event listeners passivos
 
 3. **Cache Headers:**
-   - ✅ 1 ano para assets estáticos
-   - ✅ Immutable flag ativado
+    - ✅ 1 ano para assets estáticos
+    - ✅ Immutable flag ativado
 
 ---
 
 ## 📋 CHECKLIST PRÉ-DEPLOY
 
 ### ✅ Segurança (100%)
+
 - [x] Content Security Policy implementada
 - [x] Headers de segurança configurados
 - [x] Proteção JSON.parse adicionada
@@ -225,6 +245,7 @@ Breakdown:
 - [x] CORS restritivo
 
 ### ✅ Acessibilidade (100%)
+
 - [x] Contraste de cores WCAG 2.1 AA
 - [x] Estados de foco implementados
 - [x] ARIA labels corretos
@@ -233,6 +254,7 @@ Breakdown:
 - [x] Semântica HTML adequada
 
 ### ✅ Performance (100%)
+
 - [x] Bundle size < 300KB
 - [x] Minificação ativa
 - [x] Lazy loading implementado
@@ -241,6 +263,7 @@ Breakdown:
 - [x] Font optimization
 
 ### ✅ SEO (100%)
+
 - [x] Meta tags completas
 - [x] Open Graph implementado
 - [x] Twitter Cards
@@ -250,6 +273,7 @@ Breakdown:
 - [x] Canonical URLs
 
 ### ✅ Qualidade de Código (100%)
+
 - [x] TypeScript sem erros
 - [x] Build sem warnings críticos
 - [x] Null checks adequados
@@ -273,27 +297,28 @@ WEBHOOK_URL = [Seu webhook do Make/Zapier/n8n]
 Após o deploy, verifique:
 
 1. **Headers de Segurança:**
-   ```bash
-   curl -I https://brjoy.com.br
-   ```
 
-   Deve conter:
-   - ✅ Content-Security-Policy
-   - ✅ X-Frame-Options: DENY
-   - ✅ X-Content-Type-Options: nosniff
-   - ✅ Referrer-Policy
-   - ✅ Permissions-Policy
+    ```bash
+    curl -I https://brjoy.com.br
+    ```
+
+    Deve conter:
+    - ✅ Content-Security-Policy
+    - ✅ X-Frame-Options: DENY
+    - ✅ X-Content-Type-Options: nosniff
+    - ✅ Referrer-Policy
+    - ✅ Permissions-Policy
 
 2. **Funcionalidade:**
-   - [ ] Menu mobile funciona
-   - [ ] Botões de CTA redirecionam corretamente
-   - [ ] Animações carregam
-   - [ ] Google Analytics tracking
+    - [ ] Menu mobile funciona
+    - [ ] Botões de CTA redirecionam corretamente
+    - [ ] Animações carregam
+    - [ ] Google Analytics tracking
 
 3. **Performance:**
-   - [ ] Lighthouse Score > 90
-   - [ ] First Contentful Paint < 1.5s
-   - [ ] Time to Interactive < 3.5s
+    - [ ] Lighthouse Score > 90
+    - [ ] First Contentful Paint < 1.5s
+    - [ ] Time to Interactive < 3.5s
 
 ---
 
@@ -302,37 +327,37 @@ Após o deploy, verifique:
 ### Imediato (Primeiro Dia)
 
 1. **Monitorar Erros:**
-   - Verificar console do browser
-   - Checar logs da Vercel
-   - Monitorar Analytics
+    - Verificar console do browser
+    - Checar logs da Vercel
+    - Monitorar Analytics
 
 2. **Testar Funcionalidades:**
-   - Formulário de leads
-   - Links do WhatsApp
-   - Navegação mobile
-   - Scroll suave
+    - Formulário de leads
+    - Links do WhatsApp
+    - Navegação mobile
+    - Scroll suave
 
 3. **Validar Métricas:**
-   - Rodar Lighthouse
-   - Testar em dispositivos reais
-   - Verificar tempos de carregamento
+    - Rodar Lighthouse
+    - Testar em dispositivos reais
+    - Verificar tempos de carregamento
 
 ### Primeira Semana
 
 1. **Otimizações Recomendadas:**
-   - Converter mari.jpeg para WebP (-30% tamanho)
-   - Criar og:image otimizada (1200x630)
-   - Adicionar breadcrumbs schema
+    - Converter mari.jpeg para WebP (-30% tamanho)
+    - Criar og:image otimizada (1200x630)
+    - Adicionar breadcrumbs schema
 
 2. **Melhorias de Segurança:**
-   - Implementar logging service (Sentry)
-   - Migrar rate limiting para Redis/Upstash
-   - Adicionar SRI para recursos externos
+    - Implementar logging service (Sentry)
+    - Migrar rate limiting para Redis/Upstash
+    - Adicionar SRI para recursos externos
 
 3. **Testes:**
-   - A/B testing dos CTAs
-   - Heatmap de interações
-   - Análise de conversão
+    - A/B testing dos CTAs
+    - Heatmap de interações
+    - Análise de conversão
 
 ---
 
@@ -340,15 +365,15 @@ Após o deploy, verifique:
 
 ### Objetivos
 
-| Métrica | Objetivo | Método de Teste |
-|---------|----------|-----------------|
-| Performance | > 90 | Lighthouse CI |
-| Accessibility | > 95 | axe DevTools |
-| Best Practices | > 95 | Lighthouse |
-| SEO | > 95 | Lighthouse |
-| FCP | < 1.5s | PageSpeed Insights |
-| LCP | < 2.5s | PageSpeed Insights |
-| CLS | < 0.1 | PageSpeed Insights |
+| Métrica        | Objetivo | Método de Teste    |
+| -------------- | -------- | ------------------ |
+| Performance    | > 90     | Lighthouse CI      |
+| Accessibility  | > 95     | axe DevTools       |
+| Best Practices | > 95     | Lighthouse         |
+| SEO            | > 95     | Lighthouse         |
+| FCP            | < 1.5s   | PageSpeed Insights |
+| LCP            | < 2.5s   | PageSpeed Insights |
+| CLS            | < 0.1    | PageSpeed Insights |
 
 ### Como Testar
 
@@ -368,6 +393,7 @@ https://www.webpagetest.org/
 ## 🐛 ISSUES CONHECIDAS (Não-Críticas)
 
 ### 1. Vite Warning no Build
+
 **Status:** Não-crítico
 **Mensagem:** "isRemoteAllowed" imported but never used
 
@@ -376,6 +402,7 @@ https://www.webpagetest.org/
 **Ação:** Nenhuma (será resolvido em atualização futura do Astro)
 
 ### 2. Imagem mari.jpeg
+
 **Status:** Otimização recomendada
 **Tamanho atual:** 6.1KB (JPEG)
 **Tamanho esperado:** ~4KB (WebP)

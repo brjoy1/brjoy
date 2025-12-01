@@ -19,16 +19,20 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    mask-image: linear-gradient(to right,
-            transparent,
-            black 10%,
-            black 90%,
-            transparent);
-    -webkit-mask-image: linear-gradient(to right,
-            transparent,
-            black 10%,
-            black 90%,
-            transparent);
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
 }
 
 .marquee-track {
@@ -43,7 +47,9 @@
     align-items: center;
     gap: 0.75rem;
     opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
     cursor: default;
 }
 
