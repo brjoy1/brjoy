@@ -6,8 +6,15 @@ import StepsGrid from "../../components/features-grid/StepsGrid.astro";
 import CTATestimonialSlider from "../../components/cta/CTATestimonialSlider.astro";
 import CTAInline from "../../components/cta/CTAInline.astro";
 import IntegrationsSection from "../../components/IntegrationsSection.astro";
-
 import FAQSection from "../../components/FAQSection.astro";
+
+// New Components
+import NativeIntegrationsSection from "../../components/NativeIntegrationsSection.astro";
+import ChatDemo from "../../components/ChatDemo.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ROICalculator from "../../components/ROICalculator.astro";
+import SecurityBadges from "../../components/SecurityBadges.astro";
+import BrChat from "../../components/BrChat.astro";
 
 // Features data
 const problemasFeatures = [
@@ -172,6 +179,9 @@ const faqs = [
             ]}
         />
 
+        <!-- NEW: Native Integrations Section -->
+        <NativeIntegrationsSection />
+
         <!-- Features: O Problema -->
         <FeatureGrid
             title="Por que você está deixando dinheiro na mesa?"
@@ -211,6 +221,9 @@ const faqs = [
                 variant: "success",
             }}
         />
+
+        <!-- NEW: Chat Demo -->
+        <ChatDemo />
 
         <!-- Como Funciona -->
         <StepsGrid
@@ -262,6 +275,12 @@ const faqs = [
             }}
             backgroundColor="gray"
         />
+
+        <!-- NEW: Comparison Table -->
+        <ComparisonTable />
+
+        <!-- NEW: ROI Calculator -->
+        <ROICalculator />
 
         <!-- CRM Benefits -->
         <FeatureGrid
@@ -351,6 +370,9 @@ const faqs = [
             autoplayDelay={5000}
         />
 
+        <!-- NEW: Security Badges -->
+        <SecurityBadges />
+
         <FAQSection faqs={faqs} />
 
         <!-- CTA 4: Depois do FAQ (Última Chamada) -->
@@ -364,16 +386,15 @@ const faqs = [
             }}
             variant="urgent"
         />
+        <BrChat />
     </main>
 </Layout>
 
 <script>
     import { initDataSliders } from "../../scripts/slider";
-    import { initFloatingCTA } from "../../scripts/floating-cta-simple";
 
     document.addEventListener("DOMContentLoaded", () => {
         initDataSliders();
-        initFloatingCTA();
     });
 </script>
 
@@ -386,6 +407,6 @@ const faqs = [
 
     /* Import all component styles */
     @import "../../styles/components/results.css";
-    @import "../../styles/components/video.css";
+
     @import "../../styles/sections.css";
 </style>

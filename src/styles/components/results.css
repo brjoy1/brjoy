@@ -7,7 +7,7 @@
 }
 
 .result-card {
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 24px;
     padding: 40px;
     text-align: center;
@@ -25,7 +25,7 @@
 .result-metric {
     font-size: 3.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--color-primary) 0%, #34A853 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #34a853 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 16px;

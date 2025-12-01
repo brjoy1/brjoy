@@ -1,0 +1,104 @@
+---
+import "../styles/components/native-integrations.css";
+
+interface Integration {
+    name: string;
+    description: string;
+    icon: string;
+    category: string;
+    color: string;
+}
+
+const integrations: Integration[] = [
+    {
+        name: "Google Calendar",
+        description: "Sincronize agendamentos automaticamente",
+        icon: "calendar_month",
+        category: "Agenda",
+        color: "var(--color-google-blue)",
+    },
+    {
+        name: "Planilhas Google",
+        description: "Exporte e gerencie dados em planilhas",
+        icon: "table_chart",
+        category: "Sheets",
+        color: "var(--color-google-green)",
+    },
+    {
+        name: "OpenAI",
+        description: "Inteligência artificial avançada",
+        icon: "psychology",
+        category: "Inteligência Artificial",
+        color: "var(--color-brand-openai)",
+    },
+    {
+        name: "Kommo",
+        description: "Integração completa com seu CRM",
+        icon: "dataset",
+        category: "CRM",
+        color: "var(--color-brand-kommo)",
+    },
+    {
+        name: "WhatsApp",
+        description: "Atendimento via WhatsApp Business",
+        icon: "chat",
+        category: "Mensageria",
+        color: "var(--color-brand-whatsapp)",
+    },
+    {
+        name: "Facebook",
+        description: "Integre com Facebook Messenger",
+        icon: "facebook",
+        category: "Social",
+        color: "var(--color-brand-facebook)",
+    },
+    {
+        name: "Instagram",
+        description: "Atenda clientes via Instagram Direct",
+        icon: "photo_camera",
+        category: "Social",
+        color: "var(--color-brand-instagram)",
+    },
+    {
+        name: "Google Ads",
+        description: "Rastreie conversões e otimize campanhas",
+        icon: "paid",
+        category: "Marketing",
+        color: "var(--color-brand-google-ads)",
+    },
+    {
+        name: "API",
+        description: "Conecte qualquer sistema via API",
+        icon: "api",
+        category: "Conexões personalizadas",
+        color: "var(--color-brand-api)",
+    },
+];
+---
+
+<section class="section-spacing native-integrations-section">
+    <div class="container section-container">
+        <!-- Header -->
+        <div class="section-header text-center">
+            <h2 class="section-title">INTEGRAÇÃO NATIVA COM SEU ECOSSISTEMA</h2>
+        </div>
+
+        <!-- Marquee Slider -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                {
+                    [...integrations, ...integrations].map((integration) => (
+                        <div class="integration-item">
+                            <span class="material-symbols-outlined integration-icon">
+                                {integration.icon}
+                            </span>
+                            <span class="integration-name">
+                                {integration.name}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -2,49 +2,64 @@
 
 /* Dor / Problema - Red/Warm Tone */
 .dor {
-    background-color: #FFF5F5;
+    background-color: #fff5f5;
     /* Very light red */
     position: relative;
     overflow: hidden;
 }
 
 .dor::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(234, 67, 53, 0.1), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(234, 67, 53, 0.1),
+        transparent
+    );
 }
 
 /* Solução - Blue/Green/Cool Tone */
 .solucao {
-    background-color: #F0F7FF;
+    background-color: #f0f7ff;
     /* Very light blue */
     position: relative;
     overflow: hidden;
 }
 
 .solucao::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(26, 115, 232, 0.1), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(26, 115, 232, 0.1),
+        transparent
+    );
 }
 
 /* Gradient Soft */
 .bg-gradient-soft {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
 }
 
 /* Section Separators */
 .section-separator {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.05),
+        transparent
+    );
     margin: 0;
     border: none;
 }

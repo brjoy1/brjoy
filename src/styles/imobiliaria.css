@@ -44,7 +44,6 @@
 }
 
 @keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -65,13 +64,16 @@
 .floating-cta-wrapper {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    transition:
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.6s;
 }
 
 .floating-cta-wrapper[data-state="visible"] {
     opacity: 1;
     visibility: visible;
-    animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    animation:
+        slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
         bounce 1s ease-in-out 0.8s 2;
 }
 
@@ -83,10 +85,12 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #FFFFFF;
+    background: #ffffff;
     padding: 21px 16px;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08);
     text-decoration: none;
     position: relative;
     max-width: 280px;
@@ -95,7 +99,9 @@
 
 .floating-cta:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.16),
+        0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .floating-cta-message {
@@ -120,7 +126,7 @@
     border: none;
     padding: 6px;
     cursor: pointer;
-    color: #5F6368;
+    color: #5f6368;
     opacity: 0.6;
     transition: all 0.2s ease;
     border-radius: 50%;
@@ -149,14 +155,19 @@
 }
 
 @keyframes pulse {
-
     0%,
     100% {
-        box-shadow: 0 4px 16px rgba(26, 115, 232, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(26, 115, 232, 0.7);
+        box-shadow:
+            0 4px 16px rgba(26, 115, 232, 0.4),
+            0 2px 8px rgba(0, 0, 0, 0.1),
+            0 0 0 0 rgba(26, 115, 232, 0.7);
     }
 
     50% {
-        box-shadow: 0 4px 16px rgba(26, 115, 232, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 0 10px rgba(26, 115, 232, 0);
+        box-shadow:
+            0 4px 16px rgba(26, 115, 232, 0.4),
+            0 2px 8px rgba(0, 0, 0, 0.1),
+            0 0 0 10px rgba(26, 115, 232, 0);
     }
 }
 
@@ -168,7 +179,8 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(30px) scale(0.8);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transition:
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
         visibility 0.6s,
         transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -195,16 +207,20 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    border: 3px solid #1A73E8;
+    border: 3px solid #1a73e8;
     object-fit: cover;
     display: block;
-    box-shadow: 0 4px 16px rgba(26, 115, 232, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 4px 16px rgba(26, 115, 232, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .floating-whatsapp:hover .floating-whatsapp-avatar-img {
     transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.6), 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 8px 24px rgba(26, 115, 232, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .floating-whatsapp-status {
@@ -213,8 +229,8 @@
     right: 2px;
     width: 16px;
     height: 16px;
-    background: #1A73E8;
-    border: 3px solid #FFFFFF;
+    background: #1a73e8;
+    border: 3px solid #ffffff;
     border-radius: 50%;
 }
 
@@ -230,16 +246,18 @@
 }
 
 :global(.btn-primary::after) {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
     transition: 0.5s;
 }
 
@@ -405,6 +423,6 @@
     .floating-whatsapp-status {
         width: 14px;
         height: 14px;
-        border: 2px solid #FFFFFF;
+        border: 2px solid #ffffff;
     }
 }

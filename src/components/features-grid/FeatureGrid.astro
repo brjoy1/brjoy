@@ -1,56 +1,59 @@
 ---
 interface Feature {
-  icon: string;
-  title: string;
-  description: string;
+    icon: string;
+    title: string;
+    description: string;
 }
 
 interface CTAProps {
-  title: string;
-  subtitle?: string;
-  primaryButton: {
-    text: string;
-    href: string;
-    icon?: string;
-  };
-  secondaryButton?: {
-    text: string;
-    href: string;
-    icon?: string;
-  };
-  variant?: 'default' | 'urgent' | 'success';
-  backgroundColor?: 'white' | 'gray' | 'gradient';
+    title: string;
+    subtitle?: string;
+    primaryButton: {
+        text: string;
+        href: string;
+        icon?: string;
+    };
+    secondaryButton?: {
+        text: string;
+        href: string;
+        icon?: string;
+    };
+    variant?: "default" | "urgent" | "success";
+    backgroundColor?: "white" | "gray" | "gradient";
 }
 
 interface Props {
-  title: string;
-  subtitle: string;
-  features: Feature[];
-  sectionId?: string;
-  backgroundColor?: 'white' | 'gray';
-  className?: string;
-  autoplay?: boolean;
-  autoplayDelay?: number;
-  cta?: CTAProps;
+    title: string;
+    subtitle: string;
+    features: Feature[];
+    sectionId?: string;
+    backgroundColor?: "white" | "gray";
+    className?: string;
+    autoplay?: boolean;
+    autoplayDelay?: number;
+    cta?: CTAProps;
 }
 
 const {
-  title,
-  subtitle,
-  features,
-  sectionId = '',
-  backgroundColor = 'white',
-  className = '',
-  autoplay = false,
-  autoplayDelay = 5000,
-  cta
+    title,
+    subtitle,
+    features,
+    sectionId = "",
+    backgroundColor = "white",
+    className = "",
+    autoplay = false,
+    autoplayDelay = 5000,
+    cta,
 } = Astro.props;
 
 // Generate unique slider ID based on section or title
-const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
+const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, "-");
 ---
 
-<section class={`section-spacing feature-section ${backgroundColor === 'gray' ? 'bg-gray' : ''} ${className}`} id={sectionId}>
+<section
+    class={`section-spacing feature-section ${backgroundColor === "gray" ? "bg-gray" : ""} ${className}`}
+    id={sectionId}
+>
     <div class="container">
         <div class="text-center">
             <h2 class="section-title">{title}</h2>
@@ -59,7 +62,10 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
 
         <div class="feature-grid">
             <div class="feature-slider-wrapper">
-                <button class="feature-nav feature-nav-prev" aria-label="Anterior">
+                <button
+                    class="feature-nav feature-nav-prev"
+                    aria-label="Anterior"
+                >
                     <span class="material-symbols-outlined">chevron_left</span>
                 </button>
 
@@ -69,681 +75,97 @@ const sliderId = sectionId || title.toLowerCase().replace(/\s+/g, '-');
                     data-slider-autoplay={autoplay.toString()}
                     data-slider-delay={autoplayDelay.toString()}
                 >
-                    {features.map(feature => (
-                        <div class="feature-card">
-                            <span class="material-symbols-outlined">{feature.icon}</span>
-                            <h3>{feature.title}</h3>
-                            <p>{feature.description}</p>
-                        </div>
-                    ))}
+                    {
+                        features.map((feature) => (
+                            <div class="feature-card">
+                                <span class="material-symbols-outlined">
+                                    {feature.icon}
+                                </span>
+                                <h3>{feature.title}</h3>
+                                <p>{feature.description}</p>
+                            </div>
+                        ))
+                    }
                 </div>
 
-                <button class="feature-nav feature-nav-next" aria-label="Próximo">
+                <button
+                    class="feature-nav feature-nav-next"
+                    aria-label="Próximo"
+                >
                     <span class="material-symbols-outlined">chevron_right</span>
                 </button>
             </div>
-            <div class="slider-indicators" id={`slider-indicators-${sliderId}`}></div>
+            <div class="slider-indicators" id={`slider-indicators-${sliderId}`}>
+            </div>
         </div>
 
-        {cta && (
-            <div class="feature-cta">
-                <div class="cta-inline__wrapper">
-                    <div class={`cta-inline__content cta-inline--${cta.variant || 'default'}`}>
-                        <div class="cta-inline__text">
-                            <h2 class="cta-inline__title">{cta.title}</h2>
-                            {cta.subtitle && <p class="cta-inline__subtitle">{cta.subtitle}</p>}
-                        </div>
+        {
+            cta && (
+                <div class="feature-cta">
+                    <div class="cta-inline__wrapper">
+                        <div
+                            class={`cta-inline__content cta-inline--${cta.variant || "default"}`}
+                        >
+                            <div class="cta-inline__text">
+                                <h2 class="cta-inline__title">{cta.title}</h2>
+                                {cta.subtitle && (
+                                    <p class="cta-inline__subtitle">
+                                        {cta.subtitle}
+                                    </p>
+                                )}
+                            </div>
 
-                        <div class="cta-inline__actions">
-                            <a href={cta.primaryButton.href} class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer">
-                                {cta.primaryButton.icon && <span class="material-symbols-outlined">{cta.primaryButton.icon}</span>}
-                                <span class="cta-btn__text">{cta.primaryButton.text}</span>
-                                <span class="cta-btn__arrow material-symbols-outlined">arrow_forward</span>
-                            </a>
-                            {cta.secondaryButton && (
-                                <a href={cta.secondaryButton.href} class="cta-btn cta-btn--secondary">
-                                    {cta.secondaryButton.icon && <span class="material-symbols-outlined">{cta.secondaryButton.icon}</span>}
-                                    <span class="cta-btn__text">{cta.secondaryButton.text}</span>
+                            <div class="cta-inline__actions">
+                                <a
+                                    href={cta.primaryButton.href}
+                                    class="cta-btn cta-btn--primary"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {cta.primaryButton.icon && (
+                                        <span class="material-symbols-outlined">
+                                            {cta.primaryButton.icon}
+                                        </span>
+                                    )}
+                                    <span class="cta-btn__text">
+                                        {cta.primaryButton.text}
+                                    </span>
+                                    <span class="cta-btn__arrow material-symbols-outlined">
+                                        arrow_forward
+                                    </span>
                                 </a>
-                            )}
+                                {cta.secondaryButton && (
+                                    <a
+                                        href={cta.secondaryButton.href}
+                                        class="cta-btn cta-btn--secondary"
+                                    >
+                                        {cta.secondaryButton.icon && (
+                                            <span class="material-symbols-outlined">
+                                                {cta.secondaryButton.icon}
+                                            </span>
+                                        )}
+                                        <span class="cta-btn__text">
+                                            {cta.secondaryButton.text}
+                                        </span>
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )}
+            )
+        }
     </div>
 </section>
 
 <style>
-.feature-section.bg-gray {
-    background-color: #F8F9FA;
-}
-
-@media (min-width: 768px) {
-    .feature-section {
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-}
-
-.feature-grid {
-    margin-top: 32px;
-}
-
-/* Slider Wrapper for Desktop */
-.feature-slider-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    margin: 0 -60px;
-    padding: 0 60px;
-}
-
-/* Navigation Buttons */
-.feature-nav {
-    flex-shrink: 0;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid rgba(26, 115, 232, 0.15);
-    color: var(--color-primary);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.feature-nav:hover:not([disabled]) {
-    background: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-    box-shadow: 0 4px 16px rgba(26, 115, 232, 0.25);
-    transform: scale(1.05);
-}
-
-.feature-nav:active:not([disabled]) {
-    transform: scale(0.98);
-}
-
-.feature-nav[disabled] {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.feature-nav .material-symbols-outlined {
-    font-size: 30px;
-}
-
-/* Slider Track */
-.feature-slider-track {
-    display: flex;
-    overflow-x: hidden;
-    overflow-y: visible;
-    scroll-behavior: smooth;
-    gap: 20px;
-    width: 100%;
-    scroll-snap-type: x mandatory;
-    padding: 8px 4px;
-}
-
-.feature-slider-track .feature-card {
-    flex: 0 0 300px;
-    scroll-snap-align: start;
-    max-width: 320px;
-}
-
-@media (min-width: 1400px) {
-    .feature-slider-track .feature-card {
-        flex: 0 0 340px;
-        max-width: 360px;
-    }
-}
-
-@media (min-width: 1024px) and (max-width: 1399px) {
-    .feature-slider-track .feature-card {
-        flex: 0 0 300px;
-        max-width: 320px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-    .feature-slider-track .feature-card {
-        flex: 0 0 280px;
-        max-width: 300px;
-    }
-
-    .feature-slider-wrapper {
-        gap: 24px;
-        margin: 0 -40px;
-        padding: 0 40px;
-    }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-    .feature-slider-track .feature-card {
-        flex: 0 0 calc(50% - 12px);
-    }
-
-    .feature-slider-wrapper {
-        gap: 20px;
-        margin: 0 -30px;
-        padding: 0 30px;
-    }
-
-    .feature-nav {
-        width: 44px;
-        height: 44px;
-    }
-
-    .feature-nav .material-symbols-outlined {
-        font-size: 26px;
-    }
-}
-
-.feature-card {
-    text-align: center;
-    padding: 28px 24px;
-    background: #FFFFFF;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    min-height: 280px;
-}
-
-.feature-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-    border-color: rgba(26, 115, 232, 0.2);
-}
-
-.feature-card .material-symbols-outlined {
-    font-size: 2.75rem;
-    color: var(--color-primary);
-    margin-bottom: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 68px;
-    height: 68px;
-    background: linear-gradient(135deg, rgba(26, 115, 232, 0.12) 0%, rgba(26, 115, 232, 0.06) 100%);
-    border-radius: 18px;
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover .material-symbols-outlined {
-    transform: scale(1.08);
-    background: linear-gradient(135deg, rgba(26, 115, 232, 0.18) 0%, rgba(26, 115, 232, 0.1) 100%);
-}
-
-/* Seção de Dor - Ícones Vermelhos */
-.feature-section.dor .feature-card .material-symbols-outlined {
-    color: #dc2626;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
-}
-
-.feature-section.dor .feature-card:hover .material-symbols-outlined {
-    color: #b91c1c;
-}
-
-/* Seção de Solução - Ícones Verdes */
-.feature-section.solucao .feature-card .material-symbols-outlined {
-    color: #16a34a;
-    background: linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%);
-}
-
-.feature-section.solucao .feature-card:hover .material-symbols-outlined {
-    color: #15803d;
-}
-
-/* Seção de CRM Benefits - Ícones Azuis */
-.feature-section.crm-benefits .feature-card .material-symbols-outlined {
-    color: #1A73E8;
-    background: linear-gradient(135deg, rgba(26, 115, 232, 0.1) 0%, rgba(26, 115, 232, 0.05) 100%);
-}
-
-.feature-section.crm-benefits .feature-card:hover .material-symbols-outlined {
-    color: #0052CC;
-}
-
-.feature-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    color: var(--color-text);
-    line-height: 1.3;
-}
-
-.feature-card p {
-    color: var(--color-text-secondary);
-    line-height: 1.55;
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-@media (max-width: 576px) {
-    .feature-slider-wrapper {
-        gap: 0;
-    }
-
-    .feature-nav {
-        display: none;
-    }
-
-    .feature-slider-track {
-        overflow-x: auto;
-        gap: 16px;
-        padding-bottom: 20px;
-        padding-left: 20px;
-        padding-right: 20px;
-        margin-left: -20px;
-        margin-right: -20px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .feature-slider-track::-webkit-scrollbar {
-        display: none;
-    }
-
-    .feature-slider-track .feature-card {
-        flex: 0 0 calc(100% - 80px);
-        scroll-snap-align: center;
-        padding: 36px 24px;
-        min-height: 280px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .feature-card .material-symbols-outlined {
-        font-size: 3.5rem;
-        width: 80px;
-        height: 80px;
-        margin-bottom: 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .feature-card h3 {
-        font-size: 1.375rem;
-        margin-bottom: 14px;
-        font-weight: 700;
-    }
-
-    .feature-card p {
-        font-size: 1rem;
-        line-height: 1.65;
-    }
-}
-
-@media (max-width: 480px) {
-    .feature-slider-track {
-        padding-left: 16px;
-        padding-right: 16px;
-        margin-left: -16px;
-        margin-right: -16px;
-    }
-
-    .feature-slider-track .feature-card {
-        flex: 0 0 calc(100% - 60px);
-        padding: 32px 20px;
-        min-height: 260px;
-    }
-
-    .feature-card .material-symbols-outlined {
-        font-size: 3.25rem;
-        width: 76px;
-        height: 76px;
-        margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 12px;
-    }
-
-    .feature-card p {
-        font-size: 0.9375rem;
-        line-height: 1.6;
-    }
-}
-
-/* Slider Dots */
-.slider-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 24px;
-    padding: 0;
-}
-
-.slider-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(26, 115, 232, 0.2);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-.slider-dot:hover {
-    background: rgba(26, 115, 232, 0.4);
-    transform: scale(1.2);
-}
-
-.slider-dot.active {
-    background: var(--color-primary);
-    width: 24px;
-    border-radius: 4px;
-}
-
-@media (max-width: 576px) {
-    .slider-indicators {
-        margin-top: 16px;
-    }
-}
-
-/* Integrated CTA Styles */
-.feature-cta {
-    margin-top: 40px;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-@media (max-width: 968px) {
-    .feature-cta {
-        margin-top: 32px;
-    }
-}
-
-@media (max-width: 576px) {
-    .feature-cta {
-        margin-top: 24px;
-    }
-}
-
-.cta-inline__wrapper {
-    position: relative;
-}
-
-.cta-inline__content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 48px;
-    padding: 42px 48px;
-    background: #FFFFFF;
-    border-radius: 20px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-}
-
-.cta-inline__content:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-    border-color: rgba(26, 115, 232, 0.2);
-}
-
-.cta-inline--urgent .cta-inline__content,
-.cta-inline__content.cta-inline--urgent {
-    border-color: rgba(234, 67, 53, 0.15);
-}
-
-.cta-inline--urgent .cta-inline__content:hover,
-.cta-inline__content.cta-inline--urgent:hover {
-    border-color: rgba(234, 67, 53, 0.3);
-}
-
-.cta-inline--success .cta-inline__content,
-.cta-inline__content.cta-inline--success {
-    border-color: rgba(52, 168, 83, 0.15);
-}
-
-.cta-inline--success .cta-inline__content:hover,
-.cta-inline__content.cta-inline--success:hover {
-    border-color: rgba(52, 168, 83, 0.3);
-}
-
-.cta-inline__text {
-    flex: 1;
-}
-
-.cta-inline__title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--color-text);
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-}
-
-.cta-inline__subtitle {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    margin: 0;
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-.cta-inline__actions {
-    display: flex;
-    gap: 12px;
-    flex-shrink: 0;
-}
-
-.cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-btn .material-symbols-outlined {
-    font-size: 20px;
-}
-
-.cta-btn__arrow {
-    transition: transform 0.3s ease;
-}
-
-.cta-btn--primary {
-    background: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
-    color: white;
-    box-shadow: 0 4px 16px rgba(26, 115, 232, 0.3);
-}
-
-.cta-btn--primary:hover {
-    box-shadow: 0 6px 24px rgba(26, 115, 232, 0.4);
-    transform: translateY(-2px);
-}
-
-.cta-btn--primary:hover .cta-btn__arrow {
-    transform: translateX(4px);
-}
-
-.cta-btn--primary:active {
-    transform: translateY(0);
-}
-
-.cta-btn--secondary {
-    background: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-}
-
-.cta-btn--secondary:hover {
-    background: var(--color-primary);
-    color: white;
-    transform: translateY(-2px);
-}
-
-@media (max-width: 968px) {
-    .cta-inline__content {
-        flex-direction: column;
-        text-align: center;
-        padding: 38px 32px;
-        gap: 28px;
-    }
-
-    .cta-inline__actions {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .cta-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .cta-inline__content {
-        padding: 30px 20px;
-        gap: 24px;
-        border-radius: 16px;
-    }
-
-    .cta-inline__title {
-        font-size: 1.375rem;
-        line-height: 1.3;
-        margin-bottom: 10px;
-    }
-
-    .cta-inline__subtitle {
-        font-size: 0.9375rem;
-        line-height: 1.6;
-    }
-
-    .cta-inline__actions {
-        gap: 10px;
-    }
-
-    .cta-btn {
-        padding: 14px 20px;
-        font-size: 0.875rem;
-        border-radius: 10px;
-    }
-
-    .cta-btn .material-symbols-outlined {
-        font-size: 18px;
-    }
-
-    .cta-btn__arrow {
-        font-size: 18px;
-    }
-}
+    @import "../../styles/components/feature-grid.css";
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const featureSliders = document.querySelectorAll('.feature-slider-track');
+    import { initFeatureGrid } from "../../scripts/feature-grid";
 
-    featureSliders.forEach(slider => {
-        const wrapper = slider.closest('.feature-slider-wrapper');
-        if (!wrapper) return;
-
-        const prevBtn = wrapper.querySelector('.feature-nav-prev');
-        const nextBtn = wrapper.querySelector('.feature-nav-next');
-        const cards = slider.querySelectorAll('.feature-card');
-        const sliderId = slider.dataset.slider;
-        const dotsContainer = document.getElementById(`slider-indicators-${sliderId}`);
-
-        if (!prevBtn || !nextBtn || cards.length === 0) return;
-
-        const cardWidth = cards[0].offsetWidth;
-        const gap = 20;
-        const scrollAmount = cardWidth + gap;
-
-        // Create dots based on number of cards
-        let dots = [];
-        const numDots = Math.ceil(cards.length / 3); // Show 3 cards at a time
-
-        if (dotsContainer && numDots > 1) {
-            for (let i = 0; i < numDots; i++) {
-                const dot = document.createElement('button');
-                dot.className = `slider-dot ${i === 0 ? 'active' : ''}`;
-                dot.setAttribute('aria-label', `Ir para página ${i + 1}`);
-                dot.addEventListener('click', () => {
-                    const scrollTo = i * (scrollAmount * 3);
-                    slider.scrollTo({ left: scrollTo, behavior: 'smooth' });
-                });
-                dotsContainer.appendChild(dot);
-                dots.push(dot);
-            }
-        }
-
-        function updateSlider() {
-            const maxScroll = slider.scrollWidth - slider.clientWidth;
-            const currentScroll = slider.scrollLeft;
-
-            // Update button states
-            if (currentScroll <= 0) {
-                prevBtn.setAttribute('disabled', 'true');
-            } else {
-                prevBtn.removeAttribute('disabled');
-            }
-
-            if (currentScroll >= maxScroll - 5) {
-                nextBtn.setAttribute('disabled', 'true');
-            } else {
-                nextBtn.removeAttribute('disabled');
-            }
-
-            // Update active dot
-            if (dots.length > 0) {
-                const activeIndex = Math.round(currentScroll / (scrollAmount * 3));
-                dots.forEach((dot, index) => {
-                    if (index === activeIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-        }
-
-        nextBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            setTimeout(updateSlider, 300);
-        });
-
-        prevBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            setTimeout(updateSlider, 300);
-        });
-
-        slider.addEventListener('scroll', updateSlider);
-
-        // Initial update
-        updateSlider();
-
-        // Update on window resize
-        window.addEventListener('resize', () => {
-            updateSlider();
-        });
+    document.addEventListener("DOMContentLoaded", () => {
+        initFeatureGrid();
     });
-});
 </script>

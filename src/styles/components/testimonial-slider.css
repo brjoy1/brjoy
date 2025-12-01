@@ -7,11 +7,11 @@
 }
 
 .cta-testimonial-light {
-    background: linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 50%, #E3F2FD 100%);
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #e3f2fd 100%);
 }
 
 .cta-testimonial-primary {
-    background: linear-gradient(135deg, #1A73E8 0%, #0052CC 100%);
+    background: linear-gradient(135deg, #1a73e8 0%, #0052cc 100%);
 }
 
 .cta-testimonial-title {
@@ -24,7 +24,7 @@
 }
 
 .cta-testimonial-primary .cta-testimonial-title {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 /* ================================
@@ -101,7 +101,7 @@
     left: 48px;
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, #1A73E8 0%, #0052CC 100%);
+    background: linear-gradient(135deg, #1a73e8 0%, #0052cc 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -118,7 +118,7 @@
 
 .quote-icon .material-symbols-outlined {
     font-size: 2.25rem;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 /* ================================
@@ -133,8 +133,8 @@
 
 .testimonial-rating .star {
     font-size: 1.75rem;
-    color: #FFC107;
-    font-variation-settings: 'FILL' 1;
+    color: #ffc107;
+    font-variation-settings: "FILL" 1;
     transition: all 0.3s ease;
 }
 
@@ -156,7 +156,7 @@
 }
 
 .cta-testimonial-primary .testimonial-quote {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 /* ================================
@@ -193,9 +193,11 @@
 }
 
 .author-avatar-placeholder {
-    background: linear-gradient(135deg,
+    background: linear-gradient(
+        135deg,
         rgba(26, 115, 232, 0.1) 0%,
-        rgba(0, 82, 204, 0.05) 100%);
+        rgba(0, 82, 204, 0.05) 100%
+    );
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,11 +209,11 @@
 
 .author-avatar-placeholder .material-symbols-outlined {
     font-size: 2.25rem;
-    color: #1A73E8;
+    color: #1a73e8;
 }
 
 .cta-testimonial-primary .author-avatar-placeholder .material-symbols-outlined {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .author-info {
@@ -227,12 +229,12 @@
 }
 
 .cta-testimonial-primary .author-name {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .author-role {
     font-size: 0.975rem;
-    color: #5F6368;
+    color: #5f6368;
     line-height: 1.4;
 }
 
@@ -262,7 +264,7 @@
 }
 
 .testimonial-slider-wrapper .slider-nav:hover {
-    background: #FFFFFF;
+    background: #ffffff;
     transform: translateY(-50%) scale(1.1);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
@@ -277,7 +279,7 @@
 
 .testimonial-slider-wrapper .slider-nav .material-symbols-outlined {
     font-size: 1.75rem;
-    color: #1A73E8;
+    color: #1a73e8;
 }
 
 .cta-testimonial-primary .testimonial-slider-wrapper .slider-nav {
@@ -289,8 +291,11 @@
     background: rgba(255, 255, 255, 0.35);
 }
 
-.cta-testimonial-primary .testimonial-slider-wrapper .slider-nav .material-symbols-outlined {
-    color: #FFFFFF;
+.cta-testimonial-primary
+    .testimonial-slider-wrapper
+    .slider-nav
+    .material-symbols-outlined {
+    color: #ffffff;
 }
 
 /* ================================
@@ -320,7 +325,7 @@
 }
 
 .testimonial-slider-wrapper .slider-dot.active {
-    background: #1A73E8;
+    background: #1a73e8;
     width: 32px;
     border-radius: 100px;
 }
@@ -334,7 +339,7 @@
 }
 
 .cta-testimonial-primary .testimonial-slider-wrapper .slider-dot.active {
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 /* ================================
@@ -362,14 +367,14 @@
 }
 
 .btn-testimonial-primary {
-    background: linear-gradient(135deg, #1A73E8 0%, #0052CC 100%);
-    color: #FFFFFF;
+    background: linear-gradient(135deg, #1a73e8 0%, #0052cc 100%);
+    color: #ffffff;
     box-shadow: 0 4px 16px rgba(26, 115, 232, 0.3);
 }
 
 .cta-testimonial-primary .btn-testimonial-primary {
-    background: #FFFFFF;
-    color: #1A73E8;
+    background: #ffffff;
+    color: #1a73e8;
 }
 
 .btn-testimonial-primary:hover {
@@ -379,13 +384,13 @@
 
 .btn-testimonial-secondary {
     background: transparent;
-    color: #1A73E8;
-    border: 2px solid #1A73E8;
+    color: #1a73e8;
+    border: 2px solid #1a73e8;
 }
 
 .cta-testimonial-primary .btn-testimonial-secondary {
-    color: #FFFFFF;
-    border-color: #FFFFFF;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 .btn-testimonial-secondary:hover {
@@ -519,7 +524,7 @@
 @media print {
     .cta-testimonial-slider .testimonial-card {
         background: white;
-        border: 1px solid #E8EAED;
+        border: 1px solid #e8eaed;
         box-shadow: none;
     }
 

@@ -1,0 +1,96 @@
+.integrations-marquee-section {
+    padding: 2rem 0;
+    background: var(--color-surface-subtle);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.marquee-title {
+    text-align: center;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.marquee-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+}
+
+.marquee-track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0.6;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    cursor: default;
+}
+
+.marquee-item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    color: var(--color-primary);
+}
+
+.marquee-item .material-symbols-outlined {
+    font-size: 1.5rem;
+}
+
+.marquee-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover for better UX */
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+    .marquee-track {
+        gap: 2rem;
+        animation-duration: 20s;
+    }
+
+    .marquee-name {
+        font-size: 1rem;
+    }
+}

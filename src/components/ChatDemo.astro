@@ -1,0 +1,353 @@
+---
+import "../styles/components/chat-demo.css";
+---
+
+<section class="chat-demo-section section-spacing">
+    <div class="container">
+        <div class="chat-demo-header">
+            <h2 class="section-title">
+                Veja a IA em <span class="text-gradient">Ação</span>
+            </h2>
+            <p class="section-subtitle">
+                Acompanhe em tempo real como a BrJoy AI qualifica leads, sugere
+                imóveis e agenda visitas automaticamente via WhatsApp.
+            </p>
+        </div>
+
+        <div class="demo-split-view">
+            <!-- Left Side: WhatsApp Chat -->
+            <div class="chat-phone-wrapper">
+                <div class="whatsapp-window">
+                    <div class="whatsapp-screen">
+                        <!-- WhatsApp Header -->
+                        <div class="whatsapp-header">
+                            <div class="header-left">
+                                <button
+                                    class="back-button"
+                                    aria-label="Voltar para lista de conversas"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        aria-hidden="true">arrow_back</span
+                                    >
+                                </button>
+                                <div
+                                    class="contact-avatar"
+                                    role="img"
+                                    aria-label="Avatar BrJoy AI"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        aria-hidden="true">smart_toy</span
+                                    >
+                                </div>
+                                <div class="contact-info">
+                                    <span class="contact-name">BrJoy AI</span>
+                                    <span
+                                        class="contact-status"
+                                        id="status-text"
+                                        role="status"
+                                        aria-live="polite">online</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="header-actions">
+                                <button
+                                    class="icon-button"
+                                    aria-label="Iniciar videochamada"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        aria-hidden="true">videocam</span
+                                    >
+                                </button>
+                                <button
+                                    class="icon-button"
+                                    aria-label="Fazer ligação"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        aria-hidden="true">call</span
+                                    >
+                                </button>
+                                <button
+                                    class="icon-button"
+                                    aria-label="Mais opções"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        aria-hidden="true">more_vert</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages Area -->
+                        <div
+                            class="chat-messages"
+                            id="chat-messages"
+                            role="log"
+                            aria-label="Conversa com BrJoy AI"
+                            aria-live="polite"
+                        >
+                            <div class="date-separator" role="separator">
+                                <span>HOJE</span>
+                            </div>
+                            <!-- Messages injected by JS -->
+                        </div>
+
+                        <!-- WhatsApp Input Area -->
+                        <div class="whatsapp-input-area">
+                            <button
+                                class="attach-button"
+                                aria-label="Anexar arquivo"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    aria-hidden="true">add</span
+                                >
+                            </button>
+                            <div
+                                class="input-field"
+                                role="textbox"
+                                aria-label="Digite uma mensagem"
+                            >
+                                <span class="placeholder-text">Mensagem</span>
+                                <button
+                                    class="emoji-button"
+                                    aria-label="Inserir emoji"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        aria-hidden="true"
+                                        >sentiment_satisfied</span
+                                    >
+                                </button>
+                            </div>
+                            <button
+                                class="mic-button"
+                                aria-label="Gravar áudio"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    aria-hidden="true">mic</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Intelligence Feed (Glassmorphism) -->
+            <!-- Right Side: Live CRM Card with Slider -->
+            <div class="crm-wrapper">
+                <div class="crm-card">
+                    <!-- CRM Card Content -->
+                    <!-- Lead Score -->
+                    <div class="lead-score-container">
+                        <div class="score-header">
+                            <span>Lead Score</span>
+                            <span class="score-value"
+                                ><span id="crm-score-number">10</span>/100</span
+                            >
+                        </div>
+                        <div class="score-bar-bg">
+                            <div class="score-bar-fill" id="crm-score-bar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slider Container -->
+                    <div class="crm-slider-container">
+                        <div class="crm-slider" id="crm-slider">
+                            <!-- Slide 1: Novo Lead -->
+                            <div class="crm-slide active" data-slide="1">
+                                <div class="crm-header">
+                                    <div class="crm-avatar">
+                                        <span class="material-symbols-outlined"
+                                            >person</span
+                                        >
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label">Novo Lead</span>
+                                        <h3 class="crm-name" id="crm-name">
+                                            Identificando...
+                                        </h3>
+                                    </div>
+                                    <div
+                                        class="crm-status-badge"
+                                        id="crm-status"
+                                    >
+                                        <span class="status-dot"></span>
+                                        <span class="status-text"
+                                            >Visitante</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Lead Qualificado -->
+                            <div class="crm-slide" data-slide="2">
+                                <div class="crm-header qualified">
+                                    <div class="crm-avatar qualified">
+                                        <span class="material-symbols-outlined"
+                                            >person_search</span
+                                        >
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label qualified-label"
+                                            >Lead Qualificado 🔍</span
+                                        >
+                                        <h3 class="crm-name" id="crm-name-2">
+                                        </h3>
+                                    </div>
+                                    <div class="crm-status-badge active">
+                                        <span class="status-dot"></span>
+                                        <span class="status-text"
+                                            >Qualificando</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Hot Lead -->
+                            <div class="crm-slide" data-slide="3">
+                                <div class="crm-header hot">
+                                    <div class="crm-avatar hot">
+                                        <span class="material-symbols-outlined"
+                                            >local_fire_department</span
+                                        >
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label hot-label"
+                                            >Hot Lead 🔥</span
+                                        >
+                                        <h3 class="crm-name" id="crm-name-3">
+                                        </h3>
+                                    </div>
+                                    <div class="crm-status-badge active">
+                                        <span class="status-dot"></span>
+                                        <span class="status-text"
+                                            >Pronto para Fechar</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Corretor Atribuído -->
+                            <div class="crm-slide" data-slide="4">
+                                <div class="crm-header assigned">
+                                    <div class="crm-avatar assigned">
+                                        <span class="material-symbols-outlined"
+                                            >person_check</span
+                                        >
+                                    </div>
+                                    <div class="crm-title">
+                                        <span class="crm-label assigned-label"
+                                            >Corretor Atribuído ✓</span
+                                        >
+                                        <h3 class="crm-name" id="crm-name-4">
+                                        </h3>
+                                    </div>
+                                    <div class="crm-status-badge active">
+                                        <span class="status-dot"></span>
+                                        <span class="status-text"
+                                            >Em Negociação</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slider Indicators -->
+                        <div class="slider-indicators">
+                            <span class="indicator active" data-slide="1"
+                            ></span>
+                            <span class="indicator" data-slide="2"></span>
+                            <span class="indicator" data-slide="3"></span>
+                            <span class="indicator" data-slide="4"></span>
+                        </div>
+                    </div>
+
+                    <!-- CRM Fields -->
+                    <div class="crm-fields">
+                        <div class="crm-field-group">
+                            <label>
+                                <span
+                                    class="material-symbols-outlined field-icon"
+                                    >home_work</span
+                                >
+                                Interesse
+                            </label>
+                            <div class="crm-value" id="crm-interest">
+                                <span class="placeholder">Aguardando...</span>
+                            </div>
+                        </div>
+
+                        <div class="crm-field-group">
+                            <label>
+                                <span
+                                    class="material-symbols-outlined field-icon"
+                                    >payments</span
+                                >
+                                Orçamento
+                            </label>
+                            <div class="crm-value" id="crm-budget">
+                                <span class="placeholder">Aguardando...</span>
+                            </div>
+                        </div>
+
+                        <div class="crm-field-group">
+                            <label>
+                                <span
+                                    class="material-symbols-outlined field-icon"
+                                    >location_on</span
+                                >
+                                Localização
+                            </label>
+                            <div class="crm-value" id="crm-location">
+                                <span class="placeholder">Aguardando...</span>
+                            </div>
+                        </div>
+
+                        <div class="crm-field-group highlight">
+                            <label>
+                                <span
+                                    class="material-symbols-outlined field-icon"
+                                    >event</span
+                                >
+                                Próximo Passo
+                            </label>
+                            <div class="crm-value" id="crm-next-step">
+                                <span class="placeholder"
+                                    >Em atendimento...</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Container -->
+                    <div class="crm-notifications" id="crm-notifications">
+                        <!-- Hand-off notification will be inserted here -->
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="crm-footer">
+                        <div class="crm-system-info">
+                            <span class="material-symbols-outlined">sync</span>
+                            Sincronizando com CRM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { initChatDemo } from "../scripts/chat-demo";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initChatDemo();
+    });
+</script>

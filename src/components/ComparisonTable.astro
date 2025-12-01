@@ -1,0 +1,113 @@
+---
+import "../styles/components/comparison-table.css";
+
+const comparisonData = [
+    {
+        feature: "Entende Áudio e Imagens",
+        generic: false,
+        brjoy: true,
+    },
+    {
+        feature: "Agenda Visita no Calendar",
+        generic: false,
+        brjoy: true,
+    },
+    {
+        feature: "Qualifica Leads (Funil)",
+        generic: "Básico",
+        brjoy: "Avançado",
+    },
+    {
+        feature: "Disponibilidade",
+        generic: "24/7",
+        brjoy: "24/7",
+    },
+    {
+        feature: "Integração CRM Nativa",
+        generic: false,
+        brjoy: true,
+    },
+    {
+        feature: "Personalidade Humana",
+        generic: false,
+        brjoy: true,
+    },
+    {
+        feature: "Transbordo Inteligente",
+        generic: false,
+        brjoy: true,
+    },
+];
+---
+
+<section class="comparison-section section-spacing">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">
+                Não é apenas um Chatbot. <br />
+                <span class="text-gradient">É um Corretor Digital.</span>
+            </h2>
+            <p class="section-subtitle">
+                Veja por que as maiores imobiliárias escolhem a BrJoy.
+            </p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th class="feature-col">Funcionalidade</th>
+                        <th class="generic-col">Chatbot Comum</th>
+                        <th class="brjoy-col">
+                            <div class="brjoy-header">
+                                <span class="material-symbols-outlined icon"
+                                    >smart_toy</span
+                                >
+                                BrJoy AI
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        comparisonData.map((row) => (
+                            <tr>
+                                <td class="feature-cell">{row.feature}</td>
+                                <td class="generic-cell">
+                                    {row.generic === true ? (
+                                        <span class="material-symbols-outlined check">
+                                            check_circle
+                                        </span>
+                                    ) : row.generic === false ? (
+                                        <span class="material-symbols-outlined cross">
+                                            cancel
+                                        </span>
+                                    ) : (
+                                        <span class="text-value">
+                                            {row.generic}
+                                        </span>
+                                    )}
+                                </td>
+                                <td class="brjoy-cell">
+                                    {row.brjoy === true ? (
+                                        <span class="material-symbols-outlined check">
+                                            check_circle
+                                        </span>
+                                    ) : row.brjoy === false ? (
+                                        <span class="material-symbols-outlined cross">
+                                            cancel
+                                        </span>
+                                    ) : (
+                                        <span class="text-value">
+                                            {row.brjoy}
+                                        </span>
+                                    )}
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
