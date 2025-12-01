@@ -6,8 +6,14 @@ import StepsGrid from "../../components/features-grid/StepsGrid.astro";
 import CTATestimonialSlider from "../../components/cta/CTATestimonialSlider.astro";
 import CTAInline from "../../components/cta/CTAInline.astro";
 import IntegrationsSection from "../../components/IntegrationsSection.astro";
-
 import FAQSection from "../../components/FAQSection.astro";
+
+// New Components
+import NativeIntegrationsSection from "../../components/NativeIntegrationsSection.astro";
+import ChatDemo from "../../components/ChatDemo.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ROICalculator from "../../components/ROICalculator.astro";
+import SecurityBadges from "../../components/SecurityBadges.astro";
 
 // Features data
 const problemasFeatures = [
@@ -172,6 +178,9 @@ const faqs = [
             ]}
         />
 
+        <!-- NEW: Native Integrations Section -->
+        <NativeIntegrationsSection />
+
         <!-- Features: O Problema -->
         <FeatureGrid
             title="Por que você está deixando dinheiro na mesa?"
@@ -211,6 +220,9 @@ const faqs = [
                 variant: "success",
             }}
         />
+
+        <!-- NEW: Chat Demo -->
+        <ChatDemo />
 
         <!-- Como Funciona -->
         <StepsGrid
@@ -262,6 +274,12 @@ const faqs = [
             }}
             backgroundColor="gray"
         />
+
+        <!-- NEW: Comparison Table -->
+        <ComparisonTable />
+
+        <!-- NEW: ROI Calculator -->
+        <ROICalculator />
 
         <!-- CRM Benefits -->
         <FeatureGrid
@@ -350,6 +368,9 @@ const faqs = [
             autoplay={true}
             autoplayDelay={5000}
         />
+
+        <!-- NEW: Security Badges -->
+        <SecurityBadges />
 
         <FAQSection faqs={faqs} />
 

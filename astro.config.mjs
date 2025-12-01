@@ -40,5 +40,6 @@ export default defineConfig({
     }
   },
 
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  compressHTML: true
 });
