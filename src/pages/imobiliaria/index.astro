@@ -14,6 +14,7 @@ import ChatDemo from "../../components/ChatDemo.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import ROICalculator from "../../components/ROICalculator.astro";
 import SecurityBadges from "../../components/SecurityBadges.astro";
+import BrChat from "../../components/BrChat.astro";
 
 // Features data
 const problemasFeatures = [
@@ -385,16 +386,15 @@ const faqs = [
             }}
             variant="urgent"
         />
+        <BrChat />
     </main>
 </Layout>
 
 <script>
     import { initDataSliders } from "../../scripts/slider";
-    import { initFloatingCTA } from "../../scripts/floating-cta-simple";
 
     document.addEventListener("DOMContentLoaded", () => {
         initDataSliders();
-        initFloatingCTA();
     });
 </script>
 
