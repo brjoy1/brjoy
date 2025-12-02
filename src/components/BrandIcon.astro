@@ -75,11 +75,13 @@ const iconData = iconMap[brand];
             api
         </span>
     ) : brand === "kommo" ? (
-        <span
-            class={`material-symbols-outlined ${className}`}
-            style={`font-size: ${size}px`}
-        >
-            dataset
-        </span>
+        <img
+            src="/images/kommo.webp"
+            alt="Kommo"
+            width={size}
+            height={size}
+            class={className}
+            style="object-fit: contain;"
+        />
     ) : null
 }
