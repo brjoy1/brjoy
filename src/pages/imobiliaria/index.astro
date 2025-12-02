@@ -164,7 +164,7 @@ const faqs = [
             boldText="qualifica leads e agenda visitas"
             primaryButton={{
                 text: "Falar com Especialista",
-                href: "https://wa.me/5511997889281",
+                href: "#open-chat",
                 icon: "support_agent",
             }}
             secondaryButton={{
@@ -195,7 +195,7 @@ const faqs = [
                     "Veja como a IA pode resolver todos esses problemas em uma demonstração gratuita.",
                 primaryButton: {
                     text: "Resolver Esses Problemas Agora",
-                    href: "https://wa.me/5511997889281",
+                    href: "#open-chat",
                     icon: "calendar_today",
                 },
                 variant: "urgent",
@@ -215,7 +215,7 @@ const faqs = [
                     "Comece a converter mais leads em visitas hoje mesmo com nossa IA especializada.",
                 primaryButton: {
                     text: "Começar Minha Transformação",
-                    href: "https://wa.me/5511997889281",
+                    href: "#open-chat",
                     icon: "rocket_launch",
                 },
                 variant: "success",
@@ -223,7 +223,7 @@ const faqs = [
         />
 
         <!-- NEW: Chat Demo -->
-        <ChatDemo />
+        <ChatDemo client:visible />
 
         <!-- Como Funciona -->
         <StepsGrid
@@ -265,22 +265,22 @@ const faqs = [
             subtitle="Agende uma demonstração personalizada e veja como é fácil automatizar seu atendimento."
             primaryButton={{
                 text: "Ver Demonstração ao Vivo",
-                href: "https://wa.me/5511997889281",
+                href: "#open-chat",
                 icon: "play_circle",
             }}
             secondaryButton={{
                 text: "Falar com Consultor",
-                href: "https://wa.me/5511997889281",
+                href: "#open-chat",
                 icon: "support_agent",
             }}
             backgroundColor="gray"
         />
 
         <!-- NEW: Comparison Table -->
-        <ComparisonTable />
+        <ComparisonTable client:visible />
 
         <!-- NEW: ROI Calculator -->
-        <ROICalculator />
+        <ROICalculator client:visible />
 
         <!-- CRM Benefits -->
         <FeatureGrid
@@ -298,7 +298,7 @@ const faqs = [
                     "Pare de perder tempo com planilhas. Comece a usar IA e libere 4h do seu dia.",
                 primaryButton: {
                     text: "Integrar Meu CRM",
-                    href: "https://wa.me/5511997889281",
+                    href: "#open-chat",
                     icon: "rocket_launch",
                 },
                 variant: "success",
@@ -308,6 +308,7 @@ const faqs = [
         <IntegrationsSection />
 
         <CTATestimonialSlider
+            client:visible
             title="Veja o que nossos clientes dizem"
             testimonials={[
                 {
@@ -358,7 +359,7 @@ const faqs = [
             ]}
             primaryButton={{
                 text: "Quero Resultados Semelhantes",
-                href: "https://wa.me/5511997889281",
+                href: "#open-chat",
                 icon: "rocket_launch",
             }}
             secondaryButton={{
@@ -373,7 +374,7 @@ const faqs = [
         <!-- NEW: Security Badges -->
         <SecurityBadges />
 
-        <FAQSection faqs={faqs} />
+        <FAQSection faqs={faqs} client:visible />
 
         <!-- CTA 4: Depois do FAQ (Última Chamada) -->
         <CTAInline
@@ -381,12 +382,12 @@ const faqs = [
             subtitle="🔥 Apenas 3 vagas restantes esta semana. Garanta a sua agora!"
             primaryButton={{
                 text: "Garantir Minha Vaga",
-                href: "https://wa.me/5511997889281",
+                href: "#open-chat",
                 icon: "calendar_month",
             }}
             variant="urgent"
         />
-        <BrChat />
+        <BrChat client:idle />
     </main>
 </Layout>
 

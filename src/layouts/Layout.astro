@@ -84,6 +84,22 @@ const canonicalURL = new URL(
                 padding: 0 24px;
                 width: 100%;
             }
+            /* Prevent Material Icons FOUC - Critical Inline CSS */
+            .material-symbols-outlined {
+                font-family: "Material Symbols Outlined", sans-serif;
+                font-weight: normal;
+                font-style: normal;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                -webkit-font-feature-settings: "liga";
+                -webkit-font-smoothing: antialiased;
+                user-select: none;
+            }
         </style>
 
         <!-- Preconnect for Performance -->
@@ -104,19 +120,11 @@ const canonicalURL = new URL(
             /></noscript
         >
 
-        <!-- Material Symbols - Async Load with font-display: swap -->
+        <!-- Material Symbols - Blocking Load to prevent FOUC -->
         <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-            as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
         />
-        <noscript
-            ><link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-            /></noscript
-        >
 
         <!-- Global Styles -->
         <style is:global>
@@ -192,6 +200,19 @@ const canonicalURL = new URL(
 
             // Fallback: carregar após 3s mesmo sem interação
             setTimeout(loadAnalytics, 3000);
+
+            // Global handler for BrChat triggers
+            document.addEventListener("click", (e) => {
+                const target = e.target.closest('a[href="#open-chat"]');
+                if (target) {
+                    e.preventDefault();
+                    if (window.brformWidget) {
+                        window.brformWidget.toggle();
+                    } else {
+                        console.warn("BrChat widget not initialized");
+                    }
+                }
+            });
         </script>
     </head>
     <body>

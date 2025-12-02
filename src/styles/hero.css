@@ -94,6 +94,8 @@ canvas#hero-particles {
     gap: 16px;
     margin-bottom: 40px;
     flex-wrap: wrap;
+    /* Prevent CLS - reserve minimum height for buttons */
+    min-height: 54px;
 }
 
 .hero-trust-badges {
@@ -102,6 +104,8 @@ canvas#hero-particles {
     gap: 32px;
     margin-top: 40px;
     flex-wrap: wrap;
+    /* Prevent CLS - reserve space for badges */
+    min-height: 28px;
 }
 
 .trust-badge {
@@ -111,11 +115,17 @@ canvas#hero-particles {
     color: var(--color-text-secondary);
     font-size: 1rem;
     font-weight: 500;
+    /* Prevent CLS - fixed height */
+    height: 28px;
 }
 
 .trust-badge .material-symbols-outlined {
     font-size: 1.25rem;
     color: var(--color-primary);
+    /* Prevent CLS - fixed size for icons */
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 /* Fade-in animations */

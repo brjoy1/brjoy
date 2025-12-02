@@ -1,10 +1,20 @@
 ---
 import "../styles/components/native-integrations.css";
+import BrandIcon from "./BrandIcon.astro";
 
 interface Integration {
     name: string;
     description: string;
-    icon: string;
+    brand:
+        | "google-calendar"
+        | "google-sheets"
+        | "openai"
+        | "whatsapp"
+        | "facebook"
+        | "instagram"
+        | "google-ads"
+        | "api"
+        | "kommo";
     category: string;
     color: string;
 }
@@ -13,65 +23,65 @@ const integrations: Integration[] = [
     {
         name: "Google Calendar",
         description: "Sincronize agendamentos automaticamente",
-        icon: "calendar_month",
+        brand: "google-calendar",
         category: "Agenda",
-        color: "var(--color-google-blue)",
+        color: "#4285F4",
     },
     {
         name: "Planilhas Google",
         description: "Exporte e gerencie dados em planilhas",
-        icon: "table_chart",
+        brand: "google-sheets",
         category: "Sheets",
-        color: "var(--color-google-green)",
+        color: "#34A853",
     },
     {
         name: "OpenAI",
         description: "Inteligência artificial avançada",
-        icon: "psychology",
+        brand: "openai",
         category: "Inteligência Artificial",
-        color: "var(--color-brand-openai)",
+        color: "#412991",
     },
     {
         name: "Kommo",
         description: "Integração completa com seu CRM",
-        icon: "dataset",
+        brand: "kommo",
         category: "CRM",
-        color: "var(--color-brand-kommo)",
+        color: "#FF6B00",
     },
     {
         name: "WhatsApp",
         description: "Atendimento via WhatsApp Business",
-        icon: "chat",
+        brand: "whatsapp",
         category: "Mensageria",
-        color: "var(--color-brand-whatsapp)",
+        color: "#25D366",
     },
     {
         name: "Facebook",
         description: "Integre com Facebook Messenger",
-        icon: "facebook",
+        brand: "facebook",
         category: "Social",
-        color: "var(--color-brand-facebook)",
+        color: "#0866FF",
     },
     {
         name: "Instagram",
         description: "Atenda clientes via Instagram Direct",
-        icon: "photo_camera",
+        brand: "instagram",
         category: "Social",
-        color: "var(--color-brand-instagram)",
+        color: "#E4405F",
     },
     {
         name: "Google Ads",
         description: "Rastreie conversões e otimize campanhas",
-        icon: "paid",
+        brand: "google-ads",
         category: "Marketing",
-        color: "var(--color-brand-google-ads)",
+        color: "#4285F4",
     },
     {
         name: "API",
         description: "Conecte qualquer sistema via API",
-        icon: "api",
+        brand: "api",
         category: "Conexões personalizadas",
-        color: "var(--color-brand-api)",
+        color: "#6C757D",
     },
 ];
 ---
@@ -88,10 +98,15 @@ const integrations: Integration[] = [
             <div class="marquee-content">
                 {
                     [...integrations, ...integrations].map((integration) => (
-                        <div class="integration-item">
-                            <span class="material-symbols-outlined integration-icon">
-                                {integration.icon}
-                            </span>
+                        <div
+                            class="integration-item"
+                            style={`--brand-color: ${integration.color}`}
+                        >
+                            <BrandIcon
+                                brand={integration.brand}
+                                size={24}
+                                className="integration-icon"
+                            />
                             <span class="integration-name">
                                 {integration.name}
                             </span>

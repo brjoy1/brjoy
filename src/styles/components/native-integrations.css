@@ -6,11 +6,11 @@
 }
 
 /* Section Header */
-.section-header {
+.native-integrations-section .section-header {
     margin-bottom: 40px;
 }
 
-.section-title {
+.native-integrations-section .section-title {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--color-text-secondary);
@@ -51,24 +51,44 @@
     animation-play-state: paused;
 }
 
+/* Optimize animation performance */
+@media (prefers-reduced-motion: no-preference) {
+    .marquee-content {
+        animation-duration: 40s;
+    }
+}
+
 /* Integration Item */
 .integration-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    opacity: 0.6;
-    transition: all 0.3s ease;
+    opacity: 0.7;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
     cursor: default;
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .integration-item:hover {
     opacity: 1;
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
 }
 
 .integration-icon {
     font-size: 24px;
-    color: var(--color-text-secondary);
+    color: var(--brand-color, var(--color-text-secondary));
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.integration-item:hover .integration-icon {
+    color: var(--brand-color, var(--color-primary));
 }
 
 .integration-name {
@@ -76,16 +96,21 @@
     font-weight: 600;
     color: var(--color-text-secondary);
     white-space: nowrap;
+    transition: color 0.3s ease;
 }
 
-/* Animation */
+.integration-item:hover .integration-name {
+    color: var(--brand-color, var(--color-text));
+}
+
+/* Animation - GPU accelerated */
 @keyframes scroll {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
@@ -93,10 +118,14 @@
 @media (max-width: 768px) {
     .marquee-content {
         gap: 40px;
-        animation-duration: 30s;
+        animation-duration: 35s;
     }
 
     .integration-name {
         font-size: 1rem;
+    }
+
+    .integration-icon {
+        font-size: 22px;
     }
 }

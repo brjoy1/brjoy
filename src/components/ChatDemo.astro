@@ -259,13 +259,33 @@ import "../styles/components/chat-demo.css";
                             </div>
                         </div>
 
-                        <!-- Slider Indicators -->
-                        <div class="slider-indicators">
-                            <span class="indicator active" data-slide="1"
-                            ></span>
-                            <span class="indicator" data-slide="2"></span>
-                            <span class="indicator" data-slide="3"></span>
-                            <span class="indicator" data-slide="4"></span>
+                        <!-- Slider Controls -->
+                        <div class="slider-controls">
+                            <button
+                                class="slider-nav-btn prev-btn"
+                                id="slider-prev"
+                                aria-label="Slide anterior"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >chevron_left</span
+                                >
+                            </button>
+                            <div class="slider-indicators">
+                                <span class="indicator active" data-slide="1"
+                                ></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                                <span class="indicator" data-slide="4"></span>
+                            </div>
+                            <button
+                                class="slider-nav-btn next-btn"
+                                id="slider-next"
+                                aria-label="Próximo slide"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >chevron_right</span
+                                >
+                            </button>
                         </div>
                     </div>
 

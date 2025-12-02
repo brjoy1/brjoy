@@ -37,7 +37,9 @@ const {
     <canvas id="hero-particles"></canvas>
     <div class="container hero-container">
         <h1 class="hero-title">
-            <span id="dynamic-word">{dynamicWords[0]}</span>
+            <span class="dynamic-word-wrapper">
+                <span id="dynamic-word">{dynamicWords[0]}</span>
+            </span>
             {title}
             <span class="gradient-text">{highlightedText}</span>
         </h1>
@@ -141,26 +143,83 @@ const {
 </script>
 
 <style>
+    .dynamic-word-wrapper {
+        display: inline-block;
+        position: relative;
+        /* Reserve space for longest word to prevent layout shift */
+        min-width: var(--dynamic-word-width, 0);
+    }
+
     #dynamic-word {
         display: inline-block;
         transition:
             opacity 0.3s ease,
             transform 0.3s ease;
-        min-width: 200px;
-        text-align: left;
+        white-space: nowrap;
     }
 
     @media (max-width: 768px) {
         #dynamic-word {
-            min-width: 150px;
             font-size: 1em;
         }
     }
 
     @media (max-width: 480px) {
         #dynamic-word {
-            min-width: 120px;
             font-size: 1em;
         }
     }
 </style>
+
+<script define:vars={{ dynamicWords }}>
+    // Calculate actual pixel width of longest word
+    function calculateLongestWordWidth() {
+        const longestWord = dynamicWords.reduce(
+            (a, b) => (a.length > b.length ? a : b),
+            "",
+        );
+
+        // Create temporary element to measure actual width
+        const temp = document.createElement("span");
+        temp.style.visibility = "hidden";
+        temp.style.position = "absolute";
+        temp.style.whiteSpace = "nowrap";
+
+        // Copy styles from hero title
+        const heroTitle = document.querySelector(".hero-title");
+        if (heroTitle) {
+            const styles = window.getComputedStyle(heroTitle);
+            temp.style.fontSize = styles.fontSize;
+            temp.style.fontWeight = styles.fontWeight;
+            temp.style.fontFamily = styles.fontFamily;
+            temp.style.letterSpacing = styles.letterSpacing;
+        }
+
+        temp.textContent = longestWord;
+        document.body.appendChild(temp);
+        const width = temp.offsetWidth;
+        document.body.removeChild(temp);
+
+        return `${width}px`;
+    }
+
+    // Set width after fonts load
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+            const width = calculateLongestWordWidth();
+            document.documentElement.style.setProperty(
+                "--dynamic-word-width",
+                width,
+            );
+        });
+    } else {
+        // Fallback for browsers without Font Loading API
+        setTimeout(() => {
+            const width = calculateLongestWordWidth();
+            document.documentElement.style.setProperty(
+                "--dynamic-word-width",
+                width,
+            );
+        }, 100);
+    }
+</script>

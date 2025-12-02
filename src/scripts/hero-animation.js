@@ -217,14 +217,14 @@ export function initHeroAnimation(dynamicWords) {
             let numberOfParticles;
 
             if (canvas.width <= 768) {
-                // Mobile: Moderate particles for better visibility
-                numberOfParticles = Math.min(screenArea / 12000, 50);
+                // Mobile: Fewer particles for performance
+                numberOfParticles = Math.min(screenArea / 15000, 30);
             } else if (canvas.width <= 1200) {
-                // Tablet: More particles
-                numberOfParticles = Math.min(screenArea / 7000, 80);
+                // Tablet
+                numberOfParticles = Math.min(screenArea / 10000, 50);
             } else {
-                // Desktop: Significantly more particles for impact
-                numberOfParticles = Math.min(screenArea / 5000, 120);
+                // Desktop
+                numberOfParticles = Math.min(screenArea / 8000, 80);
             }
 
             // Enhanced brand color palette with higher visibility
@@ -301,11 +301,15 @@ export function initHeroAnimation(dynamicWords) {
             }
         }
 
+        let resizeTimeout;
         window.addEventListener("resize", function () {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            mouse.radius = (canvas.height / 80) * (canvas.height / 80);
-            init();
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                mouse.radius = (canvas.height / 80) * (canvas.height / 80);
+                init();
+            }, 200);
         });
 
         window.addEventListener("mouseout", function () {

@@ -315,6 +315,19 @@ export function initChatDemo() {
 
     let currentStep = 0;
 
+    function createTypingIndicator() {
+        const typingDiv = document.createElement("div");
+        typingDiv.className = "message bot typing-message";
+        typingDiv.innerHTML = `
+            <div class="typing-indicator">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        `;
+        return typingDiv;
+    }
+
     function createMessageElement(text: string, type: string, time: string) {
         const msgDiv = document.createElement("div");
         msgDiv.className = `message ${type}`;
@@ -330,6 +343,17 @@ export function initChatDemo() {
                 <span class="message-time">${time || ""} ${checkmark}</span>
             </div>
         `;
+
+        // Add glow effect for bot messages
+        if (type === "bot") {
+            setTimeout(() => {
+                const bubble = msgDiv.querySelector(".message-bubble");
+                if (bubble) {
+                    bubble.classList.add("message-received");
+                }
+            }, 100);
+        }
+
         return msgDiv;
     }
 
@@ -668,6 +692,57 @@ export function initChatDemo() {
             setTimeout(executeStep, step.delay);
         }
     }
+
+    // Slider Controls
+    const prevBtn = document.getElementById("slider-prev");
+    const nextBtn = document.getElementById("slider-next");
+    const indicators = document.querySelectorAll(".indicator");
+
+    function goToSlide(slideNumber: number) {
+        const slides = document.querySelectorAll(".crm-slide");
+
+        slides.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+
+        indicators.forEach((ind) => {
+            ind.classList.remove("active");
+        });
+
+        const targetSlide = document.querySelector(
+            `.crm-slide[data-slide="${slideNumber}"]`,
+        );
+        const targetIndicator = document.querySelector(
+            `.indicator[data-slide="${slideNumber}"]`,
+        );
+
+        if (targetSlide) targetSlide.classList.add("active");
+        if (targetIndicator) targetIndicator.classList.add("active");
+
+        currentSlide = slideNumber;
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            const newSlide = currentSlide > 1 ? currentSlide - 1 : 4;
+            goToSlide(newSlide);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            const newSlide = currentSlide < 4 ? currentSlide + 1 : 1;
+            goToSlide(newSlide);
+        });
+    }
+
+    indicators.forEach((indicator) => {
+        indicator.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement;
+            const slideNum = parseInt(target.dataset.slide || "1");
+            goToSlide(slideNum);
+        });
+    });
 
     // Start
     const observer = new IntersectionObserver((entries) => {
